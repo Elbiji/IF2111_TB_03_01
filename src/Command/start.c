@@ -21,7 +21,6 @@ void start(TabUser *Users, ArrayDinBarang *array){
     STARTWORD("2.txt", "r");
 
     totalinventory = atoi(CurrentWord.TabWord);
-    MakeArrayDinBarang(array);
 
     // Setup items
     for (int i = 0; i < totalinventory; i++){
@@ -49,41 +48,43 @@ void start(TabUser *Users, ArrayDinBarang *array){
         InsertBarang(array, inventory, i);
     }
 
-    printf("\nTrying to read user count...\n");
     ADVWORD();
-    if (!EndWord) {
-        printf("Found user count: %s\n", CurrentWord.TabWord);
-        totaluser = atoi(CurrentWord.TabWord);
+    totaluser = atoi(CurrentWord.TabWord);
+
+    for (int i = 0; i < totaluser; i++) {
+        ADVWORD();
+        Users->TC[i].money = atoi(CurrentWord.TabWord);
         
-        // Process users
-        for (int i = 0; i < totaluser; i++) {
-            ADVWORD();
-            printf("Reading money: %s\n", CurrentWord.TabWord);
-            Users->TC[i].money = atoi(CurrentWord.TabWord);
-            
-            ADVWORD();
-            printf("Reading username: %s\n", CurrentWord.TabWord);
-            for (int j = 0; j < CurrentWord.Length; j++) {
-                Users->TC[i].name[j] = CurrentWord.TabWord[j];
-            }
-            Users->TC[i].name[CurrentWord.Length] = '\0';
-            
-            ADVWORD();
-            printf("Reading password: %s\n", CurrentWord.TabWord);
-            for (int j = 0; j < CurrentWord.Length; j++) {
-                Users->TC[i].password[j] = CurrentWord.TabWord[j];
-            }
-            Users->TC[i].password[CurrentWord.Length] = '\0';
+        ADVWORD();
+        for (int j = 0; j < CurrentWord.Length; j++) {
+            Users->TC[i].name[j] = CurrentWord.TabWord[j];
         }
-    } else {
-        printf("Failed to read user count - EndWord reached\n");
+        Users->TC[i].name[CurrentWord.Length] = '\0';
+        
+        ADVWORD();
+        for (int j = 0; j < CurrentWord.Length; j++) {
+            Users->TC[i].password[j] = CurrentWord.TabWord[j];
+        }
+        Users->TC[i].password[CurrentWord.Length] = '\0';
     }
+
+    for (int i = 0; i < totaluser; i++){
+        printf("%d : %s\n", Users->TC[i].money, Users->TC[i].name, Users->TC[i].password);
+    }  
+
+    for (int i = 0; i < totalinventory; i++){
+        printf("%d : %s\n", array->A[i].price, array->A[i].name);
+    } 
+    
 }    
 
 
 int main(){
     TabUser user;
     ArrayDinBarang items;
+    MakeArrayDinBarang(&items);
+
     start(&user, &items);
+    DeallocateArrayDinBarang(&items);
     return 0;
 }
