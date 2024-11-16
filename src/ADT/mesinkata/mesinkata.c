@@ -3,21 +3,13 @@
 
 boolean EndWord;
 Word CurrentWord;
+int words = 0;
 
-void IgnoreBlanks(){
-/* Mengabaikan satu atau beberapa BLANK
-   I.S. : currentChar sembarang
-   F.S. : currentChar ≠ BLANK atau currentChar = MARK */
-   while (GetCC() == BLANK){
-        ADV();
-   }
-}
-
-void IgnoreLines(){
+void Ignore(){
 /* Mengabaikan satu atau beberapa NEWLINE
    I.S. : currentChar sembarang
    F.S. : currentChar ≠ NEWLINE atau currentChar = MARK */
-   while (GetCC() == NEWLINE){
+   while (GetCC() == NEWLINE || GetCC() == BLANK){
         ADV();
    }
 }
@@ -28,7 +20,13 @@ void STARTWORD(char *path, char *type){
           atau EndWord = false, currentWord adalah kata yang sudah diakuisisi,
           currentChar karakter pertama sesudah karakter terakhir kata */
     START(path, type);
-    ADVWORD();
+    Ignore();
+    if (IsEOP()){
+        EndWord = true;
+    } else {
+        EndWord = false;
+        CopyWord();
+    }
 }
 
 void ADVWORD(){
@@ -37,28 +35,13 @@ void ADVWORD(){
           currentChar adalah karakter pertama dari kata berikutnya, mungkin MARK
           Jika currentChar = MARK, EndWord = true.
    Proses : Akuisisi kata menggunakan procedure SalinWord */
-    IgnoreBlanks();
-    if (GetCC() == MARK){
+    Ignore();
+    if (IsEOP()){
         EndWord = true;
     } else {
         CopyWord();
-        IgnoreBlanks();
+        EndWord = false;
     }
-}
-
-void ADVLINE(){
-    IgnoreLines();
-    int count = 0;
-    ADVWORD();
-    Word tempWord = CurrentWord;
-    while (!IsEOP() && GetCC() != NEWLINE){
-        ADVWORD();
-
-    }
-    if (count > 0){
-        CurrentWord = tempWord;
-    }
-    IgnoreLines();
 }
 
 void CopyWord(){
@@ -69,12 +52,18 @@ void CopyWord(){
           currentChar adalah karakter sesudah karakter terakhir yang diakuisisi.
           Jika panjang kata melebihi NMax, maka sisa kata "dipotong" */
     int i = 0;
-    while ((GetCC() != MARK) && (GetCC() != BLANK) && (i < NMax)){
-        CurrentWord.TabWord[i] = GetCC();
+    while (!IsEOP() && GetCC() != BLANK && GetCC() != MARK ){
+        if (i < NMax)
+        {
+            CurrentWord.TabWord[i] = GetCC();
+            i++;
+        }   
         ADV();
-        i++;
     }
     CurrentWord.Length = i;
+    CurrentWord.TabWord[i] = '\0';
+
 }
+
 
 
