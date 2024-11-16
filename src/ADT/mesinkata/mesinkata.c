@@ -13,19 +13,22 @@ void IgnoreBlanks(){
    }
 }
 
-void STARTWORD(char *path, char *var){
+void IgnoreLines(){
+/* Mengabaikan satu atau beberapa NEWLINE
+   I.S. : currentChar sembarang
+   F.S. : currentChar ≠ NEWLINE atau currentChar = MARK */
+   while (GetCC() == NEWLINE){
+        ADV();
+   }
+}
+
+void STARTWORD(char *path, char *type){
 /* I.S. : currentChar sembarang
    F.S. : EndWord = true, dan currentChar = MARK;
           atau EndWord = false, currentWord adalah kata yang sudah diakuisisi,
           currentChar karakter pertama sesudah karakter terakhir kata */
-    START(path, var);
-    IgnoreBlanks();
-    if ( GetCC() == MARK){
-        EndWord = true;
-    } else {
-        EndWord = false;
-        CopyWord();
-    }
+    START(path, type);
+    ADVWORD();
 }
 
 void ADVWORD(){
@@ -41,6 +44,21 @@ void ADVWORD(){
         CopyWord();
         IgnoreBlanks();
     }
+}
+
+void ADVLINE(){
+    IgnoreLines();
+    int count = 0;
+    ADVWORD();
+    Word tempWord = CurrentWord;
+    while (!IsEOP() && GetCC() != NEWLINE){
+        ADVWORD();
+
+    }
+    if (count > 0){
+        CurrentWord = tempWord;
+    }
+    IgnoreLines();
 }
 
 void CopyWord(){

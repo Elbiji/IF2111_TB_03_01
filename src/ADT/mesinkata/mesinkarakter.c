@@ -9,7 +9,7 @@ FILE *pita;
 FILE *pitaFile;
 
 
-void START(char *path, char *var){
+void START(char *path, char *type){
 /* Mesin siap dioperasikan. Pita disiapkan untuk dibaca.
    Karakter pertama yang ada pada pita posisinya adalah pada jendela.
    Pita baca diambil dari stdin.
@@ -17,13 +17,13 @@ void START(char *path, char *var){
    F.S. : currentChar adalah karakter pertama pada pita
           Jika currentChar != MARK maka EOP akan padam (false)
           Jika currentChar = MARK maka EOP akan menyala (true) */
-    if (path[0] == '\0' && var[0] == '\0'){ // Membuka file config
+    if (path[0] == '\0' && type[0] == '\0'){ 
         input = true;
         pita = stdin;
         ADV();
     } else { // Jika input merupakan direktori
-        pitaFile = fopen(path, var); 
         input = false;
+        pitaFile = fopen(path, type); 
         if (pitaFile != NULL){
             ADV();
         }
@@ -37,9 +37,9 @@ void ADV(){
    F.S. : currentChar adalah karakter berikutnya dari currentChar yang lama,
           currentChar mungkin = MARK
           Jika  currentChar = MARK maka EOP akan menyala (true) */
-    retval = fscanf(input ? pitaFile : pita, "%c", &currentChar);
+    retval = fscanf(input ? pita : pitaFile, "%c", &currentChar);
     if (IsEOP()){
-        fclose(input ? pitaFile : pita);
+        fclose(input ? pita : pitaFile);
     }
 }
 
