@@ -7,9 +7,14 @@
 #include "boolean.h"
 
 #define MARK '.'
+#define NEWLINE '\n'
 /* State Mesin */
+extern retval;
 extern char currentChar;
 extern boolean EOP;
+
+extern FILE *pita;
+extern FILE *pitaFile;
 
 void START();
 /* Mesin siap dioperasikan. Pita disiapkan untuk dibaca.

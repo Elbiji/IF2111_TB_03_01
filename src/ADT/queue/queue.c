@@ -1,5 +1,5 @@
 #include <stdio.h>
-#include "ADT/queue.h"
+#include "queue.h"
 
 /* *** Kreator *** */
 void CreateQueue(Queue *q){

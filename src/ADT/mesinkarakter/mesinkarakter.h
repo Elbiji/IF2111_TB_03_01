@@ -1,14 +1,17 @@
-#include <stdio.h>
-#include "ADT/boolean.h"
-#include "ADT/mesinkarakter.h"
+/* File: mesinkarakter.h */
+/* Definisi Mesin Karakter */
 
-char currentChar;
-boolean EOP;
+#ifndef __MESIN_KAR_H_
+#define __MESIN_KAR_H_
 
-static FILE *pita;
+#include "boolean.h"
 
+#define MARK '.'
+/* State Mesin */
+extern char currentChar;
+extern boolean EOP;
 
-void START(){
+void START();
 /* Mesin siap dioperasikan. Pita disiapkan untuk dibaca.
    Karakter pertama yang ada pada pita posisinya adalah pada jendela.
    Pita baca diambil dari stdin.
@@ -16,29 +19,27 @@ void START(){
    F.S. : currentChar adalah karakter pertama pada pita
           Jika currentChar != MARK maka EOP akan padam (false)
           Jika currentChar = MARK maka EOP akan menyala (true) */
-    pita = stdin;
-    ADV();
-}
 
-void ADV(){
+void STARTFILE(char* path);
+    /* Mesin siap dioperasi kan. Pita disiapkan untuk dibaca.
+   Karakter pertama yang ada pada pita posisinya adalah pada jendela.
+   Pita baca diambil dari file konfigurasi.
+   I.S. : sembarang
+   F.S. : currentChar adalah karakter pertama pada pita yang berasal 
+          dari file konfigurasi Jika currentChar != MARK maka EOP akan padam (false)
+          Jika currentChar = MARK maka EOP akan menyala (true) */
+
+void ADV();
 /* Pita dimajukan satu karakter.
    I.S. : Karakter pada jendela = currentChar, currentChar != MARK
    F.S. : currentChar adalah karakter berikutnya dari currentChar yang lama,
           currentChar mungkin = MARK
           Jika  currentChar = MARK maka EOP akan menyala (true) */
-    fscanf(pita,"%c", &currentChar);
-    if (currentChar == MARK){
-        fclose(pita);
-    }
-}
 
-char GetCC(){
+char GetCC();
 /* Mengirimkan currentChar */
-    return currentChar;
-}
 
-boolean IsEOP(){
+boolean IsEOP();
 /* Mengirimkan true jika currentChar = MARK */
-    return (currentChar == MARK);
-}
 
+#endif

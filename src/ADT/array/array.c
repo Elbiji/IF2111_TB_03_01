@@ -1,6 +1,5 @@
 #include <stdio.h>
-#include "/ADT/array.h"
-#include "/ADT/boolean.h"
+#include "array.h"
 
 // Konstruktor: create tabel kosong
 void MakeEmpty (TabInt *T) {
