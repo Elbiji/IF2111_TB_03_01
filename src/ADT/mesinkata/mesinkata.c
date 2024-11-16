@@ -13,12 +13,12 @@ void IgnoreBlanks(){
    }
 }
 
-void STARTWORD(){
+void STARTWORD(char *path, char *var){
 /* I.S. : currentChar sembarang
    F.S. : EndWord = true, dan currentChar = MARK;
           atau EndWord = false, currentWord adalah kata yang sudah diakuisisi,
           currentChar karakter pertama sesudah karakter terakhir kata */
-    START();
+    START(path, var);
     IgnoreBlanks();
     if ( GetCC() == MARK){
         EndWord = true;

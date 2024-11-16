@@ -6,17 +6,18 @@
 
 #include "boolean.h"
 
-#define MARK '.'
+#define MARK '\n'
 #define NEWLINE '\n'
 /* State Mesin */
-extern retval;
+extern int retval;
 extern char currentChar;
 extern boolean EOP;
+extern boolean input;
 
 extern FILE *pita;
 extern FILE *pitaFile;
 
-void START();
+void START(char *path, char *var);
 /* Mesin siap dioperasikan. Pita disiapkan untuk dibaca.
    Karakter pertama yang ada pada pita posisinya adalah pada jendela.
    Pita baca diambil dari stdin.

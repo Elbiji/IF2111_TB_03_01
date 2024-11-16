@@ -32,7 +32,7 @@ void IgnoreLines();
    I.S. : currentChar sembarang
    F.S. : currentChar ≠ NEWLINE atau currentChar = MARK */
 
-void STARTWORD();
+void STARTWORD(char *path, char *var);
 /* I.S. : currentChar sembarang
    F.S. : EndWord = true, dan currentChar = MARK;
           atau EndWord = false, currentWord adalah kata yang sudah diakuisisi,
