@@ -3,7 +3,6 @@
 
 boolean EndWord;
 Word CurrentWord;
-int words = 0;
 
 void Ignore(){
 /* Mengabaikan satu atau beberapa NEWLINE
@@ -62,7 +61,6 @@ void CopyWord(){
     }
     CurrentWord.Length = i;
     CurrentWord.TabWord[i] = '\0';
-
 }
 
 

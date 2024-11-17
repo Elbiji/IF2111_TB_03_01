@@ -1,12 +1,12 @@
 #include "../Header/start.h"
-#include "../ADT/array/array.h"
-#include "../ADT/mesinkarakter/mesinkarakter.h"
-#include "../ADT/mesinkata/mesinkata.h"
-#include "../ADT/arraydin/arraydin.h"
-#include "../ADT/array/array.c"
-#include "../ADT/arraydin/arraydin.c"
-#include "../ADT/mesinkarakter/mesinkarakter.c"
-#include "../ADT/mesinkata/mesinkata.c"
+// #include "../ADT/array/array.h"
+// #include "../ADT/mesinkarakter/mesinkarakter.h"
+// #include "../ADT/mesinkata/mesinkata.h"
+// #include "../ADT/arraydin/arraydin.h"
+// #include "../ADT/array/array.c"
+// #include "../ADT/arraydin/arraydin.c"
+// #include "../ADT/mesinkarakter/mesinkarakter.c"
+// #include "../ADT/mesinkata/mesinkata.c"
 
 
 int totalinventory;
@@ -48,9 +48,9 @@ void start(TabUser *Users, ArrayDinBarang *array){
         InsertBarang(array, inventory, i);
     }
 
+    // Setup users
     ADVWORD();
     totaluser = atoi(CurrentWord.TabWord);
-
     for (int i = 0; i < totaluser; i++) {
         ADVWORD();
         Users->TC[i].money = atoi(CurrentWord.TabWord);
@@ -69,7 +69,7 @@ void start(TabUser *Users, ArrayDinBarang *array){
     }
 
     for (int i = 0; i < totaluser; i++){
-        printf("%d : %s\n", Users->TC[i].money, Users->TC[i].name, Users->TC[i].password);
+        printf("%d : %s\n", Users->TC[i].money, Users->TC[i].name);
     }  
 
     for (int i = 0; i < totalinventory; i++){
@@ -78,13 +78,12 @@ void start(TabUser *Users, ArrayDinBarang *array){
     
 }    
 
+// int main(){
+//     TabUser user;
+//     ArrayDinBarang items;
+//     MakeArrayDinBarang(&items);
 
-int main(){
-    TabUser user;
-    ArrayDinBarang items;
-    MakeArrayDinBarang(&items);
-
-    start(&user, &items);
-    DeallocateArrayDinBarang(&items);
-    return 0;
-}
+//     start(&user, &items);
+//     DeallocateArrayDinBarang(&items);
+//     return 0;
+// }

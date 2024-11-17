@@ -11,7 +11,7 @@ int main() {
         ADV();
     }
     printf("\n");
-    STARTWORD("test.txt", "r");
+    STARTWORD("default.txt", "r");
     while (!EndWord) {
         printf("%s\n", CurrentWord);
         ADVWORD();

@@ -8,6 +8,7 @@
 #define IdxMax 100
 #define IdxMin 1
 #define IdxUndef -999 /* indeks tak terdefinisi*/
+#define integer int
 
 /* Definisi elemen dan koleksi objek */
 typedef int IdxType;
@@ -16,7 +17,7 @@ typedef int ElType;
 typedef struct {
   char name[IdxMax];
   char password[IdxMax];
-  int money;
+  integer money;
 } User;
 
 typedef struct

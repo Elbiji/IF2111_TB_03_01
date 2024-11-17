@@ -21,15 +21,10 @@ typedef struct
 extern boolean EndWord;
 extern Word CurrentWord;
 
-void IgnoreBlanks();
-/* Mengabaikan satu atau beberapa BLANK
+void Ignore();
+/* Mengabaikan satu atau beberapa BLANK dan NEWLINE
    I.S. : currentChar sembarang
    F.S. : currentChar ≠ BLANK atau currentChar = MARK */
-
-void IgnoreLines();
-/* Mengabaikan satu atau beberapa NEWLINE
-   I.S. : currentChar sembarang
-   F.S. : currentChar ≠ NEWLINE atau currentChar = MARK */
 
 void STARTWORD(char *path, char *var);
 /* I.S. : currentChar sembarang
@@ -38,13 +33,6 @@ void STARTWORD(char *path, char *var);
           currentChar karakter pertama sesudah karakter terakhir kata */
 
 void ADVWORD();
-/* I.S. : currentChar adalah karakter pertama kata yang akan diakuisisi
-   F.S. : currentWord adalah kata terakhir yang sudah diakuisisi,
-          currentChar adalah karakter pertama dari kata berikutnya, mungkin MARK
-          Jika currentChar = MARK, EndWord = true.
-   Proses : Akuisisi kata menggunakan procedure SalinWord */
-
-void ADVLINE();
 /* I.S. : currentChar adalah karakter pertama kata yang akan diakuisisi
    F.S. : currentWord adalah kata terakhir yang sudah diakuisisi,
           currentChar adalah karakter pertama dari kata berikutnya, mungkin MARK
