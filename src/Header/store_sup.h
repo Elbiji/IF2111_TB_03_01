@@ -10,4 +10,6 @@
 #include "../ADT/queue/queue.h"
 #include "../ADT/boolean/boolean.h"
 
+boolean isStrAllDigit (char *str);
+
 #endif

@@ -10,7 +10,6 @@ boolean isDone(char *input){
     return true;
 }
 
-
 void store_sup(Queue *items_request, ArrayDinBarang *array){
     printf("======= [STORE  SUPPLY] =======\n");
 
@@ -52,17 +51,22 @@ void store_sup(Queue *items_request, ArrayDinBarang *array){
         }
 
         if (Accept) {
+            char c;
             dequeue(items_request, &antrian);
             printf("Harga Barang : ");
-            scanf("%d", &harga);
-            while (getchar() != '\n'); // clear buffer
-            while (harga == 0){
-                printf("Masukkan sebuah angka yang lebih besar dari 0 atau Masukkan sebuah angka bukan karakter!\n");
+            
+            while(1){       
                 printf("Harga Barang : ");
-                scanf("%d", &harga);
-                if (harga > 0) break;
-                while (getchar() != '\n'); // clear buffer
-            }
+                if (scanf("%d%c", &harga, &c) != 2 || c != '\n') {
+                    printf("Masukkan sebuah integer!\n");
+                    while((c = getchar()) != '\n');
+                } else if (harga <= 0){
+                    printf("Masukkan sebuah integer yang lebih besar dari 0!\n");
+                } else {
+                    break;
+                }
+            } 
+            
             IdxType index = array->Neff;
             barang_antrian.price = harga;
             int i;
