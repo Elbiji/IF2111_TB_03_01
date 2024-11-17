@@ -21,7 +21,7 @@ void store_sup(Queue *items_request, ArrayDinBarang *array){
     char *hld = "Tunda";
     char *rmv = "Tolak";
 
-    while (1 || !isEmpty(*items_request))
+    while (!isEmpty(*items_request))
     {   
         boolean Accept = true;
         boolean Remove = true;
@@ -31,19 +31,19 @@ void store_sup(Queue *items_request, ArrayDinBarang *array){
 
         scanf("%s", response);
 
-        for (int i = 0; i < 10 && acc[i] != '\0'; i++){
+        for (int i = 0; i < 10 && acc[i] != '\0' || response[i] != '\0'; i++){
             if (response[i] != acc[i]){
                 Accept = false;
                 break;
             }
         }
-        for (int i = 0; i < 10 && hld[i] != '\0'; i++){
+        for (int i = 0; i < 10 && hld[i] != '\0' || response[i] != '\0'; i++){
             if (response[i] != hld[i]){
                 Hold = false;
                 break;
             }
         }
-        for (int i = 0; i < 10 && rmv[i] != '\0'; i++){
+        for (int i = 0; i < 10 && rmv[i] != '\0' || response[i] != '\0'; i++){
             if (response[i] != rmv[i]){
                 Remove = false;
                 break;
@@ -53,8 +53,6 @@ void store_sup(Queue *items_request, ArrayDinBarang *array){
         if (Accept) {
             char c;
             dequeue(items_request, &antrian);
-            printf("Harga Barang : ");
-            
             while(1){       
                 printf("Harga Barang : ");
                 if (scanf("%d%c", &harga, &c) != 2 || c != '\n') {
