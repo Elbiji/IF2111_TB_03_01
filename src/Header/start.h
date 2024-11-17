@@ -10,6 +10,6 @@
 #include "../ADT/queue/queue.h"
 
 // Program membaca file config
-void start(TabUser *Users, ArrayDinBarang *array);
+void start(TabUser *Users, ArrayDinBarang *array, Queue *items_request);
 
 #endif

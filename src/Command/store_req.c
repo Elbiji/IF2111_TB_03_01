@@ -4,8 +4,8 @@
 // #include "../ADT/arraydin/arraydin.h"
 // #include "../ADT/queue/queue.h"
 
-ArrayDinBarang array;
-Queue items_request;
+// ArrayDinBarang array;
+// Queue items_request;
 
 int strLength(char *str){
     int i = 0;
@@ -56,43 +56,51 @@ boolean isItemInQueue(Queue items_request, char *str){
 }
 
 boolean isStrAllDigit (char *str){
-    boolean status = true;
     int i = 0;
-    while (status && i < strLength(str))
+    while (str[i] != '\0')
     {
-        if ('0' <= str[i] && str[i] >= '9'){
-            flag = true;
-        } else {
-            status = false;
+        if (str[i] < '0' || str[i] > '9'){
+            return false;
         }
         i++;
     }
-    return status;
+    return true;
 }
 
 void store_request(Queue *items_request, ArrayDinBarang array){
     char requested_item[50];
+    nama_barang item;
 
-    if (isFull(items_request)){
+    if (isFull(*items_request)){
         printf("antrian penuh");
         return;
+
     } else {
-        printf("======= [STORE REQUEST] =======");
-        while(1){
-            printf("Nama barang yang diminta: ");
-            scanf("%49s", requested_item);
-            if (isStrAllDigit(*requested_item)){
+        printf("======= [STORE REQUEST] =======\n");
+        while(!isFull(*items_request)){
+            printf("Nama barang yang diminta: \n");
+            scanf(" %[^\n]", requested_item);
+
+            if (isStrAllDigit(requested_item)){
                 printf("Pastikan anda memasukkan nama berupa karakter\n");
-            } else if (isItemInShop(array, *requested_item)){
-                printf("Barang sudah ada di toko!\n")
+
+            } else if (isItemInShop(array, requested_item)){
+                printf("Barang sudah ada di toko!\n");
+
             } else {
-                if (isItemInQueue(items_request, *requested_item))
+                if (isItemInQueue(*items_request, requested_item))
                 {
                     printf("Barang sudah berada di dalam antrian!\n");
+                    
                 } else {
-                    enqueue(items_request, requested_item);
+                    int i;
+                    for (i = 0; requested_item[i] != '\0' && i < 49; i++){
+                        item.name[i] = requested_item[i];
+                    }
+                    item.name[i] = '\0';
+
+                    enqueue(items_request, item);
                     printf("Barang berhasil dimasukkan ke dalam antrian\n");
-                    break;
                 }   
             }   
         }   
@@ -102,7 +110,7 @@ void store_request(Queue *items_request, ArrayDinBarang array){
 int main() {
     TabUser user;
     ArrayDinBarang items;
-    Queue item_req:
+    Queue item_req;
     MakeArrayDinBarang(&items);
     start(&user, &items, &item_req);
     
