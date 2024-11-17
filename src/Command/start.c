@@ -17,8 +17,8 @@ ArrayDinBarang array;
 
 void start(TabUser *Users, ArrayDinBarang *array){
     MakeEmpty(Users);
-    //STARTWORD("../../save/default.txt", "r");
-    STARTWORD("2.txt", "r");
+    STARTWORD("save/default.txt", "r");
+    // STARTWORD("2.txt", "r");
 
     totalinventory = atoi(CurrentWord.TabWord);
 
