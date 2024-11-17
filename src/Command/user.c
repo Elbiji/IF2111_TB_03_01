@@ -24,13 +24,13 @@ void stringCopy(char *dest, char *src) {
 }
 
 // Inisialisasi daftar pengguna
-void initUserList(UserList *list) {
-    list->count = 0; // Set jumlah pengguna menjadi 0
+void initUserList(TabUser *list) {
+    list->Neff = 0; // Set jumlah pengguna menjadi 0
 }
 
 // Cari pengguna berdasarkan username
-int findUser(UserList *list, char *username) {
-    for (int i = 0; i < list->count; i++) {
+int findUser(TabUser *list, char *username) {
+    for (int i = 0; i < list->Neff; i++) {
         if (stringCompare(list->users[i].name, username)) {
             return i; // Kembalikan indeks jika username ditemukan
         }
@@ -39,7 +39,7 @@ int findUser(UserList *list, char *username) {
 }
 
 // Fungsi untuk register
-int registerUser(UserList *list, char *username, char *password) {
+int registerUser(TabUser *list, char *username, char *password, int money) {
     // Register gagal karena username sudah ada
     if (findUser(list, username) != -1) {
         printf("Akun dengan username %s gagal dibuat. Silakan lakukan REGISTER ulang.\n", username);
@@ -47,21 +47,22 @@ int registerUser(UserList *list, char *username, char *password) {
     }
 
     // Cek apakah kapasitas maksimum pengguna sudah tercapai
-    if (list->count >= MAX_USERS) {
+    if (list->Neff >= MAX_USERS) {
         printf("Register gagal. Kapasitas pengguna sudah penuh.\n");
         return 0; // Registrasi gagal
     }
 
     // Register berhasil
-    stringCopy(list->users[list->count].name, username);
-    stringCopy(list->users[list->count].password, password);
-    list->count++; // Increment jumlah pengguna
+    stringCopy(list->users[list->Neff].name, username);
+    stringCopy(list->users[list->Neff].password, password);
+    list->users[list->Neff].money = money; // Set uang pengguna
+    list->Neff++; // Increment jumlah pengguna
     printf("Akun dengan username %s telah berhasil dibuat. Silakan LOGIN untuk melanjutkan.\n", username);
     return 1; // Registrasi berhasil
 }
 
 // Fungsi untuk login
-User* login(UserList *list, char *username, char *password, User *currentUser) {
+User* login(TabUser *list, char *username, char *password, User *currentUser) {
     // Login gagal karena pengguna belum logout
     if (currentUser != NULL) {
         printf("Anda masih tercatat sebagai %s. Silakan LOGOUT terlebih dahulu.\n", currentUser->name);

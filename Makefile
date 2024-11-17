@@ -19,6 +19,7 @@ OUTPUT = store_req.exe
 # Source files
 SRCS = $(CMD_DIR)/store_req.c \
        $(CMD_DIR)/start.c \
+       $(CMD_DIR)/user.c \
        $(ARRAY_DIR)/array.c \
        $(ARRAYDIN_DIR)/arraydin.c \
        $(QUEUE_DIR)/queue.c \
@@ -44,7 +45,7 @@ $(OUTPUT): $(OBJS)
 
 # Clean build files
 clean:
-	cmd /C "del /Q src\Command\store_req.o src\Command\start.o src\ADT\array\array.o src\ADT\arraydin\arraydin.o src\ADT\queue\queue.o src\ADT\mesinkata\mesinkata.o src\ADT\mesinkarakter\mesinkarakter.o store_req.exe"
+	cmd /C "del /Q src\Command\store_req.o src\Command\start.o src\Command\user.o src\ADT\array\array.o src\ADT\arraydin\arraydin.o src\ADT\queue\queue.o src\ADT\mesinkata\mesinkata.o src\ADT\mesinkarakter\mesinkarakter.o store_req.exe"
 
 run: $(OUTPUT)
 	.\$(OUTPUT)

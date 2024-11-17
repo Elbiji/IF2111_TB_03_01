@@ -9,25 +9,26 @@
 typedef struct {
     char name[MAX_LEN];       // Nama pengguna
     char password[MAX_LEN];   // Password pengguna
+    int money;                // Tambahan atribut untuk menyimpan uang pengguna (sesuai data di file konfigurasi)
 } User;
 
 // Struktur data untuk menyimpan daftar pengguna
 typedef struct {
     User users[MAX_USERS];    // Array pengguna
-    int count;                // Jumlah pengguna yang terdaftar
-} UserList;
+    int Neff;                 // Jumlah pengguna yang efektif
+} TabUser;
 
 // Inisialisasi daftar pengguna
-void initUserList(UserList *list);
+void initUserList(TabUser *list);
 
 // Cari pengguna berdasarkan username
-int findUser(UserList *list, char *username);
+int findUser(TabUser *list, char *username);
 
 // Fungsi untuk register
-int registerUser(UserList *list, char *username, char *password);
+int registerUser(TabUser *list, char *username, char *password, int money);
 
 // Fungsi untuk login
-User* login(UserList *list, char *username, char *password, User *currentUser);
+User* login(TabUser *list, char *username, char *password, User *currentUser);
 
 // Fungsi untuk logout 
 void logout(User **currentUser);
