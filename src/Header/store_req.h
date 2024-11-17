@@ -7,5 +7,6 @@
 #include "../ADT/array/array.h"
 #include "../ADT/arraydin/arraydin.h"
 #include "../ADT/queue/queue.h"
+#include "../ADT/boolean/boolean.h"
 
 #endif
