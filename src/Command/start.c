@@ -8,7 +8,6 @@
 // #include "../ADT/mesinkarakter/mesinkarakter.c"
 // #include "../ADT/mesinkata/mesinkata.c"
 
-
 int totalinventory;
 int totalbarang_per_inventory;
 int totaluser;

@@ -12,12 +12,14 @@ ARRAYDIN_DIR = $(ADT_DIR)/arraydin
 QUEUE_DIR = $(ADT_DIR)/queue
 MESINKATA_DIR = $(ADT_DIR)/mesinkata
 MESINKAR_DIR = $(ADT_DIR)/mesinkarakter
+LIST_DIR = $(ADT_DIR)/list
 
 # Output executable
-OUTPUT = store_req.exe
+OUTPUT = store_sup.exe
 
 # Source files
 SRCS = $(CMD_DIR)/store_req.c \
+       $(CMD_DIR)/store_sup.c \
        $(CMD_DIR)/start.c \
        $(ARRAY_DIR)/array.c \
        $(ARRAYDIN_DIR)/arraydin.c \
@@ -29,7 +31,7 @@ SRCS = $(CMD_DIR)/store_req.c \
 OBJS = $(SRCS:.c=.o)
 
 # Include headers
-INCLUDES = -I$(HDR_DIR) -I$(ARRAY_DIR) -I$(ARRAYDIN_DIR) -I$(QUEUE_DIR) -I$(MESINKATA_DIR) -I$(MESINKAR_DIR)
+INCLUDES = -I$(HDR_DIR) -I$(ARRAY_DIR) -I$(ARRAYDIN_DIR) -I$(QUEUE_DIR) -I$(MESINKATA_DIR) -I$(MESINKAR_DIR) -I$(LIST_DIR)
 
 # Default target
 all: $(OUTPUT)
