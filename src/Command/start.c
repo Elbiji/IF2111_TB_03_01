@@ -44,13 +44,14 @@ void start(TabUser *Users, ArrayDinBarang *array){
         }
 
         inventory.name[nameindex] = '\0';
-        printf("Adding item: %s, price: %d\n", inventory.name, inventory.price);
+        // printf("Adding item: %s, price: %d\n", inventory.name, inventory.price);
         InsertBarang(array, inventory, i);
     }
 
     // Setup users
     ADVWORD();
     totaluser = atoi(CurrentWord.TabWord);
+    Users->Neff = totaluser;
     for (int i = 0; i < totaluser; i++) {
         ADVWORD();
         Users->TC[i].money = atoi(CurrentWord.TabWord);
@@ -68,14 +69,13 @@ void start(TabUser *Users, ArrayDinBarang *array){
         Users->TC[i].password[CurrentWord.Length] = '\0';
     }
 
-    for (int i = 0; i < totaluser; i++){
-        printf("%d : %s\n", Users->TC[i].money, Users->TC[i].name);
-    }  
+    // for (int i = 0; i < totaluser; i++){
+    //     printf("%d : %s\n", Users->TC[i].money, Users->TC[i].name);
+    // }  
 
-    for (int i = 0; i < totalinventory; i++){
-        printf("%d : %s\n", array->A[i].price, array->A[i].name);
-    } 
-    
+    // for (int i = 0; i < totalinventory; i++){
+    //     printf("%d : %s\n", array->A[i].price, array->A[i].name);
+    // } 
 }    
 
 // int main(){
