@@ -55,14 +55,27 @@ void store_sup(Queue *items_request, ArrayDinBarang *array){
             dequeue(items_request, &antrian);
             while(1){       
                 printf("Harga Barang : ");
-                if (scanf("%d%c", &harga, &c) != 2 || c != '\n') {
-                    printf("Masukkan sebuah integer!\n");
-                    while((c = getchar()) != '\n'); // Subject to change
-                } else if (harga <= 0){
-                    printf("Masukkan sebuah integer yang lebih besar dari 0!\n");
-                } else {
-                    break;
+                
+                START("","");
+                int val = 0;
+                boolean isvalid = true;
+
+                while (!IsEOP() && GetCC() != '\n'){
+                    if (GetCC() >= '0' && GetCC() <= '9'){
+                        val = val * 10 + (GetCC() - '0'); // Parsing one by one
+                    } else {
+                        isvalid = false;
+                    }
+                    ADV();
                 }
+
+                if (!isvalid || val <= 0){
+                    printf("Masukkan sebuah integer yang lebih besar dari 0!\n");
+                    continue;
+                }
+
+                harga = val;
+                break;
             } 
             
             IdxType index = array->Neff;

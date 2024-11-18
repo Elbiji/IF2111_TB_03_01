@@ -47,7 +47,7 @@ $(OUTPUT): $(OBJS)
 
 # Clean build files
 clean:
-	cmd /C "del /Q src\Command\store_req.o src\Command\start.o src\ADT\array\array.o src\ADT\arraydin\arraydin.o src\ADT\queue\queue.o src\ADT\mesinkata\mesinkata.o src\ADT\mesinkarakter\mesinkarakter.o store_req.exe"
+	cmd /C "del /Q src\Command\store_req.o src\Command\start.o src\Command\store_sup.o src\Command\store_rmv.o src\ADT\array\array.o src\ADT\arraydin\arraydin.o src\ADT\queue\queue.o src\ADT\mesinkata\mesinkata.o src\ADT\mesinkarakter\mesinkarakter.o store_req.exe"
 
 run: $(OUTPUT)
 	.\$(OUTPUT)
