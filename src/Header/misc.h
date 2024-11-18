@@ -39,6 +39,10 @@ boolean isUserInFile(TabUser Users, char *str);
 // menerima parameter string
 boolean isStrAllDigit (char *str);
 
+// Memeriksa antara dua string apakah sama
+// menerima parameter word dari mesin kata dan string 
+boolean isStrEqual(Word str1, char *str2);
+
 // Mengembalikan panjang string 
 // menerima parameter string
 int strLength(char *str);

@@ -122,6 +122,19 @@ boolean isStrAllDigit (char *str){
     return true;
 }
 
+boolean isStrEqual(Word str1, char *str2){
+    if (str1.Length != strLength(str2)){
+        return false;
+    }
+
+    for (int i = 0; i < str1.Length; i++){
+        if (str1.TabWord[i] != str2[i]){
+            return false;
+        }
+    }
+    return true;
+}
+
 int strLength(char *str){
     int i = 0;
     while (str[i] != '\0'){
@@ -155,3 +168,12 @@ boolean readInput(char *buffer, int maxLen){
     return true;
 
 }
+
+// int main(){
+//     START("","");
+//     if (!isStrEqual(CurrentWord, "START")){
+//         printf("Kata beda\n");
+//     } else {
+//         printf("Kata sama\n");
+//     }
+// }

@@ -80,6 +80,19 @@ int main() {
         printf("%d\n", IndexUserInFile(user, namauser));
     }
 
+    STARTWORD("","");
+    if (!isStrEqual(CurrentWord, "START")){
+        printf("Kata beda\n");
+    } else {
+        printf("Kata sama\n");
+    }
+
+    STARTWORD("","");
+    if (!isStrEqual(CurrentWord, "COMMAND")){
+        printf("Kata beda\n");
+    } else {
+        printf("Kata sama\n");
+    }
     
 
     DeallocateArrayDinBarang(&items);
