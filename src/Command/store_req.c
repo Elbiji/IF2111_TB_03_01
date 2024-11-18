@@ -19,23 +19,8 @@ void store_request(Queue *items_request, ArrayDinBarang array){
         printf("======= [STORE REQUEST] =======\n");
         while(!isFull(*items_request)){
             printf("Nama barang yang diminta: \n");
-            START("", "");
-            while(!IsEOP() && (GetCC() == ' ' || GetCC() == '\n')){
-                ADV();
-            }
 
-            int i = 0;
-            while (!IsEOP() && GetCC() != '\n' && i < MAX_LEN-1){
-                requested_item[i++] = GetCC();
-                ADV();
-            }
-            requested_item[i] = '\0';
-
-            if (!IsEOP() && GetCC() != '\n') {
-                while (!IsEOP() && GetCC() != '\n') {
-                    ADV();
-                }
-                printf("Input terlalu panjang! (max %d karakter)\n", MAX_LEN-1);
+            if(!readInput(requested_item, MAX_LEN)){
                 continue;
             }
 

@@ -19,17 +19,11 @@ void store_sup(Queue *items_request, ArrayDinBarang *array){
         int itemindex = items_request->idxHead;
         printf("Apakah kamu ingin menambahkan barang %s? (Terima/Tolak/Tunda)\n", items_request->buffer[itemindex].name);
 
-        START("","");
-        while (!IsEOP() && (GetCC() == ' ' || GetCC == '\n')){
-            ADV();
+        
+        if(!readInput(response, MAX_LEN)){
+            continue;
         }
 
-        int i = 0;
-        while (!IsEOP() && GetCC() != '\n' && i < MAX_LEN-1){
-            response[i++] = GetCC();
-            ADV();
-        }
-        response[i] = '\0';
 
         if (!IsEOP() && GetCC() != '\n'){
             while (!IsEOP() && GetCC() != '\n'){

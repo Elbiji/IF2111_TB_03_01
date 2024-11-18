@@ -25,6 +25,10 @@ boolean isItemInQueue(Queue items_request, char *str);
 // Memeriksa apakah input semuanya merupakan digit
 boolean isStrAllDigit (char *str);
 
+// Mengembalikan panjang string
 int strLength(char *str);
+
+// Validasi input agar tidak melebihi batas 49 Karakter
+boolean readInput(char *buffer, int maxLen);
 
 #endif

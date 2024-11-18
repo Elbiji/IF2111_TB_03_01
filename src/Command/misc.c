@@ -81,3 +81,37 @@ boolean isStrAllDigit (char *str){
     }
     return true;
 }
+
+int strLength(char *str){
+    int i = 0;
+    while (str[i] != '\0'){
+        i++;
+    }
+    return i;
+}
+
+boolean readInput(char *buffer, int maxLen){
+    START("","");
+
+    while (!IsEOP() && (GetCC() == ' ' || GetCC() == '\n')){
+        ADV();
+    }
+
+    int i = 0;
+    while (!IsEOP() && GetCC() != '\n' && i < maxLen-1){
+        buffer[i++] = GetCC();
+        ADV();
+    }
+    buffer[i] = '\0';
+
+    if (!IsEOP() && GetCC() != '\n') {
+        while (!IsEOP() && GetCC() != '\n') {
+            ADV();
+        }
+        printf("Input terlalu panjang! (max %d karakter)\n", maxLen-1);
+        return false;
+    }
+    
+    return true;
+
+}

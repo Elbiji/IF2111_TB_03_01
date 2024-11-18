@@ -14,23 +14,7 @@ void store_rmv(ArrayDinBarang *array){
         printf("Nama barang yang dihapus: \n");
                 // scanf(" %49[^\n]", barang_hapus);
 
-        START("", "");
-        while (!IsEOP() && (GetCC() == ' ' || GetCC == '\n')){
-            ADV();
-        } // Clearing buffer
-
-        int i = 0;
-        while (!IsEOP() && GetCC() != '\n' && i < MAX_LEN-1){
-            barang_hapus[i++] = GetCC();
-            ADV();
-        }
-        barang_hapus[i] = '\0';
-
-        if (!IsEOP() && GetCC() != '\n') {
-            while (!IsEOP() && GetCC() != '\n') {
-                ADV();
-            }
-            printf("Input terlalu panjang! (max %d karakter)\n", MAX_LEN-1);
+        if(!readInput(barang_hapus, MAX_LEN)){
             continue;
         }
 
