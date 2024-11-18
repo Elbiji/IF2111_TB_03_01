@@ -12,4 +12,13 @@
 // Menambahkan barang ke dalam antrian
 void store_request(Queue *items_request, ArrayDinBarang array);
 
+// Mengecek apakah barang ada di toko
+boolean isItemInShop(ArrayDinBarang array, char *str);
+
+// Memeriksa panjang string
+int strLength(char *str);
+
+// Memeriksa apakah input merupakan angka semua
+boolean isStrAllDigit (char *str);
+
 #endif

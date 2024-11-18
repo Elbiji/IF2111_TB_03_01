@@ -74,20 +74,20 @@ void store_sup(Queue *items_request, ArrayDinBarang *array){
             barang_antrian.name[i] = '\0';
             InsertBarang(array, barang_antrian, index);
 
-            printf("\nLoaded Items:\n");
-            for (int i = 0; i < array->Neff; i++) {
-                printf("Item %d: %s (Price: %d)\n", 
-                    i+1, array->A[i].name, array->A[i].price);
-            }
+            // printf("\nLoaded Items:\n");
+            // for (int i = 0; i < array->Neff; i++) {
+            //     printf("Item %d: %s (Price: %d)\n", 
+            //         i+1, array->A[i].name, array->A[i].price);
+            // }
 
-            displayQueue(*items_request);
+            // displayQueue(*items_request);
         } else if (Remove) {
             dequeue(items_request, &antrian);
-            displayQueue(*items_request);
+            // displayQueue(*items_request);
         } else if (Hold) {
             dequeue(items_request, &antrian);
             enqueue(items_request, antrian);
-            displayQueue(*items_request);
+            // displayQueue(*items_request);
         } else if(isDone(response)) {
             break;
         } else {
@@ -102,30 +102,30 @@ void store_sup(Queue *items_request, ArrayDinBarang *array){
     }
 }
 
-int main() {
-    TabUser user;
-    ArrayDinBarang items;
-    Queue item_req;
-    MakeArrayDinBarang(&items);
-    start(&user, &items, &item_req);
+// int main() {
+//     TabUser user;
+//     ArrayDinBarang items;
+//     Queue item_req;
+//     MakeArrayDinBarang(&items);
+//     start(&user, &items, &item_req);
     
-    // Print results to verify
-    printf("\nLoaded Users:\n");
-    for (int i = 0; i <  user.Neff; i++) {
-        printf("User %d: %s (Money: %d)\n", 
-               i+1, user.TC[i].name, user.TC[i].money);
-    }
+//     // Print results to verify
+//     printf("\nLoaded Users:\n");
+//     for (int i = 0; i <  user.Neff; i++) {
+//         printf("User %d: %s (Money: %d)\n", 
+//                i+1, user.TC[i].name, user.TC[i].money);
+//     }
     
-    printf("\nLoaded Items:\n");
-    for (int i = 0; i < items.Neff; i++) {
-        printf("Item %d: %s (Price: %d)\n", 
-               i+1, items.A[i].name, items.A[i].price);
-    }
+//     printf("\nLoaded Items:\n");
+//     for (int i = 0; i < items.Neff; i++) {
+//         printf("Item %d: %s (Price: %d)\n", 
+//                i+1, items.A[i].name, items.A[i].price);
+//     }
     
-    store_request(&item_req, items);
-    store_sup(&item_req, &items);
-    displayQueue(item_req);
+//     store_request(&item_req, items);
+//     store_sup(&item_req, &items);
+//     displayQueue(item_req);
 
-    DeallocateArrayDinBarang(&items);
-    return 0;
-}
+//     DeallocateArrayDinBarang(&items);
+//     return 0;
+// }
