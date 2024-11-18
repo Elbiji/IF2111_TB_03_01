@@ -16,7 +16,7 @@ void store_request(Queue *items_request, ArrayDinBarang array);
 boolean isItemInShop(ArrayDinBarang array, char *str);
 
 // Memeriksa panjang string
-int strLength(char *str);
+int strLength(char *str, int max_len);
 
 // Memeriksa apakah input merupakan angka semua
 boolean isStrAllDigit(char *str);

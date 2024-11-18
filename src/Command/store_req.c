@@ -7,10 +7,14 @@
 // ArrayDinBarang array;
 // Queue items_request;
 
-int strLength(char *str){
+int strLength(char *str, int max_len){
     int i = 0;
-    while (str[i] != '\0'){
+    while (str[i] != '\0' && i < max_len){
         i++;
+    }
+
+    if (str[i] != '\0'){
+        return -1; // Kepanjangan
     }
     return i;
 }
@@ -79,7 +83,25 @@ void store_request(Queue *items_request, ArrayDinBarang array){
         printf("======= [STORE REQUEST] =======\n");
         while(!isFull(*items_request)){
             printf("Nama barang yang diminta: \n");
-            scanf(" %[^\n]", requested_item);
+            START("", "");
+            while(!IsEOP() && (GetCC() == ' ' || GetCC() == '\n')){
+                ADV();
+            }
+
+            int i = 0;
+            while (!IsEOP() && GetCC() != '\n' && i < MAX_LEN-1){
+                requested_item[i++] = GetCC();
+                ADV();
+            }
+            requested_item[i] = '\0';
+
+            if (!IsEOP() && GetCC() != '\n') {
+                while (!IsEOP() && GetCC() != '\n') {
+                    ADV();
+                }
+                printf("Input terlalu panjang! (max %d karakter)\n", MAX_LEN-1);
+                continue;
+            }
 
             if (isStrAllDigit(requested_item)){
                 printf("Pastikan anda memasukkan nama berupa karakter\n");

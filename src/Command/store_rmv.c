@@ -32,7 +32,27 @@ void store_rmv(ArrayDinBarang *array){
         }
 
         printf("Nama barang yang dihapus: \n");
-                scanf(" %[^\n]", barang_hapus);
+                // scanf(" %49[^\n]", barang_hapus);
+
+        START("", "");
+        while (!IsEOP() && (GetCC() == ' ' || GetCC == '\n')){
+            ADV();
+        } // Clearing buffer
+
+        int i = 0;
+        while (!IsEOP() && GetCC() != '\n' && i < MAX_LEN-1){
+            barang_hapus[i++] = GetCC();
+            ADV();
+        }
+        barang_hapus[i] = '\0';
+
+        if (!IsEOP() && GetCC() != '\n') {
+            while (!IsEOP() && GetCC() != '\n') {
+                ADV();
+            }
+            printf("Input terlalu panjang! (max %d karakter)\n", MAX_LEN-1);
+            continue;
+        }
 
         int id_item_in_shop = IndexItemInShop(*array, barang_hapus);
         if (isStrAllDigit(barang_hapus)){
@@ -44,10 +64,10 @@ void store_rmv(ArrayDinBarang *array){
         } else {
             printf("Barang berhasil dihilangkan.\n");
             DeleteAt(array, id_item_in_shop);
-            for (int i = 0; i < array->Neff; i++) {
-            printf("Item %d: %s (Price: %d)\n", 
-                i+1, array->A[i].name, array->A[i].price);
-            }
+            // for (int i = 0; i < array->Neff; i++) {
+            // printf("Item %d: %s (Price: %d)\n", 
+            //     i+1, array->A[i].name, array->A[i].price);
+            // }
         }
     }  
 }

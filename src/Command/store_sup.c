@@ -16,7 +16,7 @@ void store_sup(Queue *items_request, ArrayDinBarang *array){
     Barang barang_antrian;
     nama_barang antrian;
     int harga;
-    char response[10];
+    char response[MAX_LEN];
     char *acc = "Terima";
     char *hld = "Tunda";
     char *rmv = "Tolak";
@@ -29,7 +29,25 @@ void store_sup(Queue *items_request, ArrayDinBarang *array){
         int itemindex = items_request->idxHead;
         printf("Apakah kamu ingin menambahkan barang %s? (Terima/Tolak/Tunda)\n", items_request->buffer[itemindex].name);
 
-        scanf("%s", response);
+        START("","");
+        while (!IsEOP() && (GetCC() == ' ' || GetCC == '\n')){
+            ADV();
+        }
+
+        int i = 0;
+        while (!IsEOP() && GetCC() != '\n' && i < MAX_LEN-1){
+            response[i++] = GetCC();
+            ADV();
+        }
+        response[i] = '\0';
+
+        if (!IsEOP() && GetCC() != '\n'){
+            while (!IsEOP() && GetCC() != '\n'){
+                ADV();
+            }
+            printf("Input terlalu panjang! (max %d karakter)\n", MAX_LEN-1);
+            continue;
+        }
 
         for (int i = 0; i < 10 && acc[i] != '\0' || response[i] != '\0'; i++){
             if (response[i] != acc[i]){
@@ -51,12 +69,14 @@ void store_sup(Queue *items_request, ArrayDinBarang *array){
         }
 
         if (Accept) {
-            char c;
             dequeue(items_request, &antrian);
             while(1){       
-                printf("Harga Barang : ");
+                printf("Harga Barang : \n");
                 
                 START("","");
+                while (!IsEOP() && (GetCC() == '\n' || GetCC() == ' ')) {
+                    ADV();
+                } // Clearing buffer
                 int val = 0;
                 boolean isvalid = true;
 
