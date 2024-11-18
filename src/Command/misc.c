@@ -20,6 +20,26 @@ IdxType IndexItemInShop(ArrayDinBarang array, char *str){
     return -1;
 }
 
+IdxType IndexUserInFile(TabUser Users, char *str){
+    for (int i = 0; i < NbElmt(Users); i++){
+        boolean exist = true;
+        int j = 0;
+
+        while (Users.TC[i].name[j] != '\0' && str[j] != '\0'){
+            if(Users.TC[i].name[j] != str[j]){
+                exist = false;
+                break;
+            }
+            j++;
+        }
+
+        if (exist && Users.TC[i].name[j] == '\0' &&  str[j] == '\0'){
+            return i;
+        }
+    }
+    return -1;
+}
+
 boolean isDone(char *input){
     char *done = "Purry";
     for (int i = 0; input[i] != '\0' && done[i] != '\0'; i++){
@@ -64,6 +84,26 @@ boolean isItemInQueue(Queue items_request, char *str){
         }
 
         if (exist && items_request.buffer[i].name[j] == '\0' && str[j] == '\0'){
+            return true;
+        }
+    }
+    return false;
+}
+
+boolean isUserInFile(TabUser Users, char *str){
+    for (int i = 0; i < NbElmt(Users); i++){
+        boolean exist = true;
+        int j = 0;
+
+        while (Users.TC[i].name[j] != '\0' && str[j] != '\0'){
+            if(Users.TC[i].name[j] != str[j]){
+                exist = false;
+                break;
+            }
+            j++;
+        }
+
+        if (exist && Users.TC[i].name[j] == '\0' &&  str[j] == '\0'){
             return true;
         }
     }

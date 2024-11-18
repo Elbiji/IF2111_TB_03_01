@@ -68,6 +68,20 @@ int main() {
     }
     displayQueue(item_req);
 
+    char namauser[50];
+    printf("Masukkan sebuah nama user: \n");
+    readInput(namauser, MAX_LEN);
+
+    if (!isUserInFile(user, namauser)){
+        printf("Tidak ada user bernama %s\n", namauser);
+        printf("%d\n", IndexUserInFile(user, namauser));
+    } else {
+        printf("Terdapat user bernama %s\n", namauser);
+        printf("%d\n", IndexUserInFile(user, namauser));
+    }
+
+    
+
     DeallocateArrayDinBarang(&items);
     return 0;
 }
