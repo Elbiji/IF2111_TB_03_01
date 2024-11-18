@@ -34,15 +34,16 @@ void store_rmv(ArrayDinBarang *array){
         printf("Nama barang yang dihapus: \n");
                 scanf(" %[^\n]", barang_hapus);
 
+        int id_item_in_shop = IndexItemInShop(*array, barang_hapus);
         if (isStrAllDigit(barang_hapus)){
             printf("Pastikan anda memasukkan nama berupa karakter\n");
 
-        } else if (!IndexItemInShop(nama_barang) < 0){
+        } else if (id_item_in_shop < 0){
             printf("Barang tidak ada di toko!\n");
 
         } else {
             printf("Barang berhasil dihilangkan.\n");
-            DeleteAt(array, IndexItemInShop(nama_barang));
+            DeleteAt(array, id_item_in_shop);
             for (int i = 0; i < array->Neff; i++) {
             printf("Item %d: %s (Price: %d)\n", 
                 i+1, array->A[i].name, array->A[i].price);
@@ -74,6 +75,13 @@ int main() {
     
     store_request(&item_req, items);
     store_sup(&item_req, &items);
+    store_rmv(&items);
+
+    printf("\nLoaded Items:\n");
+    for (int i = 0; i < items.Neff; i++) {
+        printf("Item %d: %s (Price: %d)\n", 
+               i+1, items.A[i].name, items.A[i].price);
+    }
     displayQueue(item_req);
 
     DeallocateArrayDinBarang(&items);

@@ -10,6 +10,7 @@
 #include "../ADT/queue/queue.h"
 #include "../ADT/boolean/boolean.h"
 
-boolean isStrAllDigit (char *str);
+// Menvalidasi antrian dimasukkan atau tidak
+void store_sup(Queue *items_request, ArrayDinBarang *array);
 
 #endif

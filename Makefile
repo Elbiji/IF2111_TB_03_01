@@ -15,11 +15,12 @@ MESINKAR_DIR = $(ADT_DIR)/mesinkarakter
 LIST_DIR = $(ADT_DIR)/list
 
 # Output executable
-OUTPUT = store_sup.exe
+OUTPUT = store_rmv.exe
 
 # Source files
 SRCS = $(CMD_DIR)/store_req.c \
        $(CMD_DIR)/store_sup.c \
+       $(CMD_DIR)/store_rmv.c \
        $(CMD_DIR)/start.c \
        $(ARRAY_DIR)/array.c \
        $(ARRAYDIN_DIR)/arraydin.c \

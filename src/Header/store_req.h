@@ -19,6 +19,6 @@ boolean isItemInShop(ArrayDinBarang array, char *str);
 int strLength(char *str);
 
 // Memeriksa apakah input merupakan angka semua
-boolean isStrAllDigit (char *str);
+boolean isStrAllDigit(char *str);
 
 #endif
