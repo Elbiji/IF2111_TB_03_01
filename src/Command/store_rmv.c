@@ -1,25 +1,5 @@
 #include "../Header/store_rmv.h"
 
-IdxType IndexItemInShop(ArrayDinBarang array, char *str){
-    for (int i = 0; i < array.Neff; i++){
-        boolean exist = true;
-        int j = 0;
-
-        while (array.A[i].name[j] != '\0' && str[j] != '\0'){
-            if (array.A[i].name[j] != str[j]){
-                exist = false;
-                break;
-            }
-            j++;
-        }
-
-        if (exist && array.A[i].name[j] == '\0' && str[j] == '\0'){
-            return i;
-        }
-    }
-    return -1;
-}
-
 void store_rmv(ArrayDinBarang *array){
     char barang_hapus[50];
     printf("=======  [STORE REMOVE] =======\n");

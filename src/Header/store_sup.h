@@ -4,6 +4,7 @@
 #include <stdlib.h>
 
 #include "start.h"
+#include "misc.h"
 #include "store_req.h"
 #include "../ADT/array/array.h"
 #include "../ADT/arraydin/arraydin.h"

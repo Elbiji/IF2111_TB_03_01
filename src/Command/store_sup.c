@@ -1,15 +1,5 @@
 #include "../Header/store_sup.h"
 
-boolean isDone(char *input){
-    char *done = "Purry";
-    for (int i = 0; input[i] != '\0' && done[i] != '\0'; i++){
-        if (input[i] != done[i]){
-            return false;
-        }
-    }
-    return true;
-}
-
 void store_sup(Queue *items_request, ArrayDinBarang *array){
     printf("======= [STORE  SUPPLY] =======\n");
 
