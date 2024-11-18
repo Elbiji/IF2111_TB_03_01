@@ -57,7 +57,7 @@ void store_sup(Queue *items_request, ArrayDinBarang *array){
                 printf("Harga Barang : ");
                 if (scanf("%d%c", &harga, &c) != 2 || c != '\n') {
                     printf("Masukkan sebuah integer!\n");
-                    while((c = getchar()) != '\n');
+                    while((c = getchar()) != '\n'); // Subject to change
                 } else if (harga <= 0){
                     printf("Masukkan sebuah integer yang lebih besar dari 0!\n");
                 } else {

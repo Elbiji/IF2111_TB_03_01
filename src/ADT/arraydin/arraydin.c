@@ -89,9 +89,23 @@ void InsertBarang(ArrayDinBarang *array, Barang el, IdxType i){
  * Prekondisi: array terdefinisi, i di antara 0..Length(array).
  */
 void DeleteAt(ArrayDinBarang *array, IdxType i){
-    for (IdxType i = 0; i < array->Neff; i++){
-        array->A[i] = array->A[i+1];
+    if (i < 0 || i >= array->Neff){
+        return;
     }
+
+    for (IdxType j = i; j < array->Neff - 1;j++){
+        int k;
+        for (k = 0; array->A[j+1].name[k] != '\0' && k < MAX_LEN-1; k++){
+            array->A[j].name[k] = array->A[j+1].name[k];
+        }
+        array->A[j].name[k] = '\0';
+
+        array->A[j].price = array->A[j+1].price;
+    }
+
+    array->A[array->Neff-1].name[0] = '\0';
+    array->A[array->Neff-1].price = 0;
+
     array->Neff--;
 }
 

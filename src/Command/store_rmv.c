@@ -17,7 +17,6 @@ IdxType IndexItemInShop(ArrayDinBarang array, char *str){
             return i;
         }
     }
-    printf("Barang tidak ada di toko!")
     return -1;
 }
 
@@ -37,9 +36,12 @@ void store_rmv(ArrayDinBarang *array){
 
         if (isStrAllDigit(barang_hapus)){
             printf("Pastikan anda memasukkan nama berupa karakter\n");
+
         } else if (!IndexItemInShop(nama_barang) < 0){
             printf("Barang tidak ada di toko!\n");
+
         } else {
+            printf("Barang berhasil dihilangkan.\n");
             DeleteAt(array, IndexItemInShop(nama_barang));
             for (int i = 0; i < array->Neff; i++) {
             printf("Item %d: %s (Price: %d)\n", 
@@ -47,7 +49,6 @@ void store_rmv(ArrayDinBarang *array){
             }
         }
     }  
-
 }
 
 
