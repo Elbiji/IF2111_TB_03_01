@@ -27,26 +27,27 @@ IdxType GetLastIdx (TabUser T) {
     return NbElmt(T);
 }
 
-// Mendapatkan nilai dari index tertentu
+// Mendapatkan nama dari index tertentu
 char* GetUserName(TabUser T, IdxType i) {
-    return T.TC[i-IdxMin].name;
+    char* username = T.TC[i-IdxMin].name;
+    return username;
 }
 
-// Mendapatkan nilai dari index tertentu
+// Mendapatkan uang dari index tertentu
 int GetMoney(TabUser T, IdxType i) {
     return T.TC[i-IdxMin].money;
 }
 
-// Mendapatkan nilai dari index tertentu
+// Mendapatkan password dari index tertentu
 char* GetPassword(TabUser T, IdxType i) {
-    return T.TC[i-IdxMin].password;
+    char* password = T.TC[i-IdxMin].password;
+    return password;
 }
 
 // Memasukkan value ke uang
 void SetMoney(TabUser *T, IdxType i, int val){
     T->TC[i - IdxMin].money = val;
 }
-
 
 // Mengecek apakah index itu berada di tabel yang terdefinisi
 boolean IsIdxValid(TabUser T, IdxType i) {
@@ -70,7 +71,7 @@ boolean IsFull(TabUser T) {
 
 // Print isi tabel
 void TulisIsi (TabUser T) {
-    if (IsEmpty(T))
+    if (IsUserEmpty(T))
     {
         printf("Tabel kosong\n");
     }

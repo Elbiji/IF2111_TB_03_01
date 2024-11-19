@@ -4,29 +4,27 @@
 #ifndef __MESIN_KAR_H_
 #define __MESIN_KAR_H_
 
+#include <stdio.h>
 #include "boolean.h"
 
-#define MARK '.'
+#define MARK '\n'
+#define NEWLINE '\n'
 /* State Mesin */
+extern int retval;
 extern char currentChar;
 extern boolean EOP;
+extern boolean input;
 
-void START();
+extern FILE *pita;
+extern FILE *pitaFile;
+
+void START(char *path, char *var);
 /* Mesin siap dioperasikan. Pita disiapkan untuk dibaca.
    Karakter pertama yang ada pada pita posisinya adalah pada jendela.
    Pita baca diambil dari stdin.
    I.S. : sembarang
    F.S. : currentChar adalah karakter pertama pada pita
           Jika currentChar != MARK maka EOP akan padam (false)
-          Jika currentChar = MARK maka EOP akan menyala (true) */
-
-void STARTFILE(char* path);
-    /* Mesin siap dioperasi kan. Pita disiapkan untuk dibaca.
-   Karakter pertama yang ada pada pita posisinya adalah pada jendela.
-   Pita baca diambil dari file konfigurasi.
-   I.S. : sembarang
-   F.S. : currentChar adalah karakter pertama pada pita yang berasal 
-          dari file konfigurasi Jika currentChar != MARK maka EOP akan padam (false)
           Jika currentChar = MARK maka EOP akan menyala (true) */
 
 void ADV();

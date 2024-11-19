@@ -7,63 +7,64 @@
 #define false 0
 
 #define InitialSize 10
+#define MAX_LEN 50
+#define integer int
+
+typedef struct {
+  char name[MAX_LEN];
+  integer price;
+} Barang;
 
 typedef int IdxType;
 typedef int ElType;
 typedef struct {
-    ElType *A;
+    Barang *A;
     int Capacity;
     int Neff;
-} ArrayDin;
+} ArrayDinBarang;
 
 /**
  * Konstruktor
  * I.S. sembarang
  * F.S. Terbentuk ArrayDin kosong dengan ukuran InitialSize
  */
-ArrayDin MakeArrayDin();
+void MakeArrayDinBarang(ArrayDinBarang *array);
 
 /**
  * Destruktor
- * I.S. ArrayDin terdefinisi
+ * I.S. ArrayDinBarang terdefinisi
  * F.S. array->A terdealokasi
  */
-void DeallocateArrayDin(ArrayDin *array);
+void DeallocateArrayDinBarang(ArrayDinBarang *array);
 
 /**
  * Fungsi untuk mengetahui apakah suatu array kosong.
  * Prekondisi: array terdefinisi
  */
-boolean IsEmpty(ArrayDin array);
+boolean IsEmpty(ArrayDinBarang array);
 
 /**
  * Fungsi untuk mendapatkan banyaknya elemen efektif array, 0 jika tabel kosong.
  * Prekondisi: array terdefinisi
  */
-int Length(ArrayDin array);
-
-/**
- * Mengembalikan elemen array L yang ke-I (indeks lojik).
- * Prekondisi: array tidak kosong, i di antara 0..Length(array).
- */
-ElType Get(ArrayDin array, IdxType i);
+int Length(ArrayDinBarang array);
 
 /**
  * Fungsi untuk mendapatkan kapasitas yang tersedia.
  * Prekondisi: array terdefinisi
  */
-int GetCapacity(ArrayDin array);
+int GetCapacity(ArrayDinBarang array);
 
 /**
  * Fungsi untuk menambahkan elemen baru di index ke-i
  * Prekondisi: array terdefinisi, i di antara 0..Length(array).
  */
-void InsertAt(ArrayDin *array, ElType el, IdxType i);
+void InsertBarang(ArrayDinBarang *array, Barang el, IdxType i);
 
 /**
- * Fungsi untuk menghapus elemen di index ke-i ArrayDin
+ * Fungsi untuk menghapus elemen di index ke-i ArrayDinBarang
  * Prekondisi: array terdefinisi, i di antara 0..Length(array).
  */
-void DeleteAt(ArrayDin *array, IdxType i);
+void DeleteAt(ArrayDinBarang *array, IdxType i);
 
 #endif

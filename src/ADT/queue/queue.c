@@ -21,22 +21,26 @@ boolean isEmpty(Queue q){
 boolean isFull(Queue q){
 /* Mengirim true jika tabel penampung elemen q sudah penuh */
 /* yaitu IDX_TAIL akan selalu di belakang IDX_HEAD dalam buffer melingkar*/
-    return ((q.idxHead == 0) && (q.idxTail == CAPACITY-1));
+    return (((q.idxTail + 1) % CAPACITY) == q.idxHead);
 }
 
 int length(Queue q){
 /* Mengirimkan banyaknya elemen queue. Mengirimkan 0 jika q kosong. */
     if (isEmpty(q)){
         return 0;
-    } else {
+    } 
+
+    if (q.idxTail >= q.idxHead){
         return q.idxTail - q.idxHead + 1;
+    } else {
+        return (CAPACITY - q.idxHead) + (q.idxTail + 1);
     }
 }
 
 /* *** Primitif Add/Delete *** */
-void enqueue(Queue *q, ElType val){
+void enqueue(Queue *q, nama_barang val){
 /* Proses: Menambahkan val pada q dengan aturan FIFO */
-/* I.S. q mungkin kosong, tabel penampung elemen q TIDAK penuh */
+/* I.S. q mungkin kosong, tabel penampung elemen q mungkin penuh */
 /* F.S. val menjadi TAIL yang baru, IDX_TAIL "mundur" dalam buffer melingkar. */
     if (isEmpty(*q)){
         (*q).idxHead = 0;
@@ -44,21 +48,34 @@ void enqueue(Queue *q, ElType val){
     } else {
         (*q).idxTail = ((*q).idxTail + 1) % CAPACITY;
     }
-    (*q).buffer[(*q).idxTail] = val;
+
+    int i;
+    for (i = 0; val.name[i] != '\0' && i < 49; i++){
+        q->buffer[q->idxTail].name[i] = val.name[i];
+    }
+    q->buffer[q->idxTail].name[i] = '\0';
 }
 
-void dequeue(Queue *q, ElType *val){
+void dequeue(Queue *q, nama_barang *val){
 /* Proses: Menghapus val pada q dengan aturan FIFO */
-/* I.S. q tidak mungkin kosong */
+/* I.S. q mungkin kosong */
 /* F.S. val = nilai elemen HEAD pd I.S., IDX_HEAD "mundur";
         q mungkin kosong */
-    *val = (*q).buffer[(*q).idxHead];
+    if (isEmpty(*q)){
+        return;
+    }
+    
+    int i;
+    for (i = 0; q->buffer[q->idxHead].name[i] != '\0' && i < 49; i++){
+        val->name[i] = q->buffer[q->idxHead].name[i];
+    }
+    val->name[i] = '\0';
 
     if ((*q).idxHead == (*q).idxTail){
         (*q).idxHead = IDX_UNDEF;
         (*q).idxTail = IDX_UNDEF;
     } else {
-        (*q).idxHead = (*q).idxHead + 1;
+        (*q).idxHead = ((*q).idxHead + 1) % CAPACITY;
     }
 }
 
@@ -71,20 +88,22 @@ void displayQueue(Queue q){
 /* F.S. Jika q tidak kosong: [e1,e2,...,en] */
 /* Contoh : jika ada tiga elemen bernilai 1, 20, 30 akan dicetak: [1,20,30] */
 /* Jika Queue kosong : menulis [] */
-    int i;
-
     if (isEmpty(q)){
         printf("[]\n");
-    } else {
-        printf("[");
-        for (i = q.idxHead; i <= q.idxTail; i++){
-            if (i == q.idxTail){
-                printf("%d", q.buffer[i]);
-            } else {
-                printf("%d,", q.buffer[i]);
-            }
-        }
-        printf("]\n");   
+        return;
+    } 
+
+    printf("[");
+    int i = q.idxHead;
+
+    while (true){
+        printf("%s", q.buffer[i].name);
+
+        if (i == q.idxTail) break;
+
+        printf(",");
+        i = (i+1) % CAPACITY;
     }
+    printf("]\n");
 }
 

@@ -1,6 +1,7 @@
 #include <stdio.h>
 #include "mesinkata.h"
-#include "mesinkarakter.c"
+#include "../mesinkarakter/mesinkarakter.h"
+#include "../mesinkarakter/mesinkarakter.c"
 #include "mesinkata.c"
 
 int main() {
@@ -9,5 +10,11 @@ int main() {
         printf("%c", GetCC());
         ADV();
     }
-    return 0;
+    printf("\n");
+    STARTWORD("default.txt", "r");
+    while (!EndWord) {
+        printf("%s\n", CurrentWord);
+        ADVWORD();
+    }
+
 }

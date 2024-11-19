@@ -12,14 +12,17 @@ ARRAYDIN_DIR = $(ADT_DIR)/arraydin
 QUEUE_DIR = $(ADT_DIR)/queue
 MESINKATA_DIR = $(ADT_DIR)/mesinkata
 MESINKAR_DIR = $(ADT_DIR)/mesinkarakter
+LIST_DIR = $(ADT_DIR)/list
 
 # Output executable
-OUTPUT = store_req.exe
+OUTPUT = store_rmv.exe
 
 # Source files
 SRCS = $(CMD_DIR)/store_req.c \
+       $(CMD_DIR)/store_sup.c \
+       $(CMD_DIR)/store_rmv.c \
        $(CMD_DIR)/start.c \
-       $(CMD_DIR)/user.c \
+       $(CMD_DIR)/misc.c \
        $(ARRAY_DIR)/array.c \
        $(ARRAYDIN_DIR)/arraydin.c \
        $(QUEUE_DIR)/queue.c \
@@ -30,7 +33,7 @@ SRCS = $(CMD_DIR)/store_req.c \
 OBJS = $(SRCS:.c=.o)
 
 # Include headers
-INCLUDES = -I$(HDR_DIR) -I$(ARRAY_DIR) -I$(ARRAYDIN_DIR) -I$(QUEUE_DIR) -I$(MESINKATA_DIR) -I$(MESINKAR_DIR)
+INCLUDES = -I$(HDR_DIR) -I$(ARRAY_DIR) -I$(ARRAYDIN_DIR) -I$(QUEUE_DIR) -I$(MESINKATA_DIR) -I$(MESINKAR_DIR) -I$(LIST_DIR)
 
 # Default target
 all: $(OUTPUT)
@@ -45,7 +48,7 @@ $(OUTPUT): $(OBJS)
 
 # Clean build files
 clean:
-	cmd /C "del /Q src\Command\store_req.o src\Command\start.o src\Command\user.o src\ADT\array\array.o src\ADT\arraydin\arraydin.o src\ADT\queue\queue.o src\ADT\mesinkata\mesinkata.o src\ADT\mesinkarakter\mesinkarakter.o store_req.exe"
+	cmd /C "del /Q src\Command\store_req.o src\Command\start.o src\Command\store_sup.o src\Command\store_rmv.o src\ADT\array\array.o src\ADT\arraydin\arraydin.o src\ADT\queue\queue.o src\ADT\mesinkata\mesinkata.o src\ADT\mesinkarakter\mesinkarakter.o store_req.exe"
 
 run: $(OUTPUT)
 	.\$(OUTPUT)

@@ -8,6 +8,7 @@
 #define IdxMax 100
 #define IdxMin 1
 #define IdxUndef -999 /* indeks tak terdefinisi*/
+#define integer int
 
 /* Definisi elemen dan koleksi objek */
 typedef int IdxType;
@@ -16,7 +17,7 @@ typedef int ElType;
 typedef struct {
   char name[IdxMax];
   char password[IdxMax];
-  int money;
+  integer money;
 } User;
 
 typedef struct
@@ -24,6 +25,21 @@ typedef struct
 		User TC[IdxMax-IdxMin+1]; /* memori tempat penyimpan elemen (container) */
 		int Neff; /* banyaknya elemen efektif */
 	} TabUser;
+
+typedef struct {
+    char name[50];
+    int income;
+    int duration;
+} job;
+
+job listjob[] = {
+    {"Evil Lab Assistant", 100, 14},
+    {"OWCA Hiring Manager", 4200, 21},
+    {"Cikapundunginator Caretaker", 7000, 30},
+    {"Mewing Specialist", 10000, 22},
+    {"Inator Connoisseur", 997, 15}
+};
+const int totaljob = 5;
 
 /* Indeks yang digunakan [IdxMin..IdxMax] */
 /* Jika T adalah TabInt, cara deklarasi dan akses: */

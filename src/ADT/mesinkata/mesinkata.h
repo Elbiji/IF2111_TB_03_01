@@ -5,8 +5,7 @@
 #define __MESINKATA_H__
 
 #include "boolean.h"
-#include "mesinkarakter.h"
-#include "mesinkata.h"
+#include "../mesinkarakter/mesinkarakter.h"
 
 #define NMax 50
 #define BLANK ' '
@@ -22,15 +21,10 @@ typedef struct
 extern boolean EndWord;
 extern Word CurrentWord;
 
-void IgnoreBlanks();
-/* Mengabaikan satu atau beberapa BLANK
+void Ignore();
+/* Mengabaikan satu atau beberapa BLANK dan NEWLINE
    I.S. : currentChar sembarang
    F.S. : currentChar ≠ BLANK atau currentChar = MARK */
-
-void IgnoreLines();
-/* Mengabaikan satu atau beberapa NEWLINE
-   I.S. : currentChar sembarang
-   F.S. : currentChar ≠ NEWLINE atau currentChar = MARK */
 
 void STARTWORD(char *path, char *var);
 /* I.S. : currentChar sembarang
@@ -45,13 +39,6 @@ void ADVWORD();
           Jika currentChar = MARK, EndWord = true.
    Proses : Akuisisi kata menggunakan procedure SalinWord */
 
-void ADVLINE();
-/* I.S. : currentChar adalah karakter pertama kata yang akan diakuisisi
-   F.S. : currentWord adalah kata terakhir yang sudah diakuisisi,
-          currentChar adalah karakter pertama dari kata berikutnya, mungkin MARK
-          Jika currentChar = MARK, EndWord = true.
-   Proses : Akuisisi kata menggunakan procedure SalinWord */
-
 void CopyWord();
 /* Mengakuisisi kata, menyimpan dalam currentWord
    I.S. : currentChar adalah karakter pertama dari kata
@@ -60,5 +47,6 @@ void CopyWord();
           currentChar adalah karakter sesudah karakter terakhir yang diakuisisi.
           Jika panjang kata melebihi NMax, maka sisa kata "dipotong" */
 
+void ResetWord();
 
 #endif

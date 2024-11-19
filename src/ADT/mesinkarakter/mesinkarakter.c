@@ -1,13 +1,15 @@
 #include <stdio.h>
 #include "mesinkarakter.h"
 
+int retval;
 char currentChar;
-boolean EOP;
+boolean input;
 
-static FILE *pita;
+FILE *pita;
+FILE *pitaFile;
 
 
-void START(){
+void START(char *path, char *type){
 /* Mesin siap dioperasikan. Pita disiapkan untuk dibaca.
    Karakter pertama yang ada pada pita posisinya adalah pada jendela.
    Pita baca diambil dari stdin.
@@ -15,24 +17,18 @@ void START(){
    F.S. : currentChar adalah karakter pertama pada pita
           Jika currentChar != MARK maka EOP akan padam (false)
           Jika currentChar = MARK maka EOP akan menyala (true) */
-    pita = stdin;
-    ADV();
-}
-
-void STARTFILE(char* path){
-    /* Mesin siap dioperasi kan. Pita disiapkan untuk dibaca.
-   Karakter pertama yang ada pada pita posisinya adalah pada jendela.
-   Pita baca diambil dari file konfigurasi.
-   I.S. : sembarang
-   F.S. : currentChar adalah karakter pertama pada pita yang berasal 
-          dari file konfigurasi Jika currentChar != MARK maka EOP akan padam (false)
-          Jika currentChar = MARK maka EOP akan menyala (true) */
-    pita = fopen(path,"r");
-    if (pita == NULL){
-        printf("File tidak ditemukan\n");
-        return;
+    if (path[0] == '\0' && type[0] == '\0'){ 
+        input = true;
+        pita = stdin;
+        ADV();
+    } else { // Jika input merupakan direktori
+        input = false;
+        pitaFile = fopen(path, type); 
+        if (pitaFile != NULL){
+            ADV();
+        }
     }
-    ADV();
+
 }
 
 void ADV(){
@@ -41,9 +37,9 @@ void ADV(){
    F.S. : currentChar adalah karakter berikutnya dari currentChar yang lama,
           currentChar mungkin = MARK
           Jika  currentChar = MARK maka EOP akan menyala (true) */
-    fscanf(pita,"%c", &currentChar);
-    if (currentChar == MARK){
-        fclose(pita);
+    retval = fscanf(input ? pita : pitaFile, "%c", &currentChar);
+    if (IsEOP()){
+        fclose(input ? pita : pitaFile);
     }
 }
 
@@ -54,6 +50,6 @@ char GetCC(){
 
 boolean IsEOP(){
 /* Mengirimkan true jika currentChar = MARK */
-    return (currentChar == MARK);
+    return retval == EOF;
 }
 

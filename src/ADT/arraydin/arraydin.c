@@ -5,22 +5,32 @@
 /**
  * Konstruktor
  * I.S. sembarang
- * F.S. Terbentuk ArrayDin kosong dengan ukuran InitialSize
+ * F.S. Terbentuk ArrayDinBarang kosong dengan ukuran InitialSize
  */
-ArrayDin MakeArrayDin(){
-    ArrayDin array;
-    array.A = (ElType*)malloc(InitialSize * sizeof(ElType));
-    array.Capacity = InitialSize;
-    array.Neff = 0;
-    return array;
+void MakeArrayDinBarang(ArrayDinBarang *array){
+    array->A = (Barang*)malloc(InitialSize * sizeof(Barang));
+    if (array->A == NULL){
+        printf("Memory allocation failed\n");
+        return;
+    } 
+
+    for (int i = 0; i < InitialSize; i++){
+        array->A[i].price = 0;
+        for (int j = 0; j < MAX_LEN; j++){
+            array->A[i].name[j] = '\0';
+        }
+    }
+
+    array->Capacity = InitialSize;
+    array->Neff = 0;
 }
 
 /**
  * Destruktor
- * I.S. ArrayDin terdefinisi
+ * I.S. ArrayDinBarang terdefinisi
  * F.S. array->A terdealokasi
  */
-void DeallocateArrayDin(ArrayDin *array){
+void DeallocateArrayDinBarang(ArrayDinBarang *array){
     free(array->A);
     array->Capacity = 0;
     array->Neff = 0;
@@ -30,7 +40,7 @@ void DeallocateArrayDin(ArrayDin *array){
  * Fungsi untuk mengetahui apakah suatu array kosong.
  * Prekondisi: array terdefinisi
  */
-boolean IsEmpty(ArrayDin array){
+boolean IsEmpty(ArrayDinBarang array){
     return (array.Neff == 0);
 }
 
@@ -38,7 +48,7 @@ boolean IsEmpty(ArrayDin array){
  * Fungsi untuk mendapatkan banyaknya elemen efektif array, 0 jika tabel kosong.
  * Prekondisi: array terdefinisi
  */
-int Length(ArrayDin array){
+int Length(ArrayDinBarang array){
     if (IsEmpty(array)){
         return 0;
     }
@@ -46,18 +56,10 @@ int Length(ArrayDin array){
 }
 
 /**
- * Mengembalikan elemen array L yang ke-I (indeks lojik).
- * Prekondisi: array tidak kosong, i di antara 0..Length(array).
- */
-ElType Get(ArrayDin array, IdxType i){
-    return (array.A[i]);
-}
-
-/**
  * Fungsi untuk mendapatkan kapasitas yang tersedia.
  * Prekondisi: array terdefinisi
  */
-int GetCapacity(ArrayDin array){
+int GetCapacity(ArrayDinBarang array){
     return array.Capacity;
 }
 
@@ -65,22 +67,45 @@ int GetCapacity(ArrayDin array){
  * Fungsi untuk menambahkan elemen baru di index ke-i
  * Prekondisi: array terdefinisi, i di antara 0..Length(array).
  */
-void InsertAt(ArrayDin *array, ElType el, IdxType i){
-    for ( IdxType j = array->Neff-1; j >= i; j--){
-        array->A[j+1] = array->A[j]; 
+void InsertBarang(ArrayDinBarang *array, Barang el, IdxType i){
+    for (int j = 0; j < MAX_LEN; j++){
+        array->A[i].name[j] = '\0';
     }
-    array->A[i] = el;
-    array->Neff++;
+
+    int j;
+    for (j = 0; el.name[j] != '\0' && j < MAX_LEN - 1; j++){
+        array->A[i].name[j] = el.name[j];
+    }
+    array->A[i].name[MAX_LEN - 1] = '\0';
+    array->A[i].price = el.price;
+
+    if (i >= array->Neff){
+         array->Neff = i+1;
+    }
 }
 
 /**
- * Fungsi untuk menghapus elemen di index ke-i ArrayDin
+ * Fungsi untuk menghapus elemen di index ke-i ArrayDinBarang
  * Prekondisi: array terdefinisi, i di antara 0..Length(array).
  */
-void DeleteAt(ArrayDin *array, IdxType i){
-    for (i; i < array->Neff; i++){
-        array->A[i] = array->A[i+1];
+void DeleteAt(ArrayDinBarang *array, IdxType i){
+    if (i < 0 || i >= array->Neff){
+        return;
     }
+
+    for (IdxType j = i; j < array->Neff - 1;j++){
+        int k;
+        for (k = 0; array->A[j+1].name[k] != '\0' && k < MAX_LEN-1; k++){
+            array->A[j].name[k] = array->A[j+1].name[k];
+        }
+        array->A[j].name[k] = '\0';
+
+        array->A[j].price = array->A[j+1].price;
+    }
+
+    array->A[array->Neff-1].name[0] = '\0';
+    array->A[array->Neff-1].price = 0;
+
     array->Neff--;
 }
 

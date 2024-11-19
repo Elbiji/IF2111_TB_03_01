@@ -1,16 +1,17 @@
-#ifndef __STORE_REQ_H_
-#define __STORE_REQ_H_
+#ifndef __STORE_SUP_H_
+#define __STORE_SUP_H_
 
 #include <stdlib.h>
 
 #include "start.h"
 #include "misc.h"
+#include "store_req.h"
 #include "../ADT/array/array.h"
 #include "../ADT/arraydin/arraydin.h"
 #include "../ADT/queue/queue.h"
 #include "../ADT/boolean/boolean.h"
 
-// Menambahkan barang ke dalam antrian
-void store_request(Queue *items_request, ArrayDinBarang array);
+// Menvalidasi antrian dimasukkan atau tidak
+void store_sup(Queue *items_request, ArrayDinBarang *array);
 
 #endif
