@@ -7,9 +7,9 @@
 #define MAX_LEN 50
 
 typedef enum {
-    WELCOME_MENU,
-    LOGIN_MENU,
-    MAIN_MENU
+    welcome_menu,
+    login_menu,
+    main_menu
 } MenuState;
 
 #endif

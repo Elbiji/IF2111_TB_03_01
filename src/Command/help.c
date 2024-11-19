@@ -1,19 +1,20 @@
 #include "../Header/help.h"
-MenuState current_menu = WELCOME_MENU;
 
-// Fungsi untuk menampilkan HELP berdasarkan menu aktif
+MenuState current_menu = welcome_menu;
+
+//fungsi menampilkan HELP sesuai menu aktif
 void help() {
-    if (current_menu == WELCOME_MENU) {
+    if (current_menu == welcome_menu) {
         printf("=====[ Welcome Menu Help PURRMART ]=====\n");
         printf("1. START → Untuk masuk sesi baru\n");
         printf("2. LOAD → Untuk memulai sesi berdasarkan file konfigurasi\n");
         printf("3. QUIT → Untuk keluar dari program\n");
-    } else if (current_menu == LOGIN_MENU) {
+    } else if (current_menu == login_menu) {
         printf("=====[ Login Menu Help PURRMART ]=====\n");
         printf("1. REGISTER → Untuk melakukan pendaftaran akun baru\n");
         printf("2. LOGIN → Untuk masuk ke dalam akun dan memulai sesi\n");
         printf("3. QUIT → Untuk keluar dari program\n");
-    } else if (current_menu == MAIN_MENU) {
+    } else if (current_menu == main_menu) {
         printf("=====[ Menu Help PURRMART ]=====\n");
         printf("1. WORK → Untuk bekerja\n");
         printf("2. WORK CHALLENGE → Untuk mengerjakan challenge\n");
@@ -27,11 +28,12 @@ void help() {
     }
 }
 
-// Fungsi untuk mengganti menu
+//fungsi untuk mengganti menu
 void change_menu(MenuState new_menu) {
     current_menu = new_menu;
 }
 
+//fungsi utamanya
 int main() {
     char command[MAX_LEN];
 
@@ -44,16 +46,16 @@ int main() {
             help();
         } else if (strcmp(command, "START") == 0) {
             printf("START command executed.\n");
-            change_menu(LOGIN_MENU);  // Pindah ke LOGIN_MENU setelah START
+            change_menu(login_menu);  //pindah ke login_menu setelah START
         } else if (strcmp(command, "QUIT") == 0) {
             printf("Exiting PURRMART. Goodbye!\n");
             break;
-        } else if (strcmp(command, "LOGIN") == 0 && current_menu == LOGIN_MENU) {
+        } else if (strcmp(command, "LOGIN") == 0 && current_menu == login_menu) {
             printf("LOGIN command executed.\n");
-            change_menu(MAIN_MENU);  // Pindah ke MAIN_MENU setelah LOGIN
-        } else if (strcmp(command, "LOGOUT") == 0 && current_menu == MAIN_MENU) {
+            change_menu(main_menu);  //pindah ke main_menu setelah LOGIN
+        } else if (strcmp(command, "LOGOUT") == 0 && current_menu == main_menu) {
             printf("LOGOUT command executed.\n");
-            change_menu(WELCOME_MENU);  // Kembali ke WELCOME_MENU setelah LOGOUT
+            change_menu(welcome_menu);  //kembali ke welcome_menu setelah LOGOUT
         } else {
             printf("Unknown command. Type HELP for available commands.\n");
         }

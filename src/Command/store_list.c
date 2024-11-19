@@ -1,6 +1,6 @@
 #include "../Header/store_list.h"
 
-// nampilin daftar barang
+//nampilin daftar barang
 void DisplayStore(ArrayDinBarang store) {
     if (IsEmpty(store)) {
         printf("TOKO KOSONG\n");
@@ -12,10 +12,10 @@ void DisplayStore(ArrayDinBarang store) {
     }
 }
 
-// Fungsi utama
+//fungsi utama
 int main() {
     ArrayDinBarang store;
-    // Tampilkan daftar barang di store
+    //nampilin daftar barang di store
     printf(">> STORE LIST\n");
     DisplayStore(store);
     return 0;

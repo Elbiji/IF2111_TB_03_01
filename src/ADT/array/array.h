@@ -26,6 +26,21 @@ typedef struct
 		int Neff; /* banyaknya elemen efektif */
 	} TabUser;
 
+typedef struct {
+    char name[50];
+    int income;
+    int duration;
+} job;
+
+job listjob[] = {
+    {"Evil Lab Assistant", 100, 14},
+    {"OWCA Hiring Manager", 4200, 21},
+    {"Cikapundunginator Caretaker", 7000, 30},
+    {"Mewing Specialist", 10000, 22},
+    {"Inator Connoisseur", 997, 15}
+};
+const int totaljob = 5;
+
 /* Indeks yang digunakan [IdxMin..IdxMax] */
 /* Jika T adalah TabInt, cara deklarasi dan akses: */
 /* Deklarasi : T : TabInt */

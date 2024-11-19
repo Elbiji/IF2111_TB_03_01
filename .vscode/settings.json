@@ -1,5 +1,8 @@
 {
     "files.associations": {
-        "boolean.h": "c"
+        "boolean.h": "c",
+        "store_list.h": "c",
+        "work.h": "c",
+        "help.h": "c"
     }
 }
