@@ -1,8 +1,7 @@
-#ifndef __store_list_H_
-#define __store_list_H_
+#ifndef __HELP_H_
+#define __HELP_H_
 
 #include <stdio.h>
-#include <string.h>
 #include "misc.h"
 
 #define MAX_LEN 50

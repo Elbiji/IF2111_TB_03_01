@@ -1,5 +1,5 @@
-#ifndef __store_list_H_
-#define __store_list_H_
+#ifndef __WORK_H_
+#define __WORK_H_
 
 #include <stdio.h>
 #include <stdlib.h>
