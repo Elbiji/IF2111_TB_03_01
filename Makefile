@@ -28,6 +28,12 @@ SRCS = $(CMD_DIR)/store_req.c \
        $(QUEUE_DIR)/queue.c \
        $(MESINKATA_DIR)/mesinkata.c \
        $(MESINKAR_DIR)/mesinkarakter.c
+       $(CMD_DIR)/login.c \
+       $(CMD_DIR)/register.c \
+       $(CMD_DIR)/logout.c \
+       $(CMD_DIR)/main.c \
+
+
 
 # Object files (replace .c with .o in SRCS)
 OBJS = $(SRCS:.c=.o)
