@@ -2,7 +2,7 @@
 
 MenuState current_menu = welcome_menu;
 
-//fungsi menampilkan HELP sesuai menu aktif
+//fungsi untuk menampilkan HELP sesuai menu aktif
 void help() {
     if (current_menu == welcome_menu) {
         printf("=====[ Welcome Menu Help PURRMART ]=====\n");
@@ -28,34 +28,37 @@ void help() {
     }
 }
 
-//fungsi untuk mengganti menu
+//fungsi ganti menu
 void change_menu(MenuState new_menu) {
     current_menu = new_menu;
 }
 
-//fungsi utamanya
+//fungsi utama
 int main() {
     char command[MAX_LEN];
 
     printf("Welcome to PURRMART!\n");
     while (1) {
         printf("Enter command: ");
-        scanf("%s", command);
+        if (!readInput(command, MAX_LEN)) {
+            printf("Input tidak valid, silakan coba lagi.\n");
+            continue;
+        }
 
-        if (strcmp(command, "HELP") == 0) {
+        if (isStrEqual(command, "HELP")) {
             help();
-        } else if (strcmp(command, "START") == 0) {
+        } else if (isStrEqual(command, "START")) {
             printf("START command executed.\n");
-            change_menu(login_menu);  //pindah ke login_menu setelah START
-        } else if (strcmp(command, "QUIT") == 0) {
+            change_menu(login_menu); //pindah ke login_menu setelah START
+        } else if (isStrEqual(command, "QUIT")) {
             printf("Exiting PURRMART. Goodbye!\n");
             break;
-        } else if (strcmp(command, "LOGIN") == 0 && current_menu == login_menu) {
+        } else if (isStrEqual(command, "LOGIN") && current_menu == login_menu) {
             printf("LOGIN command executed.\n");
-            change_menu(main_menu);  //pindah ke main_menu setelah LOGIN
-        } else if (strcmp(command, "LOGOUT") == 0 && current_menu == main_menu) {
+            change_menu(main_menu); //pindah ke main_menu setelah LOGIN
+        } else if (isStrEqual(command, "LOGOUT") && current_menu == main_menu) {
             printf("LOGOUT command executed.\n");
-            change_menu(welcome_menu);  //kembali ke welcome_menu setelah LOGOUT
+            change_menu(welcome_menu); //kembali ke welcome_menu setelah LOGOUT
         } else {
             printf("Unknown command. Type HELP for available commands.\n");
         }

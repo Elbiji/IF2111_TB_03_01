@@ -11,31 +11,27 @@ void DisplayJobs() {
     }
 }
 
-//fungsi mencari pekerjaan berdasarkan nama
-int FindJobByName(char *jobname) {
-    for (int i = 0; i < totaljob; i++) {
-        if (strcmp(listjob[i].name, jobname) == 0) {
-            return i; //kembalikan indeks yang sesuai
-        }
-    }
-    return -1; //kalau tidak ada, kembalikan -1
-}
-
-//fungsi meminta input nama pekerjaan
 int ChooseJob() {
     char jobname[50];
     int jobIdx;
 
     do {
         printf("Masukkan nama pekerjaan yang dipilih: ");
-        scanf(" %[^\n]", jobname); //baca input string pakai spasi
-        jobIdx = FindJobByName(jobname);
+        if (!readInput(jobname, 50)) {
+            printf("Input tidak valid. Silakan coba lagi.\n");
+            continue;
+        }
+        if (isStrAllDigit(jobname)) {
+            printf("Pastikan Anda memasukkan nama pekerjaan berupa karakter.\n");
+            continue;
+        }
+        jobIdx = IndexJobInList(listjob, totaljob, jobname);
         if (jobIdx == -1) {
             printf("Pekerjaan tidak ditemukan. Silakan coba lagi.\n");
         }
     } while (jobIdx == -1);
 
-    return jobIdx; //mengembalikan indeks pekerjaan yang valid
+    return jobIdx; // Mengembalikan indeks pekerjaan yang valid
 }
 
 //fungsi untuk menunggu dengan durasi sesuai pekerjaan
@@ -55,8 +51,5 @@ void DoWork(TabUser *users, IdxType userIdx) {
     printf("Pekerjaan selesai, +%d rupiah telah ditambahkan ke akun Anda.\n", listjob[jobIdx].income);
 
     //hitung saldo baru
-    int newBalance = users->TC[userIdx].money + listjob[jobIdx].income;
-
-    //perbarui saldo pakai SetMoney
-    SetMoney(users, userIdx + 1, newBalance); //userIdx ke-0 diubah ke indeks ADT (dimulai dari 1)
+    users->TC[userIdx].money += listjob[jobIdx].income;
 }

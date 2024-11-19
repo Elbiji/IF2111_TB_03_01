@@ -3,6 +3,7 @@
 
 #include <stdio.h>
 #include <string.h>
+#include "misc.h"
 
 #define MAX_LEN 50
 

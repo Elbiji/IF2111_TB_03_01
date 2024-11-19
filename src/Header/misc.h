@@ -18,6 +18,10 @@ IdxType IndexItemInShop(ArrayDinBarang array, char *str);
 // menerima parameter Tabuser dan string
 IdxType IndexUserInFile(TabUser Users, char *str);
 
+// Mengembalikan index sebuah job pada konfigurasi file menggunakan traversal
+// menerima parameter job, total job dan string
+IdxType IndexJobInList(job listjob[], int totaljob, char *str);
+
 // Mengkonfirmasi apakah proses dalam store supply dan store remove di terminasi
 // menerima parameter string
 boolean isDone(char *input);
