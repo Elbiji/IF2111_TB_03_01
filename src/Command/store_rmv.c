@@ -18,6 +18,10 @@ void store_rmv(ArrayDinBarang *array){
             continue;
         }
 
+        if(isStrEqual(barang_hapus, "Purry")){
+            break;
+        }
+
         int id_item_in_shop = IndexItemInShop(*array, barang_hapus);
         if (isStrAllDigit(barang_hapus)){
             printf("Pastikan anda memasukkan nama berupa karakter\n");
@@ -33,7 +37,12 @@ void store_rmv(ArrayDinBarang *array){
             //     i+1, array->A[i].name, array->A[i].price);
             // }
         }
-    }  
+    }
+    if (IsEmpty(*array)){
+        printf("Tidak terdapat barang di toko!\n");
+    } else {
+        printf("Anda telah keluar dari STORE REMOVE\n");
+    }
 }
 
 

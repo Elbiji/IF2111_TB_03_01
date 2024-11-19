@@ -35,18 +35,9 @@ void CopyString(const char *src, char *dest) {
     *dest = '\0'; 
 }
 
-/* Implementasi strcpy */
-void CopyString(const char *src, char *dest) {
-    while (*src != '\0') { // Salin setiap karakter dari src ke dest
-        *dest = *src;
-        src++;
-        dest++;
-    }
-    *dest = '\0'; 
-}
-
 /* Fungsi utama untuk memuat data dari file */
 boolean loadFile(const char *filename, ArrayDinBarang *barangArray, TabUser *userArray) {
+    DeallocateArrayDinBarang(barangArray);
     char filepath[100] = "./save/";  // Direktori save file
     customStrcat(filepath, filename);  // Gunakan customStrcat untuk gabungkan nama file ke path
 
