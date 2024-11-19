@@ -3,7 +3,7 @@
 #include "../Header/login.h"
 #include "../Header/logout.h"
 #include "../Header/register.h"
-#include "../Header/boolean.h"
+#include "../ADT/boolean/boolean.h"
 
 // Fungsi sederhana untuk menyalin string
 void stringCopy(char *dest, const char *src) {

@@ -23,21 +23,30 @@ int findUser(TabUser *list, char *username) {
     return -1;
 }
 
-// Login pengguna
-User* login(TabUser *list, char *username, char *password, User *currentUser) {
-    if (currentUser != NULL) {
+// Login pengguna dengan loop untuk input ulang
+int login(TabUser *list, User *currentUser) {
+    char username[50], password[50];
+    int index;
+
+    if (currentUser == NULL) {
         printf("Anda masih tercatat sebagai %s. Silakan LOGOUT terlebih dahulu.\n", currentUser->name);
-        return currentUser;
+        return -1; // Indikasi tidak perlu login
     }
 
-    int index = findUser(list, username);
-    if (index == -1 || !stringCompare(list->users[index].password, password)) {
-        printf("Username atau password salah.\n");
-        return NULL;
-    }
+    while (1) { // Looping terus hingga login berhasil atau pengguna menyerah
+        printf("Masukkan username: ");
+        if (!readInput(username, 50)) continue; // Jika input gagal, ulangi
+        printf("Masukkan password: ");
+        if (!readInput(password, 50)) continue;
 
-    printf("Anda telah login ke PURRMART sebagai %s.\n", username);
-    return &list->users[index];
+        index = findUser(list, username);
+        if (index != -1 && stringCompare(list->users[index].password, password)) {
+            printf("Anda telah login ke PURRMART sebagai %s.\n", username);
+            return index; // Kembalikan indeks user
+        } else {
+            printf("Username atau password salah. Coba lagi.\n");
+        }
+    }
 }
 
 // Membaca input dengan batas panjang tertentu
@@ -56,15 +65,4 @@ boolean readInput(char *buffer, int maxLen) {
     }
     buffer[i] = '\0';
     return true;
-}
-
-// Mendapatkan ID (indeks) pengguna yang sedang login
-int getUserID(User *currentUser, TabUser *list) {
-    if (currentUser == NULL) return -1;
-    return findUser(list, currentUser->name);
-}
-
-// Mengecek apakah ada pengguna yang sedang login
-boolean isUserLoggedIn(User *currentUser) {
-    return currentUser != NULL;
 }
