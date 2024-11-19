@@ -1,6 +1,15 @@
 #include <stdio.h>
 #include "array.h"
 
+extern job listjob[] = {
+    {"Evil Lab Assistant", 100, 14},
+    {"OWCA Hiring Manager", 4200, 21},
+    {"Cikapundunginator Caretaker", 7000, 30},
+    {"Mewing Specialist", 10000, 22},
+    {"Inator Connoisseur", 997, 15}
+};
+int totaljob = 5;
+
 // Konstruktor: create tabel kosong
 void MakeEmpty (TabUser *T) {
     // Tidak diperlukan sebuah inisialisasi TabUser T; karena sudah terdefinisi

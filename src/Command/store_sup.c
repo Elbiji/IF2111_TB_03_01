@@ -33,19 +33,19 @@ void store_sup(Queue *items_request, ArrayDinBarang *array){
             continue;
         }
 
-        for (int i = 0; i < 10 && acc[i] != '\0' || response[i] != '\0'; i++){
+        for (int i = 0; (i < 10 && acc[i] != '\0') || response[i] != '\0'; i++){
             if (response[i] != acc[i]){
                 Accept = false;
                 break;
             }
         }
-        for (int i = 0; i < 10 && hld[i] != '\0' || response[i] != '\0'; i++){
+        for (int i = 0; (i < 10 && hld[i] != '\0') || response[i] != '\0'; i++){
             if (response[i] != hld[i]){
                 Hold = false;
                 break;
             }
         }
-        for (int i = 0; i < 10 && rmv[i] != '\0' || response[i] != '\0'; i++){
+        for (int i = 0; (i < 10 && rmv[i] != '\0') || response[i] != '\0'; i++){
             if (response[i] != rmv[i]){
                 Remove = false;
                 break;

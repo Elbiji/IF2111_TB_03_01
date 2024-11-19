@@ -1,6 +1,5 @@
 #include "../Header/Load.h" 
 
-#include "../Header/misc.h"
 #include <stdio.h>
 #include <stdlib.h>
 
@@ -17,6 +16,16 @@ void customStrcat(char *dest, const char *src) {
     *dest = '\0'; // Hasilnya di Null-terminate
 }
 
+/* Implementasi strcpy */
+void CopyString(const char *src, char *dest) {
+    while (*src != '\0') { // Salin setiap karakter dari src ke dest
+        *dest = *src;
+        src++;
+        dest++;
+    }
+    *dest = '\0'; 
+}
+
 /* Fungsi utama untuk memuat data dari file */
 boolean loadFile(const char *filename, ArrayDinBarang *barangArray, TabUser *userArray) {
     char filepath[100] = "./save/";  // Direktori save file
@@ -30,19 +39,19 @@ boolean loadFile(const char *filename, ArrayDinBarang *barangArray, TabUser *use
 
     /* Membaca jumlah barang */
     int nBarang = 0;
-    if (isStrAllDigit(CurrentWord)) {
-        nBarang = atoi(CurrentWord);
+    if (isStrAllDigit(CurrentWord.TabWord)) {
+        nBarang = atoi(CurrentWord.TabWord);
     } else {
         printf("Format file salah (jumlah barang invalid).\n");
         return false;
     }
 
-    MakeEmptyBarang(barangArray, nBarang);  // Alokasikan array barang
+    MakeArrayDinBarang(barangArray);  // Alokasikan array barang
     for (int i = 0; i < nBarang; i++) {
         ADV();
-        int harga = atoi(CurrentWord);  // Baca harga barang
+        int harga = atoi(CurrentWord.TabWord);  // Baca harga barang
         ADV();
-        CopyString(CurrentWord, barangArray->A[i].name);  // Baca nama barang
+        CopyString(CurrentWord.TabWord, barangArray->A[i].name);  // Baca nama barang
         barangArray->A[i].price = harga;
     }
     barangArray->Neff = nBarang;
@@ -50,21 +59,21 @@ boolean loadFile(const char *filename, ArrayDinBarang *barangArray, TabUser *use
     /* Membaca jumlah pengguna */
     ADV();
     int nUsers = 0;
-    if (isStrAllDigit(CurrentWord)) {
-        nUsers = atoi(CurrentWord);
+    if (isStrAllDigit(CurrentWord.TabWord)) {
+        nUsers = atoi(CurrentWord.TabWord);
     } else {
         printf("Format file salah (jumlah pengguna invalid).\n");
         return false;
     }
 
-    MakeEmptyUser(userArray, nUsers);  // Alokasikan array pengguna
+    MakeEmpty(userArray);  // Alokasikan array pengguna
     for (int i = 0; i < nUsers; i++) {
         ADV();
-        int money = atoi(CurrentWord);  // Baca jumlah uang pengguna
+        int money = atoi(CurrentWord.TabWord);  // Baca jumlah uang pengguna
         ADV();
-        CopyString(CurrentWord, userArray->TC[i].name);  // Baca nama pengguna
+        CopyString(CurrentWord.TabWord, userArray->TC[i].name);  // Baca nama pengguna
         ADV();
-        CopyString(CurrentWord, userArray->TC[i].password);  // Baca password pengguna
+        CopyString(CurrentWord.TabWord, userArray->TC[i].password);  // Baca password pengguna
         userArray->TC[i].money = money;
     }
     userArray->Neff = nUsers;
@@ -73,35 +82,35 @@ boolean loadFile(const char *filename, ArrayDinBarang *barangArray, TabUser *use
     return true;
 }
 
-/* Fungsi untuk menampilkan data barang */
-void displayBarang(const ArrayDinBarang *barangArray) {
-    printf("Daftar Barang:\n");
-    for (int i = 0; i < barangArray->Neff; i++) {
-        printf("- %s (Harga: %d)\n", barangArray->A[i].name, barangArray->A[i].price);
-    }
-}
+// /* Fungsi untuk menampilkan data barang */
+// void displayBarang(const ArrayDinBarang *barangArray) {
+//     printf("Daftar Barang:\n");
+//     for (int i = 0; i < barangArray->Neff; i++) {
+//         printf("- %s (Harga: %d)\n", barangArray->A[i].name, barangArray->A[i].price);
+//     }
+// }
 
-/* Fungsi untuk menampilkan data pengguna */
-void displayUsers(const TabUser *userArray) {
-    printf("Daftar Pengguna:\n");
-    for (int i = 0; i < userArray->Neff; i++) {
-        printf("- %s (Uang: %d)\n", userArray->TC[i].name, userArray->TC[i].money);
-    }
-}
+// /* Fungsi untuk menampilkan data pengguna */
+// void displayUsers(const TabUser *userArray) {
+//     printf("Daftar Pengguna:\n");
+//     for (int i = 0; i < userArray->Neff; i++) {
+//         printf("- %s (Uang: %d)\n", userArray->TC[i].name, userArray->TC[i].money);
+//     }
+// }
 
 /* Fungsi utama */
-int main() {
-    ArrayDinBarang barangArray;
-    TabUser userArray;
+// int main() {
+//     ArrayDinBarang barangArray;
+//     TabUser userArray;
 
-    char filename[50];
-    printf("Masukkan nama file: ");
-    readInput(filename, 50);
+//     char filename[50];
+//     printf("Masukkan nama file: ");
+//     readInput(filename, 50);
 
-    if (loadFile(filename, &barangArray, &userArray)) {
-        displayBarang(&barangArray);
-        displayUsers(&userArray);
-    }
+//     if (loadFile(filename, &barangArray, &userArray)) {
+//         displayBarang(&barangArray);
+//         displayUsers(&userArray);
+//     }
 
-    return 0;
-}
+//     return 0;
+// }
