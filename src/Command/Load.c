@@ -1,10 +1,16 @@
 #include "../Header/Load.h" 
 
-#include "../Header/misc.h"
-#include <stdio.h>
-#include <stdlib.h>
+// #include "../Header/misc.h"
+// #include "../ADT/array/array.h"
+// #include "../ADT/mesinkarakter/mesinkarakter.h"
+// #include "../ADT/mesinkata/mesinkata.h"
+// #include "../ADT/arraydin/arraydin.h"
+// #include "../ADT/array/array.c"
+// #include "../ADT/arraydin/arraydin.c"
+// #include "../ADT/mesinkarakter/mesinkarakter.c"
+// #include "../ADT/mesinkata/mesinkata.c"
 
-/* Implementasi manual strcat */
+/* Implementasi strcat */
 void customStrcat(char *dest, const char *src) {
     while (*dest != '\0') {
         dest++; // Menemukan akhir dari string tujuan
@@ -14,7 +20,17 @@ void customStrcat(char *dest, const char *src) {
         dest++;
         src++;
     }
-    *dest = '\0'; // Hasilnya di Null-terminate
+    *dest = '\0'; 
+}
+
+/* Implementasi strcpy */
+void CopyString(const char *src, char *dest) {
+    while (*src != '\0') { // Salin setiap karakter dari src ke dest
+        *dest = *src;
+        src++;
+        dest++;
+    }
+    *dest = '\0'; 
 }
 
 /* Fungsi utama untuk memuat data dari file */
