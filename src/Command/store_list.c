@@ -12,11 +12,11 @@ void DisplayStore(ArrayDinBarang store) {
     }
 }
 
-//fungsi utama
-int main() {
-    ArrayDinBarang store;
-    //nampilin daftar barang di store
-    printf(">> STORE LIST\n");
-    DisplayStore(store);
-    return 0;
-}
+// //fungsi utama
+// int main() {
+//     ArrayDinBarang store;
+//     //nampilin daftar barang di store
+//     printf(">> STORE LIST\n");
+//     DisplayStore(store);
+//     return 0;
+// }

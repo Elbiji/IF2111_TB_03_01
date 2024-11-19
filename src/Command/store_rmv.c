@@ -92,7 +92,6 @@ int main() {
         }
     }
     
-
     DeallocateArrayDinBarang(&items);
     return 0;
 }

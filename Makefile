@@ -21,7 +21,10 @@ OUTPUT = store_rmv.exe
 SRCS = $(CMD_DIR)/store_req.c \
        $(CMD_DIR)/store_sup.c \
        $(CMD_DIR)/store_rmv.c \
+       $(CMD_DIR)/store_list.c \
        $(CMD_DIR)/start.c \
+       $(CMD_DIR)/help.c \
+       $(CMD_DIR)/work.c \
        $(CMD_DIR)/misc.c \
        $(ARRAY_DIR)/array.c \
        $(ARRAYDIN_DIR)/arraydin.c \

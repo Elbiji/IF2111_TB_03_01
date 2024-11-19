@@ -42,6 +42,7 @@ void Wait(int seconds) {
 
 //fungsi untuk melakukan pekerjaan
 void DoWork(TabUser *users, IdxType userIdx) {
+    printf("Saldo sekarang : Rp %d\n", users->TC[userIdx].money)
     DisplayJobs(); //nampilin daftar pekerjaan
     int jobIdx = ChooseJob(); //pilih pekerjaan berdasarkan nama
     printf("Anda sedang bekerja sebagai %s... harap tunggu.\n", listjob[jobIdx].name);
@@ -52,4 +53,5 @@ void DoWork(TabUser *users, IdxType userIdx) {
 
     //hitung saldo baru
     users->TC[userIdx].money += listjob[jobIdx].income;
+    printf("Saldo sekarang setelah bekerja : Rp %d\n", users->TC[userIdx].money)
 }
