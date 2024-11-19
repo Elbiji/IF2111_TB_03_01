@@ -41,7 +41,7 @@ boolean isStrAllDigit (char *str);
 
 // Memeriksa antara dua string apakah sama
 // menerima parameter word dari mesin kata dan string 
-boolean isStrEqual(Word str1, char *str2);
+boolean isStrEqual(char *str1, char *str2);
 
 // Mengembalikan panjang string 
 // menerima parameter string
@@ -50,5 +50,9 @@ int strLength(char *str);
 // Validasi input agar tidak melebihi batas 49 Karakter menggunakan mesin kata
 // menerima parameter buffer dan panjang maksimal
 boolean readInput(char *buffer, int maxLen);
+
+// Validasi command agar tidak melebihi batas 49 Karakter menggunakan mesin kata
+// menerima parameter buffer dan panjang maksimal serta nama command
+boolean readCommand(char *buffer, int maxLen);
 
 #endif

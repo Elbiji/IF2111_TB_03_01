@@ -51,7 +51,7 @@ void CopyWord(){
           currentChar adalah karakter sesudah karakter terakhir yang diakuisisi.
           Jika panjang kata melebihi NMax, maka sisa kata "dipotong" */
     int i = 0;
-    while (!IsEOP() && GetCC() != BLANK && GetCC() != MARK ){
+    while (!IsEOP() && GetCC() != BLANK && GetCC() != MARK && GetCC() != NEWLINE){
         if (i < NMax)
         {
             CurrentWord.TabWord[i] = GetCC();
@@ -63,5 +63,9 @@ void CopyWord(){
     CurrentWord.TabWord[i] = '\0';
 }
 
+void ResetWord(){
+    CurrentWord.TabWord[0] = '\0';
+    CurrentWord.Length = 0;
+}
 
 

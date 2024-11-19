@@ -122,17 +122,17 @@ boolean isStrAllDigit (char *str){
     return true;
 }
 
-boolean isStrEqual(Word str1, char *str2){
-    if (str1.Length != strLength(str2)){
+boolean isStrEqual(char *str1, char *str2){
+    if (strLength(str1) != strLength(str2)){
         return false;
     }
-
-    for (int i = 0; i < str1.Length; i++){
-        if (str1.TabWord[i] != str2[i]){
+    int i;
+    for (i = 0; i < strLength(str2); i++){
+        if (str1[i] != str2[i]){
             return false;
         }
     }
-    return true;
+    return (str1[i] == '\0' && str2[i] == '\0');
 }
 
 int strLength(char *str){
@@ -169,6 +169,34 @@ boolean readInput(char *buffer, int maxLen){
 
 }
 
+boolean readCommand(char *buffer, int maxLen){
+    START("","");
+
+    while (!IsEOP() && (GetCC() == ' ' || GetCC() == '\n')){
+        ADV();
+    }
+
+    int i = 0;
+    while (!IsEOP() && GetCC() != '\n' && i < maxLen-1 && GetCC() != ' '){
+        buffer[i++] = GetCC();
+        ADV();
+    }
+    buffer[i] = '\0';
+
+    if (!IsEOP() && GetCC() != '\n' && GetCC() != ' ') {
+        while (!IsEOP() && GetCC() != '\n') {
+            ADV();
+        }
+        printf("Command terlalu panjang! (max %d karakter)\n", maxLen-1);
+        return false;
+    }
+
+    // while (!IsEOP() && GetCC() != '\n'){
+    //     ADV();
+    // }
+    // printf("Tidak terdapat command tersebut dalam program!\n");
+    // return false;
+}
 // int main(){
 //     START("","");
 //     if (!isStrEqual(CurrentWord, "START")){

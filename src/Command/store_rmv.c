@@ -38,6 +38,7 @@ void store_rmv(ArrayDinBarang *array){
 
 
 int main() {
+    char perintah[50];
     TabUser user;
     ArrayDinBarang items;
     Queue item_req;
@@ -80,18 +81,15 @@ int main() {
         printf("%d\n", IndexUserInFile(user, namauser));
     }
 
-    STARTWORD("","");
-    if (!isStrEqual(CurrentWord, "START")){
-        printf("Kata beda\n");
-    } else {
-        printf("Kata sama\n");
-    }
-
-    STARTWORD("","");
-    if (!isStrEqual(CurrentWord, "COMMAND")){
-        printf("Kata beda\n");
-    } else {
-        printf("Kata sama\n");
+    while (1){
+        readCommand(perintah, MAX_LEN);
+        if (isStrEqual(perintah, "START")){
+            printf("START PROGRAM! \n");
+        } else if (isStrEqual(perintah, "STOP")){
+            break;
+        } else {
+            printf("Tidak tedapat command tersebut!\n");
+        }
     }
     
 
