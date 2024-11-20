@@ -21,7 +21,7 @@ int main() {
                i+1, items.A[i].name, items.A[i].price);
     }
 
-        // Print results to verify
+    // Print results to verify
     printf("\nLoaded Users:\n");
     for (int i = 0; i <  user.Neff; i++) {
         printf("User %d: %s (Money: %d)\n", 
