@@ -1,7 +1,7 @@
 #include <stdio.h>
 #include "../Header/register.h"
 
-// Fungsi sederhana untuk menyalin string
+// Fungsi menyalin string
 void stringCopy(char *dest, const char *src) {
     while ((*dest++ = *src++) != '\0');
 }

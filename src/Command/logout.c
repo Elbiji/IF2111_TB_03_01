@@ -1,7 +1,7 @@
 #include <stdio.h>
 #include "../Header/logout.h"
 
-// Implementasi logout pengguna
+// Fungsi Logout
 void logout(User **currentUser) {
     if (*currentUser == NULL) {
         printf("Anda belum login.\n");
