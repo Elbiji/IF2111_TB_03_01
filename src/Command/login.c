@@ -14,15 +14,15 @@ int login(TabUser list, User *currentUser) { // Login pengguna dengan loop untuk
 
     while (1) {
         // Input username
-        printf("Masukkan username (maksimum 49 karakter): ");
+        printf("Masukkan username: ");
         if (!readInput(username, 50)) continue; // Ulang jika input gagal
 
         // Input password
-        printf("Masukkan password (6-12 karakter): ");
-        if (!readInput(password, 50)) continue; // Ulang jika input gagal
+        printf("Masukkan password: ");
+        if (!readInput(password, 20)) continue; // Ulang jika input gagal
         int passLen = strLength(password);
-        if (passLen < 6 || passLen > 12) {
-            printf("Password tidak valid! Panjang password harus 6-12 karakter.\n");
+        if (passLen < 6 || passLen > 20) {
+            printf("Password tidak valid! Panjang password harus 6-20 karakter.\n");
             continue;
         }
 

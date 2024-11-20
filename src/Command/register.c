@@ -27,28 +27,35 @@ void registerUser(TabUser *list) {
         }
 
         // Input password
-        printf("Masukkan password (6-20 karakter): ");
-        if (!readInput(password, 50)) continue; // Ulang jika input tidak valid
-        int passLen = strLength(password);
-        if (passLen < 6 || passLen > 20) { // Validasi panjang password
-            printf("Password tidak valid! Panjang password harus 6-20 karakter.\n");
-            continue;
+        while (1){
+            printf("Masukkan password (6-20 karakter): ");
+            if (!readInput(password, 50)) continue; // Ulang jika input tidak valid
+            int passLen = strLength(password);
+            if (passLen < 6 || passLen > 20) { // Validasi panjang password
+                printf("Password tidak valid! Panjang password harus 6-20 karakter.\n");
+                continue;
+            }
+            break;
         }
 
         // Input jumlah uang
-        printf("Masukkan jumlah uang awal: ");
-        if (!readInput(moneyStr, 20)) continue; // Ulang jika input tidak valid
+        while (1){
+            printf("Masukkan jumlah uang awal: ");
+            if (!readInput(moneyStr, 20)) continue; // Ulang jika input tidak valid
 
-        
-        if (!isStrAllDigit(moneyStr)) { // Validasi apakah input hanya terdiri dari digit
-            printf("Input jumlah uang tidak valid. Masukkan angka positif.\n");
-            continue;
+            
+            if (!isStrAllDigit(moneyStr)) { // Validasi apakah input hanya terdiri dari digit
+                printf("Input jumlah uang tidak valid. Masukkan angka positif.\n");
+                continue;
+            }
+            money = atoi(moneyStr); // Konversi string ke integer
+            if (money < 0) { // Validasi uang harus positif
+                printf("Jumlah uang tidak boleh negatif.\n");
+                continue;
+            }
+            break;
         }
-        money = atoi(moneyStr); // Konversi string ke integer
-        if (money < 0) { // Validasi uang harus positif
-            printf("Jumlah uang tidak boleh negatif.\n");
-            continue;
-        }
+
         break; // Semua input valid
     }
 

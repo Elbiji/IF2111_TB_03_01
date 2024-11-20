@@ -37,6 +37,8 @@ int main() {
     
     registerUser(&user);
 
+    // login(user,);
+
     printf("\nLoaded Users:\n");
     for (int i = 0; i <  user.Neff; i++) {
         printf("User %d: %s (Money: %d)\n", 
