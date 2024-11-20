@@ -1,6 +1,6 @@
 #include "../Header/store_sup.h"
 
-void store_sup(Queue *items_request, ArrayDinBarang *array){
+void store_sup(Queue *items_request, ArrayDinBarang *array, IdxType Iduser, TabUser *user){
     printf("======= [STORE  SUPPLY] =======\n");
 
     Barang barang_antrian;
@@ -73,12 +73,18 @@ void store_sup(Queue *items_request, ArrayDinBarang *array){
                     ADV();
                 }
 
+                if (user->TC[Iduser].money - val < 0){
+                    printf("Uang kamu tidak mencukupi!\n");
+                    continue;
+                }
+
                 if (!isvalid || val <= 0){
                     printf("Masukkan sebuah integer yang lebih besar dari 0!\n");
                     continue;
                 }
 
                 harga = val;
+                
                 break;
             } 
             
@@ -89,6 +95,7 @@ void store_sup(Queue *items_request, ArrayDinBarang *array){
                 barang_antrian.name[i] = items_request->buffer[itemindex].name[i];
             }
             barang_antrian.name[i] = '\0';
+            user->TC[Iduser].money - harga;
             InsertBarang(array, barang_antrian, index);
 
             // printf("\nLoaded Items:\n");

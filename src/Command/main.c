@@ -36,7 +36,7 @@ int main() {
     
     store_request(&item_req, items);
     displayQueue(item_req);
-    store_sup(&item_req, &items);
+    store_sup(&item_req, &items, 1, &user);
     displayQueue(item_req);
     store_rmv(&items);
 
@@ -65,7 +65,7 @@ int main() {
     displayQueue(item_req);
     store_request(&item_req, items);
     displayQueue(item_req);
-    store_sup(&item_req, &items);
+    store_sup(&item_req, &items, 1, &user);
     displayQueue(item_req);
     store_rmv(&items);
 

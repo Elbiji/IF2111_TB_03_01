@@ -12,6 +12,6 @@
 #include "../ADT/boolean/boolean.h"
 
 // Menvalidasi antrian dimasukkan atau tidak
-void store_sup(Queue *items_request, ArrayDinBarang *array);
+void store_sup(Queue *items_request, ArrayDinBarang *array, IdxType Iduser, TabUser *user);
 
 #endif

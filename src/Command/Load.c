@@ -35,7 +35,7 @@ void load(const char *filename, TabUser *Users, ArrayDinBarang *array, Queue *it
     }
 
     // Membaca jumlah barang
-    totalinventory = atoi(CurrentWord.TabWord);
+    int totalinventory = atoi(CurrentWord.TabWord);
 
     // Membaca data barang
     for (int i = 0; i < totalinventory; i++) {
@@ -55,7 +55,7 @@ void load(const char *filename, TabUser *Users, ArrayDinBarang *array, Queue *it
 
     // Membaca jumlah pengguna
     ADVWORD();
-    totaluser = atoi(CurrentWord.TabWord);
+    int totaluser = atoi(CurrentWord.TabWord);
     Users->Neff = totaluser;
 
     // Membaca data pengguna
