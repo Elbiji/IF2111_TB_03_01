@@ -91,7 +91,8 @@ boolean isItemInShop(ArrayDinBarang array, char *str){
 }
 
 boolean isItemInQueue(Queue items_request, char *str){
-    for (int i = 0; i < length(items_request); i++){
+    int i = items_request.idxHead;
+    while (true){
         boolean exist = true;
         int j = 0;
 
@@ -106,7 +107,13 @@ boolean isItemInQueue(Queue items_request, char *str){
         if (exist && items_request.buffer[i].name[j] == '\0' && str[j] == '\0'){
             return true;
         }
+
+        if (i == items_request.idxTail){
+            break;
+        }
+        i = (i+1) % CAPACITY;
     }
+
     return false;
 }
 
