@@ -9,4 +9,6 @@
 #include "../ADT/mesinkata/mesinkata.h"
 #include "../ADT/mesinkarakter/mesinkarakter.h"
 
+void load(TabUser *Users, ArrayDinBarang *array);
+
 #endif

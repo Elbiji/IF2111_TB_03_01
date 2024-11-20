@@ -16,6 +16,22 @@ void MakeEmpty (TabUser *T) {
     T->Neff = 0;
 }
 
+void ResetTabUser (TabUser *T) {
+    T->Neff = 0;
+
+    for (int i = IdxMin; i <= IdxMax; i++){
+        for (int j = 0; j < IdxMax; j++) {
+            T->TC[i - IdxMin].name[j] = '\0';
+        }
+
+        for (int j = 0; j < IdxMax; j++){
+            T->TC[i-IdxMin].password[j] = '\0';
+        }
+
+        T->TC[i-IdxMin].money = 0;
+    }
+}
+
 // Banyaknya elemen
 int NbElmt (TabUser T) {
     return T.Neff;

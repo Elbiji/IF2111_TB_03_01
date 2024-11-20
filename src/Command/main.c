@@ -6,7 +6,8 @@ int main() {
     ArrayDinBarang items;
     Queue item_req;
     MakeArrayDinBarang(&items);
-    start(&user, &items, &item_req);
+    CreateQueue(&item_req);
+    start(&user, &items);
     
     // Print results to verify
     printf("\nLoaded Users:\n");
@@ -85,7 +86,23 @@ int main() {
     //         printf("Tidak tedapat command tersebut!\n");
     //     }
     // }
+
+    load(&user, &items);
     
+    
+    printf("\nLoaded Users:\n");
+    for (int i = 0; i <  user.Neff; i++) {
+        printf("User %d: %s (Money: %d)\n", 
+               i+1, user.TC[i].name, user.TC[i].money);
+    }
+    
+    printf("\nLoaded Items:\n");
+    for (int i = 0; i < items.Neff; i++) {
+        printf("Item %d: %s (Price: %d)\n", 
+               i+1, items.A[i].name, items.A[i].price);
+    }
+
+
     DeallocateArrayDinBarang(&items);
     return 0;
 }

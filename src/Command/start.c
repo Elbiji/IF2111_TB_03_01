@@ -15,9 +15,8 @@ Barang inventory;
 ArrayDinBarang array;
 Queue items_request;
 
-void start(TabUser *Users, ArrayDinBarang *array, Queue *items_request){
+void start(TabUser *Users, ArrayDinBarang *array){
     MakeEmpty(Users);
-    CreateQueue(items_request);
     STARTWORD("save/default.txt", "r");
     // STARTWORD("2.txt", "r");
 

@@ -53,6 +53,9 @@ void MakeEmpty (TabUser *T);
 /* I.S. sembarang */
 /* F.S. Terbentuk tabel T kosong dengan kapasitas IdxMax-IdxMin+1 */
 
+/* Konstruktor :Reset isi dari tabel */
+void ResetTabUser (TabUser *T);
+
 /* ********** SELEKTOR ********** */
 /* *** Banyaknya elemen *** */
 int NbElmt (TabUser T);
