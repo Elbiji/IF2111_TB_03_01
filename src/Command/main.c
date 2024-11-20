@@ -1,8 +1,10 @@
 #include "../Header/main.h"
 
 int main() {
+    boolean isloggedin = false;
     char perintah[50];
     TabUser user;
+    IdxType userid;
     ArrayDinBarang items;
     Queue item_req;
     MakeArrayDinBarang(&items);
@@ -36,6 +38,19 @@ int main() {
     }
     
     registerUser(&user);
+    
+    printf("\nLoaded Users:\n");
+    for (int i = 0; i <  user.Neff; i++) {
+        printf("User %d: %s (Money: %d)\n", 
+               i+1, user.TC[i].name, user.TC[i].money);
+    }
+
+    if (isloggedin == false){
+        login(user, &userid, &isloggedin);
+    }
+
+    login(user, &userid, &isloggedin);
+    
 
     // login(user,);
 
@@ -47,7 +62,7 @@ int main() {
 
     store_request(&item_req, items);
     displayQueue(item_req);
-    store_sup(&item_req, &items, 1, &user);
+    store_sup(&item_req, &items, userid, &user);
     displayQueue(item_req);
     store_rmv(&items);
 
@@ -59,7 +74,7 @@ int main() {
     displayQueue(item_req);
 
     DisplayStore(items);
-    // DoWork(&user, 1);
+    // DoWork(&user, userid);
 
     // char namauser[50];
     // printf("Masukkan sebuah nama user: \n");
@@ -76,7 +91,7 @@ int main() {
     displayQueue(item_req);
     store_request(&item_req, items);
     displayQueue(item_req);
-    store_sup(&item_req, &items, 1, &user);
+    store_sup(&item_req, &items, userid, &user);
     displayQueue(item_req);
     store_rmv(&items);
 
@@ -96,7 +111,7 @@ int main() {
     //         printf("Tidak tedapat command tersebut!\n");
     //     }
     // }
-    tebakAngka(1, &user);
+    tebakAngka(userid, &user);
     load(&user, &items);
     
     
