@@ -14,23 +14,27 @@ void tebakAngka(IdxType iduser, TabUser *Users){
 
     srand(time(NULL));
     int target = rand() % 100 + 1; 
-    int tebakan;
     int kesempatanTerpakai = 0;
     int hadiah = 0;
 
     printf("Mulai challenge Tebak Angka!\n");
     while (kesempatanTerpakai < maxKesempatan) {
-        printf("Tebak angka: ");
-        scanf("%d", &tebakan);
+        char Tebakan [3];
+        if (!readInput(Tebakan, 4)) continue;
+        if (!isStrAllDigit(Tebakan)) {
+            printf("Masukkan sebuah integer dari 1-100!\n");
+            continue;
+        }
+        int val = atoi(Tebakan);
         kesempatanTerpakai++;
 
-        if (tebakan == target) {
+        if (val == target) {
             hadiah = hadiahMax - (kesempatanTerpakai - 1) * 50;
             if (hadiah < 0) hadiah = 0;
             Users->TC[iduser].money += hadiah;
             printf("Tebakanmu benar! +%d rupiah telah ditambahkan ke akun anda.\n", hadiah);
             return;
-        } else if (tebakan < target) {
+        } else if (val < target) {
             printf("Tebakanmu lebih kecil!\n");
         } else {
             printf("Tebakanmu lebih besar!\n");
