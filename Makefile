@@ -25,6 +25,7 @@ SRCS = $(ARRAY_DIR)/array.c \
        $(CMD_DIR)/store_sup.c \
        $(CMD_DIR)/store_rmv.c \
        $(CMD_DIR)/store_list.c \
+       $(CMD_DIR)/tebakangka.c \
        $(CMD_DIR)/start.c \
        $(CMD_DIR)/load.c \
        $(CMD_DIR)/save.c \

@@ -86,7 +86,7 @@ int main() {
     //         printf("Tidak tedapat command tersebut!\n");
     //     }
     // }
-
+    tebakAngka(1, &user);
     load(&user, &items);
     
     
@@ -102,6 +102,7 @@ int main() {
                i+1, items.A[i].name, items.A[i].price);
     }
 
+    
 
     DeallocateArrayDinBarang(&items);
     return 0;
