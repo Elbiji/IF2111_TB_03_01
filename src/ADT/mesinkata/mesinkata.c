@@ -19,12 +19,16 @@ void STARTWORD(char *path, char *type){
           atau EndWord = false, currentWord adalah kata yang sudah diakuisisi,
           currentChar karakter pertama sesudah karakter terakhir kata */
     START(path, type);
-    Ignore();
-    if (IsEOP()){
-        EndWord = true;
+    if (pitaFile == NULL){
+        return;
     } else {
-        EndWord = false;
-        CopyWord();
+        Ignore();
+        if (IsEOP()){
+            EndWord = true;
+        } else {
+            EndWord = false;
+            CopyWord();
+        }
     }
 }
 

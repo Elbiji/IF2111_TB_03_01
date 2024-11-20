@@ -28,7 +28,6 @@ void START(char *path, char *type){
             ADV();
         }
     }
-
 }
 
 void ADV(){

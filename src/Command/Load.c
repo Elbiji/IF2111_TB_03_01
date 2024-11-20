@@ -33,7 +33,7 @@ void load(TabUser *Users, ArrayDinBarang *array) {
     // Inisialisasi ulang struktur data
     Barang inventory;
     char filename[MAX_LEN];
-    char dest[MAX_LEN] = "save/";
+    
 
     ResetTabUser(Users);
 
@@ -46,17 +46,17 @@ void load(TabUser *Users, ArrayDinBarang *array) {
     int validConfig = 0; // Flag untuk validasi file konfigurasi
     while (1) {
         printf("Masukkan nama file yang akan di load :\n");
+        char dest[MAX_LEN] = "save/";
         if (!readInput(filename, MAX_LEN)){
             continue;
         }
         customStrcat(dest, filename);
         printf("%s\n",dest); 
 
-        STARTWORD(dest, "r");
 
-        if (EndWord) {
-            // File tidak ditemukan
-            printf("File tidak ditemukan. Silakan masukkan nama file yang benar.\n");
+        STARTWORD(dest, "r");
+        if (pitaFile == NULL){
+            printf("Tidak ada file dengan nama tersebut!\n");
             continue;
         }
 
@@ -123,11 +123,6 @@ void load(TabUser *Users, ArrayDinBarang *array) {
         printf("Save file berhasil dibaca. PURRMART berhasil dijalankan.\n");
             validConfig = 1;  // Menandakan file valid
             break; // Keluar dari loop jika file valid
-    }
-
-    if (!validConfig) {
-        printf("File konfigurasi gagal dimuat. Cek kembali file Anda.\n");
-        return;
     }
 }
 
