@@ -113,9 +113,9 @@ void store_sup(Queue *items_request, ArrayDinBarang *array){
     }
 
     if (isEmpty(*items_request)){
-        printf("Tidak ada barang di antrian");
+        printf("Tidak ada barang di antrian\n");
     } else {
-        printf("Kamu keluar dari Store Supply!");
+        printf("Kamu keluar dari Store Supply!\n");
     }
 }
 
