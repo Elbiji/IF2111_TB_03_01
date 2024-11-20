@@ -196,6 +196,24 @@ boolean readInput(char *buffer, int maxLen){
 
 }
 
+int strToInteger (){
+    START("","");
+    while (!IsEOP() && (GetCC() == '\n' || GetCC() == ' ')) {
+        ADV();
+    } // Clearing buffer
+    int val = 0;
+
+    while (!IsEOP() && GetCC() != '\n'){
+        if (GetCC() >= '0' && GetCC() <= '9'){
+            val = val * 10 + (GetCC() - '0'); // Parsing one by one
+        } else {
+            return -1;
+        }
+        ADV();
+    }
+    return val;
+}
+
 boolean readCommand(char *buffer, int maxLen){
     START("","");
 

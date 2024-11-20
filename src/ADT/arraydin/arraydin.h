@@ -67,4 +67,16 @@ void InsertBarang(ArrayDinBarang *array, Barang el, IdxType i);
  */
 void DeleteAt(ArrayDinBarang *array, IdxType i);
 
+/**
+ * Fungsi untuk menambah jumlah kapasitan array dinamis
+ * Prekondisi: array terdefinisi, i di antara 0..Length(array).
+ */
+void GrowArray(ArrayDinBarang *array);
+
+/**
+ * Fungsi untuk mengurangi jumlah kapasitas array dinamis
+ * Prekondisi: array terdefinisi, i di antara 0..Length(array).
+ */
+void DecreaseArray(ArrayDinBarang *array);
+
 #endif
