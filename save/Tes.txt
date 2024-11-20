@@ -1,0 +1,7 @@
+3
+10 a
+20 b
+20 c d
+2
+100 admin alstrukdatkeren
+25 praktikan kerenbangetkak

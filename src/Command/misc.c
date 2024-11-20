@@ -211,11 +211,11 @@ boolean readCommand(char *buffer, int maxLen){
         return false;
     }
 
-    // while (!IsEOP() && GetCC() != '\n'){
-    //     ADV();
-    // }
+    while (!IsEOP() && GetCC() != '\n'){
+        ADV();
+    }
     // printf("Tidak terdapat command tersebut dalam program!\n");
-    // return false;
+    return false;
 }
 // int main(){
 //     START("","");

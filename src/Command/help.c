@@ -34,35 +34,35 @@ void change_menu(MenuState new_menu) {
 }
 
 //fungsi utama
-int main() {
-    char command[MAX_LEN];
+// int main() {
+//     char command[MAX_LEN];
 
-    printf("Welcome to PURRMART!\n");
-    while (1) {
-        printf("Enter command: ");
-        if (!readInput(command, MAX_LEN)) {
-            printf("Input tidak valid, silakan coba lagi.\n");
-            continue;
-        }
+//     printf("Welcome to PURRMART!\n");
+//     while (1) {
+//         printf("Enter command: ");
+//         if (!readInput(command, MAX_LEN)) {
+//             printf("Input tidak valid, silakan coba lagi.\n");
+//             continue;
+//         }
 
-        if (isStrEqual(command, "HELP")) {
-            help();
-        } else if (isStrEqual(command, "START")) {
-            printf("START command executed.\n");
-            change_menu(login_menu); //pindah ke login_menu setelah START
-        } else if (isStrEqual(command, "QUIT")) {
-            printf("Exiting PURRMART. Goodbye!\n");
-            break;
-        } else if (isStrEqual(command, "LOGIN") && current_menu == login_menu) {
-            printf("LOGIN command executed.\n");
-            change_menu(main_menu); //pindah ke main_menu setelah LOGIN
-        } else if (isStrEqual(command, "LOGOUT") && current_menu == main_menu) {
-            printf("LOGOUT command executed.\n");
-            change_menu(welcome_menu); //kembali ke welcome_menu setelah LOGOUT
-        } else {
-            printf("Unknown command. Type HELP for available commands.\n");
-        }
-    }
+//         if (isStrEqual(command, "HELP")) {
+//             help();
+//         } else if (isStrEqual(command, "START")) {
+//             printf("START command executed.\n");
+//             change_menu(login_menu); //pindah ke login_menu setelah START
+//         } else if (isStrEqual(command, "QUIT")) {
+//             printf("Exiting PURRMART. Goodbye!\n");
+//             break;
+//         } else if (isStrEqual(command, "LOGIN") && current_menu == login_menu) {
+//             printf("LOGIN command executed.\n");
+//             change_menu(main_menu); //pindah ke main_menu setelah LOGIN
+//         } else if (isStrEqual(command, "LOGOUT") && current_menu == main_menu) {
+//             printf("LOGOUT command executed.\n");
+//             change_menu(welcome_menu); //kembali ke welcome_menu setelah LOGOUT
+//         } else {
+//             printf("Unknown command. Type HELP for available commands.\n");
+//         }
+//     }
 
-    return 0;
-}
+//     return 0;
+// }

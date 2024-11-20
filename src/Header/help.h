@@ -4,8 +4,6 @@
 #include <stdio.h>
 #include "misc.h"
 
-#define MAX_LEN 50
-
 typedef enum {
     welcome_menu,
     login_menu,

@@ -23,9 +23,14 @@ void store_request(Queue *items_request, ArrayDinBarang array){
             if(!readInput(requested_item, MAX_LEN)){
                 continue;
             }
+            
+            if (isStrEqual(requested_item, "Purry")){
+                break;
+            }
 
             if (isStrAllDigit(requested_item)){
                 printf("Pastikan anda memasukkan nama berupa karakter\n");
+
 
             } else if (isItemInShop(array, requested_item)){
                 printf("Barang sudah ada di toko!\n");
@@ -48,6 +53,7 @@ void store_request(Queue *items_request, ArrayDinBarang array){
             }   
         }   
     }
+    printf("Anda telah keluar dari STORE REQUEST.\n");
 }
 
 // int main() {

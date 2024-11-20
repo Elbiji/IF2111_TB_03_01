@@ -1,5 +1,7 @@
 #include "../Header/Load.h" 
 
+#include <stdio.h>
+#include <stdlib.h>
 // #include "../Header/misc.h"
 // #include "../ADT/array/array.h"
 // #include "../ADT/mesinkarakter/mesinkarakter.h"
