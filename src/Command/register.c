@@ -29,9 +29,9 @@ int registerUser(TabUser *list) {
         return 0;
     }
 
-    stringCopy(list->users[list->Neff].name, username);
-    stringCopy(list->users[list->Neff].password, password);
-    list->users[list->Neff].money = money;
+    stringCopy(list->TC[list->Neff].name, username);
+    stringCopy(list->TC[list->Neff].password, password);
+    list->TC[list->Neff].money = money;
     list->Neff++;
     printf("Akun dengan username %s telah berhasil dibuat. Silakan LOGIN untuk melanjutkan.\n", username);
     return 1;

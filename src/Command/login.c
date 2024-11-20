@@ -1,6 +1,6 @@
 #include <stdio.h>
 #include "../Header/login.h"
-#include "../Header/misc.h"
+
 
 // Fungsi Login
 int login(TabUser list, User *currentUser) { // Login pengguna dengan loop untuk input ulang
@@ -28,7 +28,7 @@ int login(TabUser list, User *currentUser) { // Login pengguna dengan loop untuk
 
         // Validasi username dan password
         index = IndexUserInFile(list, username);
-        if (index != -1 && isStrEqual(list.users[index].password, password)) {
+        if (index != -1 && isStrEqual(list.TC[index].password, password)) {
             printf("Anda telah login ke PURRMART sebagai %s.\n", username);
             return index; // Return indeks user
         } else {
