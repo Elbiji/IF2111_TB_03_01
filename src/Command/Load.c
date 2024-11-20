@@ -10,114 +10,109 @@
 // #include "../ADT/mesinkarakter/mesinkarakter.c"
 // #include "../ADT/mesinkata/mesinkata.c"
 
-/* Implementasi strcat */
-void customStrcat(char *dest, const char *src) {
-    while (*dest != '\0') {
-        dest++; // Menemukan akhir dari string tujuan
-    }
-    while (*src != '\0') {
-        *dest = *src; // Menambahkan string sumber
-        dest++;
-        src++;
-    }
-    *dest = '\0'; 
-}
+void load(const char *filename, TabUser *Users, ArrayDinBarang *array, Queue *items_request) {
+    // Inisialisasi ulang struktur data
+    MakeEmpty(Users);
+    CreateQueue(items_request);
+    DeallocateArrayDinBarang(array);
+    MakeArrayDinBarang(array);
 
-/* Implementasi strcpy */
-void CopyString(const char *src, char *dest) {
-    while (*src != '\0') { // Salin setiap karakter dari src ke dest
-        *dest = *src;
-        src++;
-        dest++;
+    // Path ke file konfigurasi
+    char filepath[256];
+    int i = 0;
+    while (filename[i] != '\0') {
+        filepath[i] = filename[i];
+        i++;
     }
-    *dest = '\0'; 
-}
+    filepath[i++] = '\0';
 
-/* Fungsi utama untuk memuat data dari file */
-boolean loadFile(const char *filename, ArrayDinBarang *barangArray, TabUser *userArray) {
-    char filepath[100] = "./save/";  // Direktori save file
-    customStrcat(filepath, filename);  // Gunakan customStrcat untuk gabungkan nama file ke path
-
-    START(filepath, "r");  // Inisialisasi pembacaan file
-    if (IsEOP()) {
+    STARTWORD(filepath, "r");
+    if (EndWord) {
         printf("Save file tidak ditemukan. PURRMART gagal dijalankan.\n");
-        return false;
+        return;
     }
 
-    /* Membaca jumlah barang */
-    int nBarang = 0;
-    if (isStrAllDigit(CurrentWord)) {
-        nBarang = atoi(CurrentWord);
-    } else {
-        printf("Format file salah (jumlah barang invalid).\n");
-        return false;
+    // Membaca jumlah barang
+    totalinventory = atoi(CurrentWord.TabWord);
+
+    // Membaca data barang
+    for (int i = 0; i < totalinventory; i++) {
+        ADVWORD();
+        Barang inventory;
+        inventory.price = atoi(CurrentWord.TabWord);
+
+        ADVWORD();
+        int nameindex = 0;
+        for (int j = 0; j < CurrentWord.Length; j++) {
+            inventory.name[nameindex++] = CurrentWord.TabWord[j];
+        }
+
+        inventory.name[nameindex] = '\0';  // Mengakhiri string nama barang
+        InsertBarang(array, inventory, i);
     }
 
-    MakeEmptyBarang(barangArray, nBarang);  // Alokasikan array barang
-    for (int i = 0; i < nBarang; i++) {
-        ADV();
-        int harga = atoi(CurrentWord);  // Baca harga barang
-        ADV();
-        CopyString(CurrentWord, barangArray->A[i].name);  // Baca nama barang
-        barangArray->A[i].price = harga;
-    }
-    barangArray->Neff = nBarang;
+    // Membaca jumlah pengguna
+    ADVWORD();
+    totaluser = atoi(CurrentWord.TabWord);
+    Users->Neff = totaluser;
 
-    /* Membaca jumlah pengguna */
-    ADV();
-    int nUsers = 0;
-    if (isStrAllDigit(CurrentWord)) {
-        nUsers = atoi(CurrentWord);
-    } else {
-        printf("Format file salah (jumlah pengguna invalid).\n");
-        return false;
-    }
+    // Membaca data pengguna
+    for (int i = 0; i < totaluser; i++) {
+        ADVWORD();
+        Users->TC[i].money = atoi(CurrentWord.TabWord);
 
-    MakeEmptyUser(userArray, nUsers);  // Alokasikan array pengguna
-    for (int i = 0; i < nUsers; i++) {
-        ADV();
-        int money = atoi(CurrentWord);  // Baca jumlah uang pengguna
-        ADV();
-        CopyString(CurrentWord, userArray->TC[i].name);  // Baca nama pengguna
-        ADV();
-        CopyString(CurrentWord, userArray->TC[i].password);  // Baca password pengguna
-        userArray->TC[i].money = money;
+        ADVWORD();
+        int nameindex = 0;
+        for (int j = 0; j < CurrentWord.Length; j++) {
+            Users->TC[i].name[nameindex++] = CurrentWord.TabWord[j];
+        }
+        Users->TC[i].name[nameindex] = '\0';  // Akhiri string nama
+
+        ADVWORD();
+        int passindex = 0;
+        for (int j = 0; j < CurrentWord.Length; j++) {
+            Users->TC[i].password[passindex++] = CurrentWord.TabWord[j];
+        }
+        Users->TC[i].password[passindex] = '\0';  // Akhiri string password
     }
-    userArray->Neff = nUsers;
 
     printf("Save file berhasil dibaca. PURRMART berhasil dijalankan.\n");
-    return true;
 }
 
-/* Fungsi untuk menampilkan data barang */
-void displayBarang(const ArrayDinBarang *barangArray) {
-    printf("Daftar Barang:\n");
-    for (int i = 0; i < barangArray->Neff; i++) {
-        printf("- %s (Harga: %d)\n", barangArray->A[i].name, barangArray->A[i].price);
-    }
-}
+// int main() {
+//     TabUser Users;
+//     ArrayDinBarang Items;
+//     Queue Requests;
 
-/* Fungsi untuk menampilkan data pengguna */
-void displayUsers(const TabUser *userArray) {
-    printf("Daftar Pengguna:\n");
-    for (int i = 0; i < userArray->Neff; i++) {
-        printf("- %s (Uang: %d)\n", userArray->TC[i].name, userArray->TC[i].money);
-    }
-}
+//     MakeArrayDinBarang(&Items);
+//     CreateQueue(&Requests);
 
-/* Fungsi utama */
-int main() {
-    ArrayDinBarang barangArray;
-    TabUser userArray;
+//     char filename[256];
+//     printf("Masukkan nama file untuk load (contoh: savefile.txt):\n");
 
-    char filename[50];
-    printf("Masukkan nama file: ");
-    readInput(filename, 50);
+//     // Membaca input nama file tanpa scanf
+//     char c;
+//     int idx = 0;
+//     while ((c = getchar()) != '\n' && idx < 255) {
+//         filename[idx++] = c;
+//     }
+//     filename[idx] = '\0';  // Akhiri dengan null terminator
 
-    if (loadFile(filename, &barangArray, &userArray)) {
-        displayBarang(&barangArray);
-        displayUsers(&userArray);
-    }
+//     // Memuat data dari file
+//     printf("\nMemuat data dari %s...\n", filename);
+//     load(filename, &Users, &Items, &Requests);
 
-    return 0;
-}
+//     // Menampilkan hasil untuk verifikasi
+//     printf("\n--- Daftar Barang ---\n");
+//     for (int i = 0; i < Items.Neff; i++) {
+//         printf("%d: %s (Harga: %d)\n", i + 1, Items.A[i].name, Items.A[i].price);
+//     }
+
+//     printf("\n--- Daftar Pengguna ---\n");
+//     for (int i = 0; i < Users.Neff; i++) {
+//         printf("%d: %s (Uang: %d, Password: %s)\n", i + 1, Users.TC[i].name, Users.TC[i].money, Users.TC[i].password);
+//     }
+
+//     DeallocateArrayDinBarang(&Items);
+//     return 0;
+// }
