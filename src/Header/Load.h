@@ -9,6 +9,7 @@
 #include "../ADT/mesinkata/mesinkata.h"
 #include "../ADT/mesinkarakter/mesinkarakter.h"
 
+// Load file baru
 void load(TabUser *Users, ArrayDinBarang *array);
 
 #endif
