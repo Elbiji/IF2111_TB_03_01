@@ -42,8 +42,6 @@ void load(TabUser *Users, ArrayDinBarang *array) {
 
     // Membuat path file lengkap
 
-
-    int validConfig = 0; // Flag untuk validasi file konfigurasi
     while (1) {
         printf("Masukkan nama file yang akan di load :\n");
         char dest[MAX_LEN] = "save/";
@@ -63,7 +61,6 @@ void load(TabUser *Users, ArrayDinBarang *array) {
         // Memeriksa apakah baris pertama adalah jumlah barang yang valid
         if (CurrentWord.Length == 0 || !isStrAllDigit(CurrentWord.TabWord)) {
             printf("Konfigurasi file tidak valid. Mohon perbaiki file konfigurasi.\n");
-            validConfig = 0;
             continue;
         }
 
@@ -121,7 +118,6 @@ void load(TabUser *Users, ArrayDinBarang *array) {
             Users->TC[i].password[CurrentWord.Length] = '\0';
         }
         printf("Save file berhasil dibaca. PURRMART berhasil dijalankan.\n");
-            validConfig = 1;  // Menandakan file valid
             break; // Keluar dari loop jika file valid
     }
 }

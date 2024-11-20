@@ -59,6 +59,9 @@ boolean readInput(char *buffer, int maxLen);
 // menerima parameter buffer dan panjang maksimal serta nama command
 boolean readCommand(char *buffer, int maxLen);
 
+// Memeriksa apakah input mempunyai spasi
+boolean containsSpace(const char *str);
+
 // Menerima input untuk dirubah ke integer
 int strToInteger ();
 

@@ -193,7 +193,14 @@ boolean readInput(char *buffer, int maxLen){
     }
     
     return true;
+}
 
+boolean containsSpace(const char *str){
+    while (*str) {
+        if (*str == ' ') return true;
+        str++;
+    }
+    return false;
 }
 
 int strToInteger (){

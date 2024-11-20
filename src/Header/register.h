@@ -1,9 +1,13 @@
 #ifndef REGISTER_H
 #define REGISTER_H
 
-#include "login.h" // Gunakan login.h untuk akses struktur User dan TabUser
+#include "misc.h"
+#include "../ADT/array/array.h"
+#include "../ADT/arraydin/arraydin.h"
+#include "../ADT/mesinkata/mesinkata.h"
+#include "../ADT/mesinkarakter/mesinkarakter.h"
 
 // Deklarasi fungsi registrasi
-int registerUser(TabUser *list, char *username, char *password, int money);
+void registerUser(TabUser *list);
 
 #endif
