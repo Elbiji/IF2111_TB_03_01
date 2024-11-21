@@ -53,7 +53,11 @@ void store_request(Queue *items_request, ArrayDinBarang array){
             }   
         }   
     }
-    printf("Anda telah keluar dari STORE REQUEST.\n");
+    if (isFull(*items_request)){
+        printf("Antrian penuh! anda bisa menghilangkan beberapa antrian dalam command STORE SUPPLY\n");
+    } else {
+        printf("Anda telah keluar dari STORE REQUEST.\n");
+    }
 }
 
 // int main() {

@@ -5,6 +5,7 @@
 
 #include "../ADT/arraydin/arraydin.h"
 #include "../ADT/boolean/boolean.h"
+#include "../../misc.h"
 
 // Fungsi yang menampilkan daftar barang yang berada di toko
 void DisplayStore(ArrayDinBarang store);

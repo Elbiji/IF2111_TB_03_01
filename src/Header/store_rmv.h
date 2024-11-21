@@ -14,7 +14,7 @@
 #include "../ADT/arraydin/arraydin.h"
 #include "../ADT/queue/queue.h"
 #include "../ADT/boolean/boolean.h"
-#include "misc.h"
+#include "../../misc.h"
 
 // Menghapuskan barang dalam shop berdasarkan nama
 void store_rmv(ArrayDinBarang *array);

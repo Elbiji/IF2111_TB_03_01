@@ -21,7 +21,6 @@ int main() {
     MenuState current_menu = welcome_menu;
     MakeArrayDinBarang(&items);
     CreateQueue(&item_req);
-    start(&user, &items);
     printLogo();
     printf("Selamat datang di PURRMART. Untuk menjalankan program silahkan memasukkan perintah START atau LOAD\n");
     while(1){
@@ -50,7 +49,7 @@ int main() {
         }
         else if (isStrEqual(perintah, "QUIT")){
             if (isloggedin == true){
-                printf("Keluar dari sesi login terlebih dahulu jika ingin keluar dari program");
+                printf("Keluar dari sesi login terlebih dahulu jika ingin keluar dari program\n");
             } else {
                 break;
             }

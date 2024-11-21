@@ -5,7 +5,7 @@
 #define __MESIN_KAR_H_
 
 #include <stdio.h>
-#include "boolean.h"
+#include "../boolean/boolean.h"
 
 #define MARK '\n'
 #define NEWLINE '\n'

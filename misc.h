@@ -3,12 +3,18 @@
 
 #include <stdlib.h>
 
-#include "../ADT/array/array.h"
-#include "../ADT/arraydin/arraydin.h"
-#include "../ADT/queue/queue.h"
-#include "../ADT/boolean/boolean.h"
-#include "../ADT/mesinkarakter/mesinkarakter.h"
-#include "../ADT/mesinkata/mesinkata.h"
+// #include "../ADT/array/array.h"
+// #include "../ADT/arraydin/arraydin.h"
+// #include "../ADT/queue/queue.h"
+// #include "../ADT/boolean/boolean.h"
+// #include "../ADT/mesinkarakter/mesinkarakter.h"
+// #include "../ADT/mesinkata/mesinkata.h"
+#include "src/ADT/array/array.h"
+#include "src/ADT/arraydin/arraydin.h"
+#include "src/ADT/queue/queue.h"
+#include "src/ADT/boolean/boolean.h"
+#include "src/ADT/mesinkarakter/mesinkarakter.h"
+#include "src/ADT/mesinkata/mesinkata.h"
 
 // Mengembalikan index sebuah barang pada toko menggunakan traversal
 // menerima parameter array dinamis dan string

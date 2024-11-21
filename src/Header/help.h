@@ -2,7 +2,7 @@
 #define __HELP_H_
 
 #include <stdio.h>
-#include "misc.h"
+#include "../../misc.h"
 
 typedef enum {
     welcome_menu,

@@ -4,7 +4,7 @@
 #include <stdlib.h>
 
 #include "help.h"
-#include "misc.h"
+#include "../../misc.h"
 #include "store_rmv.h"
 #include "store_list.h"
 #include "store_sup.h"

@@ -2,7 +2,7 @@
 #define LOGIN_H
 
 #include "../ADT/boolean/boolean.h"
-#include "../Header/misc.h"
+#include "../../misc.h"
 #include "../ADT/array/array.h"
 
 // Batasan panjang username dan password
