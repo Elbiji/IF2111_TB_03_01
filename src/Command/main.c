@@ -61,7 +61,6 @@ int main() {
                 printf("LOAD PROGRAM\n");
                 load(&user, &items);
                 printf("LOADING PROGRAM . . .");
-                start(&user, &items);
                 printf("\nLoaded Users:\n");
                 for (int i = 0; i <  user.Neff; i++) {
                 printf("User %d: %s (Money: %d)\n", 
@@ -146,8 +145,20 @@ int main() {
                 work_challenge(&user, userid);
             }
         }
+        else if (isStrEqual(perintah, "WORK")){
+            if (isloggedin == false) {
+                printf("Perintah belum bisa dijalankan, karena anda belom LOGIN!\n");
+            } else {
+                printf(">>WORK\n");
+                DoWork(&user, userid);
+            }
+        }
     }
-    
+    printf("\nLoaded Users:\n");
+    for (int i = 0; i <  user.Neff; i++) {
+    printf("User %d: %s (Money: %d)\n", 
+        i+1, user.TC[i].name, user.TC[i].money);
+    }
 
 
     

@@ -6,6 +6,7 @@ void work_challenge(TabUser *users, IdxType userIdx) {
 
     while (1) {
         printf("\n>> WORK CHALLENGE\n");
+        printf("\nUntuk keluar ketik (Purry)");
         printf("\nDaftar challenge yang tersedia:\n");
         printf("1. Tebak Angka (biaya main=200)\n");
         printf("2. W0RDL3 (biaya main=500)\n");
@@ -14,6 +15,10 @@ void work_challenge(TabUser *users, IdxType userIdx) {
         if (!readInput(perintah, MAX_LEN)) {
             printf("Input tidak valid!\n");
             continue;
+        }
+
+        if (isStrEqual(perintah, "Purry")) {
+            break;
         }
 
         // periksa apakah input valid (1 / 2)

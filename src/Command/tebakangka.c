@@ -1,16 +1,8 @@
 #include "../Header/tebakangka.h"
 
 void tebakAngka(IdxType iduser, TabUser *Users){
-    const int biayaMain = 10;
     const int hadiahMax = 500;
     const int maxKesempatan = 10;
-
-    if (Users->TC[iduser].money < biayaMain) {
-        printf("Saldo tidak cukup untuk bermain challenge ini.\n");
-        return;
-    }
-
-    Users->TC[iduser].money -= biayaMain;
 
     srand(time(NULL));
     int target = rand() % 100 + 1; 
