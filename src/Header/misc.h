@@ -51,6 +51,10 @@ boolean isStrEqual(char *str1, char *str2);
 // menerima parameter string
 int strLength(char *str);
 
+// Fungsi menyalin isi dari string sumber ke string tujuan
+// menerima parameter tujuan dan sumber
+void copystrng(char *dest, const char *src)
+
 // Validasi input agar tidak melebihi batas 49 Karakter menggunakan mesin kata
 // menerima parameter buffer dan panjang maksimal
 boolean readInput(char *buffer, int maxLen);
