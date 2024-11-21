@@ -170,6 +170,15 @@ int strLength(char *str){
     return i;
 }
 
+void copystrng(char *dest, const char *src) {
+    while (*src) {      
+        *dest = *src;    
+        dest++;          
+        src++;          
+    }
+    *dest = '\0';       
+}
+
 boolean readInput(char *buffer, int maxLen){
     START("","");
 
