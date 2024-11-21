@@ -1,6 +1,7 @@
 #ifndef __SAVE_H__
 #define __SAVE_H__
 
+#include "load.h"
 #include <stdlib.h>
 #include "../../misc.h"
 #include "../ADT/array/array.h"

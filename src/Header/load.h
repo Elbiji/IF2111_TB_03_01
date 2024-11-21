@@ -12,4 +12,8 @@
 // Load file baru
 void load(TabUser *Users, ArrayDinBarang *array);
 
+
+// customStrcat("save/", filename);
+void customStrcat(char *dest, char *src);
+
 #endif

@@ -49,7 +49,7 @@ void load(TabUser *Users, ArrayDinBarang *array) {
             continue;
         }
         customStrcat(dest, filename);
-        printf("%s\n",dest); 
+  
 
 
         STARTWORD(dest, "r");
