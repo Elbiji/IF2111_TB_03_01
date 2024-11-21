@@ -1,5 +1,40 @@
 #include "../Header/main.h"
 
+void printPerry() {
+    printf(
+        "    ____________________\n"
+        "   /                    \\\n"
+        "  /     ,  ,'  ,'\\      \\\n"
+        " /    ,' ,'  ,'   \\      \\\n"
+        "|   ,' ,'   ' ,---.\\     |\n"
+        "|  /  /   ,'/'     \\\\    |\n"
+        "| |  |   ' |    O   |    |\n"
+        "| |  |   | |        |    |\n"
+        "| |  |   | |    _   |    |\n"
+        "|  \\ '.  \\ \\    /  /    |\n"
+        " \\  \\ '.  \\ `--' ,'    /\n"
+        "  \\  \\  '. `---'      /\n"
+        "   \\  \\    '-.____,  /\n"
+        "    \\  \\ ,,'    ,'  /\n"
+        "     `.//     ,'   /\n"
+        "      |/  ,--'    |\n"
+        "      |  |        |\n"
+        "      |  |        |\n"
+        "      |__|        |\n"
+        "       \\_\\________/\n"
+    );
+}
+void printLogo() {
+    printf("      _       _                         \n"
+           "     | |     | |                        \n"
+           " _ __| | __ _| |_ _   _ _ __  _   _ ___\n"
+           "| '_ \\| |/ _` | __| | | | '_ \\| | | / __|\n"
+           "| |_) | | (_| | |_| |_| | |_) | |_| \\__ \\\n"
+           "| .__/|_|\\__,_|\\__|\\__, | .__/ \\__,_|___/\n"
+           "| |                __/ | |              \n"
+           "|_|               |___/|_|              \n");
+}
+
 int main() {
     boolean isloggedin = false;
     char perintah[50];
@@ -11,7 +46,8 @@ int main() {
     MakeArrayDinBarang(&items);
     CreateQueue(&item_req);
     start(&user, &items);
-
+    printPerry();
+    printLogo();
     printf("Selamat datang di PURRMART. Untuk menjalankan program silahkan memasukkan perintah START atau LOAD\n");
     while(1){
         printf("Silahkan masukkan perintah yang sesuai\n");
@@ -38,7 +74,11 @@ int main() {
             }
         }
         else if (isStrEqual(perintah, "QUIT")){
-            break;
+            if (isloggedin == true){
+                printf("Keluar dari sesi login terlebih dahulu jika ingin keluar dari program");
+            } else {
+                break;
+            }
         }
         else if (isStrEqual(perintah, "LOAD")){
             if(isloggedin == false){
