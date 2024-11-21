@@ -3,18 +3,18 @@
 MenuState current_menu = welcome_menu;
 
 //fungsi untuk menampilkan HELP sesuai menu aktif
-void help() {
-    if (current_menu == welcome_menu) {
+void help(MenuState *current_menu) {
+    if (*current_menu == welcome_menu) {
         printf("=====[ Welcome Menu Help PURRMART ]=====\n");
         printf("1. START → Untuk masuk sesi baru\n");
         printf("2. LOAD → Untuk memulai sesi berdasarkan file konfigurasi\n");
         printf("3. QUIT → Untuk keluar dari program\n");
-    } else if (current_menu == login_menu) {
+    } else if (*current_menu == login_menu) {
         printf("=====[ Login Menu Help PURRMART ]=====\n");
         printf("1. REGISTER → Untuk melakukan pendaftaran akun baru\n");
         printf("2. LOGIN → Untuk masuk ke dalam akun dan memulai sesi\n");
         printf("3. QUIT → Untuk keluar dari program\n");
-    } else if (current_menu == main_menu) {
+    } else if (*current_menu == main_menu) {
         printf("=====[ Menu Help PURRMART ]=====\n");
         printf("1. WORK → Untuk bekerja\n");
         printf("2. WORK CHALLENGE → Untuk mengerjakan challenge\n");
@@ -29,8 +29,8 @@ void help() {
 }
 
 //fungsi ganti menu
-void change_menu(MenuState new_menu) {
-    current_menu = new_menu;
+void change_menu(MenuState *current_menu, MenuState new_menu) {
+    *current_menu = new_menu;
 }
 
 //fungsi utama
