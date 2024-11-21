@@ -1,15 +1,6 @@
 #include "../Header/main.h"
 
-void printLogo() {
-    printf("      _       _                         \n"
-           "     | |     | |                        \n"
-           " _ __| | __ _| |_ _   _ _ __  _   _ ___\n"
-           "| '_ \\| |/ _` | __| | | | '_ \\| | | / __|\n"
-           "| |_) | | (_| | |_| |_| | |_) | |_| \\__ \\\n"
-           "| .__/|_|\\__,_|\\__|\\__, | .__/ \\__,_|___/\n"
-           "| |                __/ | |              \n"
-           "|_|               |___/|_|              \n");
-}
+
 
 int main() {
     boolean isloggedin = false;
@@ -21,10 +12,10 @@ int main() {
     MenuState current_menu = welcome_menu;
     MakeArrayDinBarang(&items);
     CreateQueue(&item_req);
-    printLogo();
-    printf("Selamat datang di PURRMART. Untuk menjalankan program silahkan memasukkan perintah START atau LOAD\n");
+    visualmenu();
+    printf("\n");
     while(1){
-        printf("Silahkan masukkan perintah yang sesuai\n");
+        // printf("Silahkan masukkan perintah yang sesuai\n");
         readInput(perintah, MAX_LEN);
         if (isStrEqual(perintah, "START")){
             if (isloggedin == false){
@@ -153,11 +144,14 @@ int main() {
             }
         }
     }
-    printf("\nLoaded Users:\n");
-    for (int i = 0; i <  user.Neff; i++) {
-    printf("User %d: %s (Money: %d)\n", 
-        i+1, user.TC[i].name, user.TC[i].money);
-    }
+
+
+    // Debugging 
+    // printf("\nLoaded Users:\n");
+    // for (int i = 0; i <  user.Neff; i++) {
+    // printf("User %d: %s (Money: %d)\n", 
+    //     i+1, user.TC[i].name, user.TC[i].money);
+    // }
 
 
     

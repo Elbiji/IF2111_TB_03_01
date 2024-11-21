@@ -258,6 +258,19 @@ boolean readCommand(char *buffer, int maxLen){
     // printf("Tidak terdapat command tersebut dalam program!\n");
     return false;
 }
+
+
+void visualmenu() {
+    START("Visual/welcome.txt", "r");
+    while (!IsEOP())
+    {
+        printf("%c", GetCC());
+        ADV();
+    }
+    
+}
+
+
 // int main(){
 //     START("","");
 //     if (!isStrEqual(CurrentWord, "START")){

@@ -75,4 +75,7 @@ boolean containsSpace(const char *str);
 // Menerima input untuk dirubah ke integer
 int strToInteger ();
 
+// Welcome Menu visual
+void visualmenu();
+
 #endif
