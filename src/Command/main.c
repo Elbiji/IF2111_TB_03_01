@@ -13,6 +13,7 @@ int main() {
     MakeArrayDinBarang(&items);
     CreateQueue(&item_req);
     visualmenu();
+    MakeEmpty(&user);
     printf("\n");
     while(1){
         // printf("Silahkan masukkan perintah yang sesuai\n");
@@ -39,9 +40,10 @@ int main() {
             }
         }
         else if (isStrEqual(perintah, "QUIT")){
-            if (isloggedin == true){
-                printf("Keluar dari sesi login terlebih dahulu jika ingin keluar dari program\n");
+            if(user.Neff == 0){
+                break;
             } else {
+                quit(&user, &items);
                 break;
             }
         }
@@ -65,6 +67,13 @@ int main() {
                 change_menu(&current_menu, login_menu);
             } else {
                 printf("Untuk memulai sesi baru kamu diharuskan untuk logout terlebih dahulu\n");
+            }
+        }
+        else if (isStrEqual(perintah, "SAVE")){
+            if (isloggedin == false){
+                printf("Belum ada sesi yang dapat disimpan!\n");
+            } else {
+                save(&user, &items);
             }
         }
         else if (isStrEqual(perintah, "HELP")){

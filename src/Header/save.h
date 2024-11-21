@@ -10,6 +10,6 @@
 #include "../ADT/mesinkarakter/mesinkarakter.h"
 
 // save file baru atau overwrite existing file
-void save(const char *filename, TabUser *Users, ArrayDinBarang *array);
+void save(TabUser *Users, ArrayDinBarang *array);
 
 #endif

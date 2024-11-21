@@ -92,7 +92,7 @@ void load(TabUser *Users, ArrayDinBarang *array) {
             }
 
             inventory.name[nameindex] = '\0';
-            printf("Adding item: %s, price: %d\n", inventory.name, inventory.price);
+            // printf("Adding item: %s, price: %d\n", inventory.name, inventory.price);
             InsertBarang(array, inventory, i);
 
         }

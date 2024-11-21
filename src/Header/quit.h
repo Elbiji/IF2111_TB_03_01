@@ -10,6 +10,6 @@
 #include "save.h"
 
 // Memanggil fungsi quit 
-void quit();
+void quit(TabUser *User, ArrayDinBarang *item);
 
 #endif 

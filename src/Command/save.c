@@ -10,7 +10,7 @@ void save(TabUser *Users, ArrayDinBarang *array) {
     char filename[MAX_LEN];
     
     while (1){
-        printf("Masukkan nama untuk SAVE state program: \n");
+        printf("Masukkan nama file untuk SAVE state program: \n");
         char dest[MAX_LEN] = "save/";
         if (!readInput(filename, MAX_LEN)){
             continue;
@@ -25,7 +25,7 @@ void save(TabUser *Users, ArrayDinBarang *array) {
         }
 
         fprintf(file,"%d\n", Users->Neff);
-        for (int i = 0; i < Users->Neff){
+        for (int i = 0; i < Users->Neff; i++){
             if (i == Users->Neff-1){
                 fprintf(file, "%d %s %s", Users->TC[i].money, Users->TC[i].name, Users->TC[i].password);
             } else {
@@ -33,7 +33,7 @@ void save(TabUser *Users, ArrayDinBarang *array) {
             }
         }
         fclose(file);
-        printf("Save file berhasil disimpan");
+        printf("Save file berhasil disimpan\n");
         break;
     }
 }

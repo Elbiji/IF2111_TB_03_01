@@ -9,6 +9,8 @@
 #include "store_list.h"
 #include "store_sup.h"
 #include "store_req.h"
+#include "save.h"
+#include "quit.h"
 #include "load.h"
 #include "start.h"
 #include "work.h"
