@@ -144,14 +144,13 @@ int main() {
             }
         }
     }
+    visualexit();
 
-
-    // Debugging 
-    // printf("\nLoaded Users:\n");
-    // for (int i = 0; i <  user.Neff; i++) {
-    // printf("User %d: %s (Money: %d)\n", 
-    //     i+1, user.TC[i].name, user.TC[i].money);
-    // }
+    printf("\nLoaded Users:\n");
+    for (int i = 0; i <  user.Neff; i++) {
+    printf("User %d: %s (Money: %d)\n", 
+        i+1, user.TC[i].name, user.TC[i].money);
+    }
 
 
     

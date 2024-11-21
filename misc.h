@@ -78,4 +78,7 @@ int strToInteger ();
 // Welcome Menu visual
 void visualmenu();
 
+// Exit visual
+void visualexit();
+
 #endif

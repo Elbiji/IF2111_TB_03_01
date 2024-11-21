@@ -267,6 +267,15 @@ void visualmenu() {
         printf("%c", GetCC());
         ADV();
     }
+}
+
+void visualexit() {
+    START("Visual/exit.txt", "r");
+    while (!IsEOP())
+    {
+        printf("%c", GetCC());
+        ADV();
+    }
     
 }
 
