@@ -53,7 +53,7 @@ int strLength(char *str);
 
 // Fungsi menyalin isi dari string sumber ke string tujuan
 // menerima parameter tujuan dan sumber
-void copystrng(char *dest, const char *src)
+void copystrng(char *dest, const char *src);
 
 // Validasi input agar tidak melebihi batas 49 Karakter menggunakan mesin kata
 // menerima parameter buffer dan panjang maksimal

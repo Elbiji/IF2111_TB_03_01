@@ -1,29 +1,5 @@
 #include "../Header/main.h"
 
-void printPerry() {
-    printf(
-        "    ____________________\n"
-        "   /                    \\\n"
-        "  /     ,  ,'  ,'\\      \\\n"
-        " /    ,' ,'  ,'   \\      \\\n"
-        "|   ,' ,'   ' ,---.\\     |\n"
-        "|  /  /   ,'/'     \\\\    |\n"
-        "| |  |   ' |    O   |    |\n"
-        "| |  |   | |        |    |\n"
-        "| |  |   | |    _   |    |\n"
-        "|  \\ '.  \\ \\    /  /    |\n"
-        " \\  \\ '.  \\ `--' ,'    /\n"
-        "  \\  \\  '. `---'      /\n"
-        "   \\  \\    '-.____,  /\n"
-        "    \\  \\ ,,'    ,'  /\n"
-        "     `.//     ,'   /\n"
-        "      |/  ,--'    |\n"
-        "      |  |        |\n"
-        "      |  |        |\n"
-        "      |__|        |\n"
-        "       \\_\\________/\n"
-    );
-}
 void printLogo() {
     printf("      _       _                         \n"
            "     | |     | |                        \n"
@@ -46,7 +22,6 @@ int main() {
     MakeArrayDinBarang(&items);
     CreateQueue(&item_req);
     start(&user, &items);
-    printPerry();
     printLogo();
     printf("Selamat datang di PURRMART. Untuk menjalankan program silahkan memasukkan perintah START atau LOAD\n");
     while(1){
@@ -161,6 +136,14 @@ int main() {
             } else {
                 printf(">>STORE LIST\n");
                 DisplayStore(items);
+            }
+        }
+        else if (isStrEqual(perintah, "WORK CHALLENGE")){
+            if (isloggedin == false) {
+                printf("Perintah belum bisa dijalankan, karena anda belom LOGIN!\n");
+            } else {
+                printf(">>WORK CHALLENGE\n");
+                work_challenge(&user, userid);
             }
         }
     }

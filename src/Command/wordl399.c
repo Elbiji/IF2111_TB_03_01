@@ -1,10 +1,13 @@
 #include "wordl399.h"
 
+const char *valid_words[] = {"kotak", "katak", "demon", "dokja"};
+const int word_count = sizeof(valid_words) / sizeof(valid_words[0]);
+
 // pilih kata acak
 void pick_random(char *word) {
     srand(time(NULL));
     int random_index = rand() % word_count;
-    copystring(word, valid_words[random_index]);
+    copystrng(word, valid_words[random_index]);
 }
 
 // periksa tebakan

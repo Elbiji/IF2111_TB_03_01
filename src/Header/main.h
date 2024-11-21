@@ -12,6 +12,8 @@
 #include "load.h"
 #include "start.h"
 #include "work.h"
+#include "work_challenge.h"
+#include "wordl399.h"
 #include "tebakangka.h"
 #include "login.h"
 #include "register.h"

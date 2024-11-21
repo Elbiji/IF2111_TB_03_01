@@ -14,7 +14,12 @@
 #include "../ADT/array/array.h"
 
 // daftar kata valid
-const char *valid_words[] = {"kotak", "katak", "demon", "dokja"};
-const int word_count = sizeof(valid_words) / sizeof(valid_words[0]);
+
+extern const char *valid_words[];
+extern const int word_count;
+
+// void pick_random(char *word);
+// boolean check_word(const char *word);
+
 
 #endif

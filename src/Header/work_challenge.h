@@ -5,4 +5,7 @@
 #include "tebakangka.h"
 #include "wordl399.h"
 
+// Menampilkan daftar pekerjaan yang bisa dilakukan oleh user
+void work_challenge(TabUser *users, IdxType userIdx);
+
 #endif
