@@ -84,6 +84,8 @@ void store_sup(Queue *items_request, ArrayDinBarang *array, IdxType Iduser, TabU
                 }
 
                 harga = val;
+                user->TC[Iduser].money -= harga;
+                printf("Uangmu sekarang : Rp %d\n", user->TC[Iduser].money);
                 
                 break;
             } 

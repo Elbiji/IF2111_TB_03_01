@@ -7,7 +7,7 @@
 #include "boolean.h"
 
 #define IDX_UNDEF -1
-#define CAPACITY 5
+#define CAPACITY 10
 
 typedef struct {
   char name[50];

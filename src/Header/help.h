@@ -10,4 +10,8 @@ typedef enum {
     main_menu
 } MenuState;
 
+//fungsi untuk menampilkan HELP sesuai menu aktif
+void help(MenuState *current_menu);
+//fungsi ganti menu
+void change_menu(MenuState *current_menu, MenuState new_menu);
 #endif

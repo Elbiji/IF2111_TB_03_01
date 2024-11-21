@@ -10,8 +10,7 @@
 #define MIN_PASSWORD_LEN 6
 #define MAX_PASSWORD_LEN 12
 
-
 // Fungsi login
-int login(TabUser list, User *currentUser);
+void login(TabUser list, IdxType *userid, boolean *islogged) ;
 
 #endif

@@ -68,6 +68,14 @@ int GetCapacity(ArrayDinBarang array){
  * Prekondisi: array terdefinisi, i di antara 0..Length(array).
  */
 void InsertBarang(ArrayDinBarang *array, Barang el, IdxType i){
+    if ( i >= array->Capacity) {
+        GrowArray(array);
+        if (i >= array->Capacity) {
+            printf("Allocation failed\n");
+            return;
+        }
+    }
+
     for (int j = 0; j < MAX_LEN; j++){
         array->A[i].name[j] = '\0';
     }
@@ -109,3 +117,43 @@ void DeleteAt(ArrayDinBarang *array, IdxType i){
     array->Neff--;
 }
 
+
+/**
+ * Fungsi untuk menambah jumlah kapasitan array dinamis
+ * Prekondisi: array terdefinisi, i di antara 0..Length(array).
+ */
+void GrowArray(ArrayDinBarang *array){
+    int newCapacity = array->Capacity*2;
+
+    Barang *temp = (Barang*)realloc(array->A, newCapacity * sizeof(Barang));
+
+    if (temp != NULL){
+        array->A = temp;
+        array->Capacity = newCapacity;
+
+        for (int i = array->Neff; i < newCapacity; i++){
+            array->A[i].price = 0;
+            array->A[i].name[0] = '\0';
+        }
+    } else {
+        printf("error\n");
+    }
+}
+
+void DecreaseArray(ArrayDinBarang *array){
+    if (array->Capacity <= InitialSize){
+        return;
+    }
+
+    int newCapacity = array->Capacity/2;
+    if (array->Neff > newCapacity){
+        printf("Array still needs slot. Further decrease would lead to conflict!\n");
+        return;
+    }
+
+    Barang *temp = (Barang*)realloc(array->A, newCapacity * sizeof(Barang));
+    if (temp != NULL){
+        array->A = temp;
+        array->Capacity = newCapacity;
+    }
+}

@@ -32,6 +32,7 @@ void store_rmv(ArrayDinBarang *array){
         } else {
             printf("Barang berhasil dihilangkan.\n");
             DeleteAt(array, id_item_in_shop);
+            DecreaseArray(array);
             // for (int i = 0; i < array->Neff; i++) {
             // printf("Item %d: %s (Price: %d)\n", 
             //     i+1, array->A[i].name, array->A[i].price);

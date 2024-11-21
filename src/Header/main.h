@@ -12,5 +12,9 @@
 #include "load.h"
 #include "start.h"
 #include "work.h"
+#include "tebakangka.h"
+#include "login.h"
+#include "register.h"
+#include "logout.h"
 
 #endif
