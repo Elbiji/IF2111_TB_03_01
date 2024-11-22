@@ -16,6 +16,7 @@
 #include "src/ADT/mesinkarakter/mesinkarakter.h"
 #include "src/ADT/mesinkata/mesinkata.h"
 
+
 // Mengembalikan index sebuah barang pada toko menggunakan traversal
 // menerima parameter array dinamis dan string
 IdxType IndexItemInShop(ArrayDinBarang array, char *str);

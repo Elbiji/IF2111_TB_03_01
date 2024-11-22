@@ -260,6 +260,7 @@ boolean readCommand(char *buffer, int maxLen){
     return false;
 }
 
+
 void visual(char *path) {
     char dest[MAX_LEN] = "Visual/";
     customStrcat(dest, path);

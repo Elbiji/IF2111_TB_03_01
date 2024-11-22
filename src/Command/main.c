@@ -160,6 +160,9 @@ int main() {
                 DoWork(&user, userid);
             }
         }
+        else {
+            printf("Perintah tidak valid!\n");
+        }
     }
     visual("exit.txt");
 
