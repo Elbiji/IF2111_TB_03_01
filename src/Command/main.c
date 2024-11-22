@@ -1,4 +1,5 @@
 #include "../Header/main.h"
+#include <stdlib.h>
 
 
 
@@ -12,7 +13,7 @@ int main() {
     MenuState current_menu = welcome_menu;
     MakeArrayDinBarang(&items);
     CreateQueue(&item_req);
-    visualmenu();
+    visual("welcome.txt");
     MakeEmpty(&user);
     printf("\n");
     while(1){
@@ -108,6 +109,8 @@ int main() {
             if (isloggedin == false){
                 printf("Perintah belum bisa dijalankan, karena anda belom LOGIN!\n");
             } else {
+                visual("storerequest.txt");
+                printf("\n");
                 printf(">>STORE REQUEST\n");
                 store_request(&item_req, items);
             }
@@ -116,6 +119,8 @@ int main() {
             if (isloggedin == false){
                 printf("Perintah belum bisa dijalankan, karena anda belom LOGIN!\n");
             } else {
+                visual("storesupply.txt");
+                printf("\n");
                 printf(">>STORE SUPPLY\n");
                 store_sup(&item_req, &items, userid, &user);
             }
@@ -124,6 +129,8 @@ int main() {
             if (isloggedin == false){
                 printf("Perintah belum bisa dijalankan, karena anda belom LOGIN!\n");
             } else {
+                visual("storeremove.txt");
+                printf("\n");
                 printf(">>STORE REMOVE\n");
                 store_rmv(&items);
             }
@@ -133,6 +140,7 @@ int main() {
                 printf("Perintah belum bisa dijalankan, karena anda belom LOGIN!\n");
             } else {
                 printf(">>STORE LIST\n");
+                printf("\n");
                 DisplayStore(items);
             }
         }
@@ -153,7 +161,7 @@ int main() {
             }
         }
     }
-    visualexit();
+    visual("exit.txt");
 
     printf("\nLoaded Users:\n");
     for (int i = 0; i <  user.Neff; i++) {

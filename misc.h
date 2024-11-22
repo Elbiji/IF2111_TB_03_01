@@ -2,7 +2,7 @@
 #define __MISC_H_
 
 #include <stdlib.h>
-
+#include "src/Header/load.h"
 // #include "../ADT/array/array.h"
 // #include "../ADT/arraydin/arraydin.h"
 // #include "../ADT/queue/queue.h"
@@ -75,10 +75,8 @@ boolean containsSpace(const char *str);
 // Menerima input untuk dirubah ke integer
 int strToInteger ();
 
-// Welcome Menu visual
-void visualmenu();
+// visual
+void visual(char* path);
 
-// Exit visual
-void visualexit();
 
 #endif

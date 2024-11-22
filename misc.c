@@ -1,4 +1,5 @@
 #include "misc.h"
+#
 
 IdxType IndexItemInShop(ArrayDinBarang array, char *str){
     for (int i = 0; i < array.Neff; i++){
@@ -259,24 +260,15 @@ boolean readCommand(char *buffer, int maxLen){
     return false;
 }
 
-
-void visualmenu() {
-    START("Visual/welcome.txt", "r");
+void visual(char *path) {
+    char dest[MAX_LEN] = "Visual/";
+    customStrcat(dest, path);
+    START(dest, "r");
     while (!IsEOP())
     {
         printf("%c", GetCC());
         ADV();
     }
-}
-
-void visualexit() {
-    START("Visual/exit.txt", "r");
-    while (!IsEOP())
-    {
-        printf("%c", GetCC());
-        ADV();
-    }
-    
 }
 
 

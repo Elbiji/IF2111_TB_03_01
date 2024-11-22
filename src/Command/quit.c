@@ -13,7 +13,7 @@ void quit(TabUser *User, ArrayDinBarang *item) {
         } else if (isStrEqual(input, "N") || isStrEqual(input, "n")) {
             printf("\nKamu keluar dari PURRMART.\nDadah ^_^/\n");
             exit(0);
-        } else if (input != '\n') {
+        } else {
             printf("Masukkan tidak valid. Harap pilih Y atau N: ");
         }
     } while (1);
