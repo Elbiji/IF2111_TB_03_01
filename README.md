@@ -57,7 +57,7 @@ Karena Borma hanya beroperasi secara tatap muka, O.W.C.A mengembangkan sistem be
 
 # HOW TO RUN
 Pastikan di komputer anda dapat menjalankan fungsi `make`.
-> - Untuk OS Window :
+- Untuk OS Window :
   ```bash
   MINGW32-make clean // Membersihkan file atau hasil kompilasi sebelumnya
   MINGW32-make run   // Menjalankan program setelah kompilasi
