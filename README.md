@@ -1,3 +1,10 @@
+![Static Badge](https://img.shields.io/badge/build-passing-lavender)
+![Static Badge](https://img.shields.io/badge/Release-2.0-turqoise)
+![Static Badge](https://img.shields.io/badge/Copyright-namakel-red)
+![Static Badge](https://img.shields.io/badge/PURR-MART-blue)
+
+![Header](https://github.com/Elbiji/IF2111_TB_03_01/blob/main/image/platypus.jpg)
+
 # IF2111_TB_03_01
 > Tugas Besar - IF2111 Algoritma dan Struktur Data STI 2024
 
