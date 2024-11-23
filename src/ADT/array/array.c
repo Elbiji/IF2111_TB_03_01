@@ -101,8 +101,8 @@ void TulisIsi (TabUser T) {
         printf("Tabel kosong\n");
     }
     else {
-        for (int i = GetFirstIdx(T); i <= GetLastIdx(T); i++) {
-            printf("%s : %d", T.TC[i].name, T.TC[i].money);
+        for (int i = GetFirstIdx(T)-1; i < GetLastIdx(T); i++) {
+            printf("%s : %d\n", T.TC[i].name, T.TC[i].money);
         }
     }
 }

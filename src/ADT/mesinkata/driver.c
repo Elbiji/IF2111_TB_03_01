@@ -1,6 +1,6 @@
 #include <stdio.h>
 #include "mesinkata.h"
-#include "../../misc.h"
+#include "../../../misc.h"
 
 void testMesinKata() {
     char path[50];

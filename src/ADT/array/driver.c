@@ -1,6 +1,6 @@
 #include "array.h"
 #include <stdio.h>
-#include "../../misc.h"
+#include "../../../misc.h"
 
 void testArray() {
     TabUser users;
@@ -43,7 +43,7 @@ void testArray() {
         printf("14. Exit\n");
         printf("Enter your choice: ");
         readInput(input, 10);
-        choice = strToInt(input);
+        choice = atoi(input);
 
         switch (choice) {
             case 1:
@@ -54,7 +54,7 @@ void testArray() {
                     readInput(password, 50);
                     printf("Enter initial money: ");
                     readInput(input, 10);
-                    money = strToInt(input);
+                    money = atoi(input);
 
                     copystrng(users.TC[users.Neff].name, username);
                     copystrng(users.TC[users.Neff].password, password);
@@ -99,7 +99,7 @@ void testArray() {
                 if (!IsUserEmpty(users)) {
                     printf("Enter index (1-based): ");
                     readInput(input, 10);
-                    index = strToInt(input);
+                    index = atoi(input);
 
                     if (IsIdxEff(users, index)) {
                         printf("Username: %s\n", GetUserName(users, index));
@@ -117,12 +117,12 @@ void testArray() {
                 if (!IsUserEmpty(users)) {
                     printf("Enter index (1-based): ");
                     readInput(input, 10);
-                    index = strToInt(input);
+                    index = atoi(input);
 
                     if (IsIdxEff(users, index)) {
                         printf("Enter new money value: ");
                         readInput(input, 10);
-                        money = strToInt(input);
+                        money = atoi(input);
                         SetMoney(&users, index, money);
                         printf("Money updated successfully.\n");
                     } else {
@@ -136,7 +136,7 @@ void testArray() {
             case 9:
                 printf("Enter index to check (1-based): ");
                 readInput(input, 10);
-                index = strToInt(input);
+                index = atoi(input);
 
                 if (IsIdxValid(users, index)) {
                     printf("Index %d is valid.\n", index);
@@ -148,7 +148,7 @@ void testArray() {
             case 10:
                 printf("Enter index to check (1-based): ");
                 readInput(input, 10);
-                index = strToInt(input);
+                index = atoi(input);
 
                 if (IsIdxEff(users, index)) {
                     printf("Index %d is effective.\n", index);
