@@ -1,5 +1,4 @@
 #include "misc.h"
-#
 
 IdxType IndexItemInShop(ArrayDinBarang array, char *str){
     for (int i = 0; i < array.Neff; i++){
