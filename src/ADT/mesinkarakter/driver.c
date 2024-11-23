@@ -26,7 +26,7 @@ void testMesinKarakter() {
     printf("Enter your choice: ");
     char input[2];
     readInput(input, 2);
-    int choice = strToInt(input);
+    int choice = atoi(input);
 
     if (choice == 1) {
         printf("Enter file path: ");
@@ -72,7 +72,6 @@ void testMesinKarakter() {
         }
         fclose(pitaFile);
         printf("Writing complete.\n");
-
     } else {
         printf("Invalid input mode.\n");
         return;

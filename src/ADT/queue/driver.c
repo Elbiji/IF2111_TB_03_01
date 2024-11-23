@@ -28,7 +28,7 @@ void testQueue() {
         printf("4. Exit\n");
         printf("Enter your choice: ");
         readInput(input, 10);
-        choice = strToInt(input);
+        choice = atoi(input);
 
         switch (choice) {
             case 1: {
