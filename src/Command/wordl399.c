@@ -71,7 +71,7 @@ void play_wordl(TabUser *users, IdxType userIdx) {
     }
 
     while (chances > 0) {
-        printf("\nMasukkan kata tebakan Anda: ");
+        printf("\nMasukkan kata tebakan Anda (input dalam lowercase): ");
         if (!readInput(guess, WORD_LENGTH + 1)) {
             printf("Input tidak valid! Pastikan input terdiri dari 5 huruf.\n");
             continue;
