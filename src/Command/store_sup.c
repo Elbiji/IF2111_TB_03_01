@@ -85,7 +85,7 @@ void store_sup(Queue *items_request, ArrayDinBarang *array, IdxType Iduser, TabU
 
                 harga = val;
                 user->TC[Iduser].money -= harga;
-                printf("Uangmu sekarang : Rp %d\n", user->TC[Iduser].money);
+                printf("\n");
                 
                 break;
             } 
@@ -98,6 +98,8 @@ void store_sup(Queue *items_request, ArrayDinBarang *array, IdxType Iduser, TabU
             }
             barang_antrian.name[i] = '\0';
             user->TC[Iduser].money - harga;
+            printf("%s dengan harga %d telah ditambahkan ke toko.\n", barang_antrian.name, harga);
+            printf("Uangmu sekarang : Rp %d\n", user->TC[Iduser].money);
             InsertBarang(array, barang_antrian, index);
 
             // printf("\nLoaded Items:\n");
@@ -111,7 +113,13 @@ void store_sup(Queue *items_request, ArrayDinBarang *array, IdxType Iduser, TabU
             dequeue(items_request, &antrian);
             // displayQueue(*items_request);
         } else if (Hold) {
+            int i;
+            for (i = 0; items_request->buffer[itemindex].name[i] != '\0' && i < MAX_LEN-1; i++){
+                barang_antrian.name[i] = items_request->buffer[itemindex].name[i];
+            }
+            barang_antrian.name[i] = '\0';
             dequeue(items_request, &antrian);
+            printf("%s dikembalikan ke antrian.\n", barang_antrian.name, harga);
             enqueue(items_request, antrian);
             // displayQueue(*items_request);
         } else if(isDone(response)) {
