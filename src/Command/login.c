@@ -13,7 +13,7 @@ void login(TabUser list, IdxType *userid, boolean *islogged) { // Login pengguna
         return;
     }
 
-    while (ctr < 5) {
+    while (ctr < 3) {
         // Input username
         printf("Masukkan username: ");
         if (!readInput(username, 50)) continue; // Ulang jika input gagal
