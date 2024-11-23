@@ -111,6 +111,13 @@ void store_sup(Queue *items_request, ArrayDinBarang *array, IdxType Iduser, TabU
             // displayQueue(*items_request);
         } else if (Remove) {
             dequeue(items_request, &antrian);
+            int i;
+            for (i = 0; items_request->buffer[itemindex].name[i] != '\0' && i < MAX_LEN-1; i++){
+                barang_antrian.name[i] = items_request->buffer[itemindex].name[i];
+            }
+            barang_antrian.name[i] = '\0';
+            dequeue(items_request, &antrian);
+            printf("%s dibuang dari antrian.\n", barang_antrian.name, harga);
             // displayQueue(*items_request);
         } else if (Hold) {
             int i;
