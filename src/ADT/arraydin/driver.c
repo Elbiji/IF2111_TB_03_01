@@ -1,6 +1,6 @@
 #include "arraydin.h"
 #include <stdio.h>
-#include "../../misc.h"
+#include "../../../misc.h"
 
 
 void testArrayDinBarang(){
@@ -29,7 +29,7 @@ void testArrayDinBarang(){
         printf("6. Exit\n");
         printf("Enter your choice: ");
         readInput(input, 5);
-        choice = strToInt(input);
+        choice = atoi(input);
 
         switch (choice) {
             case 1: {
@@ -40,11 +40,11 @@ void testArrayDinBarang(){
                 printf("Enter price: ");
                 char priceInput[20];
                 readInput(priceInput, 20);
-                newBarang.price = strToInt(priceInput);
+                newBarang.price = atoi(priceInput);
 
                 printf("Enter index (0-based): ");
                 readInput(input, 5);
-                int idx = strToInt(input);
+                int idx = atoi(input);
 
                 InsertBarang(&array, newBarang, idx);
                 printf("Barang inserted successfully.\n");
@@ -54,7 +54,7 @@ void testArrayDinBarang(){
             case 2: {
                 printf("Enter index to delete (0-based): ");
                 readInput(input, 5);
-                int idx = strToInt(input);
+                int idx = atoi(input);
 
                 DeleteAt(&array, idx);
                 printf("Barang deleted successfully.\n");

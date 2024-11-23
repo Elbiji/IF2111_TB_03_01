@@ -21,8 +21,8 @@ OUTPUT = main.exe
 # Source files
 SRCS = $(ROOT_SRCS) \
        $(ARRAY_DIR)/array.c \
-       $(ARRAY_DIR)/driver.c \
        $(ARRAYDIN_DIR)/arraydin.c \
+       $(ARRAYDIN_DIR)/driver.c \
        $(QUEUE_DIR)/queue.c \
        $(CMD_DIR)/store_req.c \
        $(CMD_DIR)/store_sup.c \
