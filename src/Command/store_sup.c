@@ -2,7 +2,7 @@
 
 void store_sup(Queue *items_request, ArrayDinBarang *array, IdxType Iduser, TabUser *user){
     printf("======= [STORE  SUPPLY] =======\n");
-
+    boolean status;
     Barang barang_antrian;
     nama_barang antrian;
     int harga;
@@ -53,8 +53,9 @@ void store_sup(Queue *items_request, ArrayDinBarang *array, IdxType Iduser, TabU
         }
 
         if (Accept) {
-            dequeue(items_request, &antrian);
-            while(1){       
+            
+            while(1){   
+                status = true;    
                 printf("Harga Barang : \n");
                 
                 START("","");
@@ -75,7 +76,9 @@ void store_sup(Queue *items_request, ArrayDinBarang *array, IdxType Iduser, TabU
 
                 if (user->TC[Iduser].money - val < 0){
                     printf("Uang kamu tidak mencukupi!\n");
-                    continue;
+                    enqueue(&items_request, antrian);
+                    status = false;
+                    break;
                 }
 
                 if (!isvalid || val <= 0){
@@ -89,18 +92,22 @@ void store_sup(Queue *items_request, ArrayDinBarang *array, IdxType Iduser, TabU
                 
                 break;
             } 
-            
-            IdxType index = array->Neff;
-            barang_antrian.price = harga;
-            int i;
-            for (i = 0; items_request->buffer[itemindex].name[i] != '\0' && i < MAX_LEN-1; i++){
-                barang_antrian.name[i] = items_request->buffer[itemindex].name[i];
+
+            if (status){
+                dequeue(items_request, &antrian);
+                IdxType index = array->Neff;
+                barang_antrian.price = harga;
+                int i;
+                for (i = 0; items_request->buffer[itemindex].name[i] != '\0' && i < MAX_LEN-1; i++){
+                    barang_antrian.name[i] = items_request->buffer[itemindex].name[i];
+                }
+                barang_antrian.name[i] = '\0';
+                user->TC[Iduser].money - harga;
+                printf("%s dengan harga %d telah ditambahkan ke toko.\n", barang_antrian.name, harga);
+                printf("Uangmu sekarang : Rp %d\n", user->TC[Iduser].money);
+                InsertBarang(array, barang_antrian, index);
             }
-            barang_antrian.name[i] = '\0';
-            user->TC[Iduser].money - harga;
-            printf("%s dengan harga %d telah ditambahkan ke toko.\n", barang_antrian.name, harga);
-            printf("Uangmu sekarang : Rp %d\n", user->TC[Iduser].money);
-            InsertBarang(array, barang_antrian, index);
+
 
             // printf("\nLoaded Items:\n");
             // for (int i = 0; i < array->Neff; i++) {
