@@ -154,7 +154,6 @@ int main() {
             if (isloggedin == false) {
                 printf("Perintah belum bisa dijalankan, karena anda belom LOGIN!\n");
             } else {
-                printf(">>WORK CHALLENGE\n");
                 work_challenge(&user, userid);
             }
         }
