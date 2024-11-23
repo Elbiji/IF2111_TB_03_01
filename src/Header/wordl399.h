@@ -15,6 +15,7 @@
 
 // daftar kata valid
 
+void play_wordl(TabUser *users, IdxType userIdx);
 extern const char *valid_words[];
 extern const int word_count;
 
