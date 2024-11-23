@@ -9,25 +9,18 @@
 > Tugas Besar - IF2111 Algoritma dan Struktur Data STI 2024
 
 # About
-Purry si Platypus, alias Agent P, mendapati dirinya dalam misi terbesar yang pernah ada. Dr. Asep Spakbor, ilmuwan jahat paling berbahaya, telah menciptakan mesin mengerikan bernama Oppenheimer-inator yang dirancang untuk menghancurkan wilayah tiga negara bagian. Dengan ancaman yang semakin nyata, O.W.C.A. (Organisasi Warga Cool Abiez) memanggil semua agen, termasuk Purry, untuk menghentikan rencana jahat ini.
+Purry si Platypus, alias Agent P, harus menghentikan Dr. Asep Spakbor yang ingin menghancurkan wilayah tiga negara bagian dengan mesin Oppenheimer-inator. Pertarungan panjang membuat O.W.C.A kehabisan sumber daya hingga Purry memanfaatkan jaringan kenalannya di Bojongsoang, khususnya toko Borma yang menyediakan barang-barang perang.
 
-Namun, pertempuran selama berbulan-bulan menguras sumber daya O.W.C.A. Harapan mulai memudar—sampai Purry mengungkap senjata rahasianya: jaringan kenalannya di Bojongsoang, khususnya dengan pegawai toko Borma. Toko ini, yang tampak seperti supermarket biasa, sebenarnya adalah pemasok barang-barang perang yang vital bagi O.W.C.A. Sayangnya, Borma hanya beroperasi secara tatap muka, sementara O.W.C.A tidak memiliki transportasi yang memadai untuk pergi ke Bojongsoang.
-
-Untuk menjembatani masalah ini, tim programmer terbaik O.W.C.A ditugaskan untuk menciptakan sistem belanja canggih yang memungkinkan akses jarak jauh ke Borma. Sistem ini diberi nama PURRMART.
-
-PURRMART adalah solusi inovatif yang tidak hanya menjadi alat untuk menyelamatkan O.W.C.A dari kehabisan suplai, tetapi juga menjadi senjata penting untuk melawan Dr. Asep Spakbor. Dengan teknologi dan kerja sama tim, agen-agen O.W.C.A, termasuk kalian, siap menghadapi tantangan besar ini. Bersama, kalian akan membangun masa depan Danville yang aman dan sejahtera.
+Karena Borma hanya beroperasi secara tatap muka, O.W.C.A mengembangkan sistem belanja jarak jauh bernama PURRMART. Sistem ini menjadi penyelamat suplai sekaligus senjata penting melawan Dr. Asep Spakbor. Dengan PURRMART, agen O.W.C.A siap menghadapi tantangan besar dan memastikan masa depan Danville yang aman.
 
 # Contributors
->Member 1  : Bagas Noor Fadhilah 18223115
-
->Member 2  : Khairunnisa Azizah 18223117
-
->Member 3  : Maria Vransiska P.C.T.D.P 18223119
-
->Member 4  : Theresia Ivana M.S. 18223126
-
->Member 5  : Aulia Azka Azzahra 18223131
-
+| NIM       | Nama                     |
+|-----------|--------------------------|
+| 18223115  | Bagas Noor Fadhilah      |
+| 18223117  | Khairunnisa Azizah       |
+| 18223119  | Maria Vransiska P.C.T.D.P|
+| 18223126  | Theresia Ivana M.S.      |
+| 18223131  | Aulia Azka Azzahra       |
 
 # Command
 ## START
@@ -63,4 +56,10 @@ PURRMART adalah solusi inovatif yang tidak hanya menjadi alat untuk menyelamatka
 > Modul quit digunakan agar pengguna dapat keluar dari program
 
 # HOW TO RUN
+Pastikan di komputer anda dapat menjalankan fungsi `make`.
+> - Untuk OS Window :
+  ```bash
+  MINGW32-make clean // Membersihkan file atau hasil kompilasi sebelumnya
+  MINGW32-make run   // Menjalankan program setelah kompilasi
+  ```
 
