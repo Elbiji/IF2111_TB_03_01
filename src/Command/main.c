@@ -37,7 +37,7 @@ int main() {
                 }
                 change_menu(&current_menu, login_menu);
             } else {
-                printf("Untuk memulai sesi baru kamu diharuskan untuk logout terlebih dahulu\n");
+                printf("Untuk memulai sesi baru kamu diharuskan untuk LOGOUT terlebih dahulu\n");
             }
         }
         else if (isStrEqual(perintah, "QUIT")){
