@@ -116,9 +116,13 @@ int main() {
                 printf("Perintah belum bisa dijalankan, karena anda belom LOGIN!\n");
             } else {
                 visual("storerequest.txt");
-                printf("\n");
-                printf(">>STORE REQUEST\n");
-                store_request(&item_req, items);
+                if (isFull(item_req)){
+                    printf("Antrian penuh, harap hilangkan atau masukkan beberapa barang dari antrian.\n");
+                } else {
+                    printf("\n");
+                    printf(">>STORE REQUEST\n");
+                    store_request(&item_req, items);
+                }
             }
         }
         else if (isStrEqual(perintah, "STORE SUPPLY")){
