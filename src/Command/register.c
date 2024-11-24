@@ -31,6 +31,10 @@ void registerUser(TabUser *list) {
             printf("Masukkan password (maksimum 20 karakter): ");
             if (!readInput(password, 50)) continue; // Ulang jika input tidak valid
             int passLen = strLength(password);
+            if (containsSpace(password)) { // Validasi username tidak mengandung spasi
+                printf("Password tidak boleh mengandung spasi.\n");
+                continue;
+            }
             if (passLen < 6 || passLen > 20) { // Validasi panjang password
                 printf("Password tidak valid! Panjang password harus 6-20 karakter.\n");
                 continue;

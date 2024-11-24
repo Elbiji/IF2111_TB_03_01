@@ -15,7 +15,7 @@ int ChooseJob() {
     char jobname[50];
     int jobIdx;
 
-    do {
+    while(1){
         printf("Masukkan nama pekerjaan yang dipilih: ");
         if (!readInput(jobname, 50)) {
             printf("Input tidak valid. Silakan coba lagi.\n");
@@ -28,9 +28,10 @@ int ChooseJob() {
         jobIdx = IndexJobInList(listjob, totaljob, jobname);
         if (jobIdx == -1) {
             printf("Pekerjaan tidak ditemukan. Silakan coba lagi.\n");
+        } else {
+            break;
         }
-    } while (jobIdx == -1);
-
+    }
     return jobIdx; // Mengembalikan indeks pekerjaan yang valid
 }
 
