@@ -145,11 +145,11 @@ void DecreaseArray(ArrayDinBarang *array){
         return;
     }
 
-    int newCapacity = array->Capacity/2;
     if (array->Neff > newCapacity){
         printf("Array still needs slot. Further decrease would lead to conflict!\n");
         return;
     }
+    int newCapacity = array->Capacity/2;
 
     Barang *temp = (Barang*)realloc(array->A, newCapacity * sizeof(Barang));
     if (temp != NULL){

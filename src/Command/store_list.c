@@ -4,6 +4,7 @@
 void DisplayStore(ArrayDinBarang store) {
     if (IsEmpty(store)) {
         printf("TOKO KOSONG\n");
+        printf("Anda telah keluar dari STORE LIST\n");
     } else {
         printf("List barang yang ada di toko:\n");
         for (int i = 0; i < Length(store); i++) {

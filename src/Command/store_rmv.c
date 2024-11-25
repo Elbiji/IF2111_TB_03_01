@@ -41,6 +41,7 @@ void store_rmv(ArrayDinBarang *array){
     }
     if (IsEmpty(*array)){
         printf("Tidak terdapat barang di toko!\n");
+        printf("Anda telah keluar dari STORE REMOVE\n");
     } else {
         printf("Anda telah keluar dari STORE REMOVE\n");
     }
