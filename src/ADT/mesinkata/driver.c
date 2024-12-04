@@ -23,7 +23,7 @@ void testMesinKata() {
     printf("Enter your choice: ");
     char input[2];
     readInput(input, 2);
-    int choice = strToInt(input);
+    int choice = atoi(input);
 
     if (choice == 1) {
         printf("Enter file path: ");
