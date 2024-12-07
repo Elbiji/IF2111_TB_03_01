@@ -1,13 +1,21 @@
+4
+10 AK47
+20 Lalabu
+20 Ayam Goreng Crisbar
+500 Meong
+2
+100 user1 alstrukdatkeren
 6
-10 a
-20 b
-20 c d e
-4100 Doofincshzmert
-1 AK47
-1 PURRRRY
-5
-1000 ligma alstrukdatkeren
-25 praktikan kerenbangetkak
-10948 bagas mangeyak
-200 tes Bagasthe!1
-0 NUB LIGMABR
+40 AK47
+100 AK47
+35 Lalabu
+10 AK47
+500 Meong
+20 Ayam Goreng Crisbar
+2
+Ayam Goreng Crisbar
+AK47
+25 user2 kerenbangetkak
+0
+1
+Meong

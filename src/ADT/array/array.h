@@ -1,4 +1,7 @@
 #include "../boolean/boolean.h"
+#include "../setmap/map.h"
+#include "../stack/stack.h"
+#include "../listlinier/dplinkedlist.h"
 
 #ifndef ARRAY_H
 #define ARRAY_H
@@ -18,6 +21,9 @@ typedef struct {
   char name[IdxMax];
   char password[IdxMax];
   integer money;
+  Map keranjang;
+  Stack riwayat_pembelian;
+  List wishlist;
 } User;
 
 typedef struct
