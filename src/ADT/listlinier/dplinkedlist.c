@@ -1,6 +1,6 @@
 #include <stdio.h>
 #include <stdlib.h>
-#include "listdp.h"
+#include "dplinkedlist.h"
 
 /* PROTOTYPE */
 /****************** TEST LIST KOSONG ******************/
@@ -18,7 +18,7 @@ void CreateEmpty (List *L) {
 }
 
 /****************** Manajemen Memori ******************/
-address Alokasi (infotype X) {
+address Alokasi (info_barang X) {
 /* Mengirimkan address hasil alokasi sebuah elemen */
 /* Jika alokasi berhasil, maka address tidak nil. */
 /* Misalnya: menghasilkan P, maka Info(P)=X, Next(P)=Nil, Prev(P)=Nil */
@@ -39,7 +39,7 @@ void Dealokasi (address P) {
 }
 
 /****************** PENCARIAN SEBUAH ELEMEN LIST ******************/
-address Search (List L, infotype X) {
+address Search (List L, info_barang X) {
 /* Mencari apakah ada elemen list dengan Info(P)=X */
 /* Jika ada, mengirimkan address elemen tersebut. */
 /* Jika tidak ada, mengirimkan Nil */
@@ -52,7 +52,7 @@ address Search (List L, infotype X) {
 
 /****************** PRIMITIF BERDASARKAN NILAI ******************/
 /*** PENAMBAHAN ELEMEN ***/
-void InsVFirst (List *L, infotype X) {
+void InsVFirst (List *L, info_barang X) {
 /* I.S. L mungkin kosong */
 /* F.S. Melakukan alokasi sebuah elemen dan */
 /* menambahkan elemen pertama dengan nilai X jika alokasi berhasil */
@@ -67,7 +67,7 @@ void InsVFirst (List *L, infotype X) {
         First(*L) = P;
     }
 }
-void InsVLast (List *L, infotype X) {
+void InsVLast (List *L, info_barang X) {
 /* I.S. L mungkin kosong */
 /* F.S. Melakukan alokasi sebuah elemen dan */
 /* menambahkan elemen list di akhir: elemen terakhir yang baru */
@@ -85,7 +85,7 @@ void InsVLast (List *L, infotype X) {
 }
 
 /*** PENGHAPUSAN ELEMEN ***/
-void DelVFirst (List *L, infotype *X) {
+void DelVFirst (List *L, info_barang *X) {
 /* I.S. List L tidak kosong  */
 /* F.S. Elemen pertama list dihapus: nilai info disimpan pada X */
 /*      dan alamat elemen pertama di-dealokasi */
@@ -100,7 +100,7 @@ void DelVFirst (List *L, infotype *X) {
     free(P);
 }
 
-void DelVLast (List *L, infotype *X) {
+void DelVLast (List *L, info_barang *X) {
 /* I.S. list tidak kosong */
 /* F.S. Elemen terakhir list dihapus: nilai info disimpan pada X */
 /*      dan alamat elemen terakhir di-dealokasi */
@@ -200,7 +200,7 @@ void DelLast (List *L, address *P) {
     }
 }
 
-void DelP (List *L, infotype X) {
+void DelP (List *L, info_barang X) {
 /* I.S. Sembarang */
 /* F.S. Jika ada elemen list beraddress P, dengan Info(P)=X  */
 /* maka P dihapus dari list dan didealokasi */

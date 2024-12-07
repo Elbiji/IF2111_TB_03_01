@@ -7,6 +7,9 @@
 #include "../ADT/array/array.h"
 #include "../ADT/arraydin/arraydin.h"
 #include "../ADT/mesinkata/mesinkata.h"
+#include "../ADT/stack/stack.h"
+#include "../ADT/setmap/map.h"
+#include "../ADT/listlinier/dplinkedlist.h"
 #include "../ADT/mesinkarakter/mesinkarakter.h"
 
 // Load file baru

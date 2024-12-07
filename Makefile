@@ -14,6 +14,7 @@ MESINKATA_DIR = $(ADT_DIR)/mesinkata
 MESINKAR_DIR = $(ADT_DIR)/mesinkarakter
 LIST_DIR = $(ADT_DIR)/list
 SETMAP_DIR = $(ADT_DIR)/setmap
+STACK_DIR = $(ADT_DIR)/stack
 LINKEDLIST_DIR = $(ADT_DIR)/listlinier
 ROOT_SRCS = misc.c
 
@@ -43,6 +44,7 @@ SRCS = $(ROOT_SRCS) \
        $(CMD_DIR)/main.c \
        $(CMD_DIR)/quit.c \
        $(SETMAP_DIR)/map.c \
+       $(STACK_DIR)/stack.c \
        $(LINKEDLIST_DIR)/dplinkedlist.c \
        $(MESINKATA_DIR)/mesinkata.c \
        $(MESINKAR_DIR)/mesinkarakter.c
@@ -66,7 +68,7 @@ $(OUTPUT): $(OBJS)
 
 # Clean build files
 clean:
-	cmd /C "del /Q main.exe misc.o src\Command\quit.o src\Command\wordl399.o src\Command\work_challenge.o src\Command\login.o src\Command\logout.o src\Command\register.o src\Command\tebakangka.o src\Command\save.o src\Command\help.o src\Command\main.o src\Command\store_list.o src\Command\load.o src\Command\work.o src\Command\store_req.o src\Command\start.o src\Command\store_sup.o src\Command\store_rmv.o src\ADT\array\array.o src\ADT\arraydin\arraydin.o src\ADT\queue\queue.o src\ADT\mesinkata\mesinkata.o src\ADT\mesinkarakter\mesinkarakter.o src\ADT\listlinier\dplinkedlist.o src\ADT\setmap\map.o"
+	cmd /C "del /Q main.exe misc.o src\Command\quit.o src\Command\wordl399.o src\Command\work_challenge.o src\Command\login.o src\Command\logout.o src\Command\register.o src\Command\tebakangka.o src\Command\save.o src\Command\help.o src\Command\main.o src\Command\store_list.o src\Command\load.o src\Command\work.o src\Command\store_req.o src\Command\start.o src\Command\store_sup.o src\Command\store_rmv.o src\ADT\array\array.o src\ADT\arraydin\arraydin.o src\ADT\queue\queue.o src\ADT\mesinkata\mesinkata.o src\ADT\mesinkarakter\mesinkarakter.o src\ADT\listlinier\dplinkedlist.o src\ADT\setmap\map.o src\ADT\stack\stack.o"
 
 run: $(OUTPUT)
 	.\$(OUTPUT)
