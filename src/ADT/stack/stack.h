@@ -7,7 +7,7 @@
 
 #include "../boolean/boolean.h"
 
-#define Nil -1
+#define Nul -1
 #define MaxEl 100
 /* Nil adalah stack dengan elemen kosong . */
 
@@ -43,9 +43,9 @@ void CreateEmptyStack(Stack *S);
 /* Ciri stack kosong : TOP bernilai Nil */
 
 /* ************ Predikat Untuk test keadaan KOLEKSI ************ */
-boolean IsEmpty(Stack S);
+boolean IsEmptyStack(Stack S);
 /* Mengirim true jika Stack kosong: lihat definisi di atas */
-boolean IsFull(Stack S);
+boolean IsFullStack(Stack S);
 /* Mengirim true jika tabel penampung nilai elemen stack penuh */
 
 /* ************ Menambahkan sebuah elemen ke Stack ************ */

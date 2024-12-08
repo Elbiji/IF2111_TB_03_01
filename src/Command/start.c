@@ -74,7 +74,7 @@ void start(TabUser *Users, ArrayDinBarang *array){
 
         ADVWORD();
         totalhistory = atoi(CurrentWord.TabWord);
-        CreateEmptyStack(Users->TC[ctr].riwayat_pembelian);
+        CreateEmptyStack(&(Users->TC[ctr].riwayat_pembelian));
 
         for (int i = 0; i < totalhistory; i++){
             ADVWORD();
@@ -97,12 +97,13 @@ void start(TabUser *Users, ArrayDinBarang *array){
             }
 
             barang_riwayat.nama_barang[nameindex] = '\0';
-            Push(Users->TC[ctr].riwayat_pembelian, barang_riwayat);
+            
+            Push(&(Users->TC[ctr].riwayat_pembelian), barang_riwayat);
         }
 
         ADVWORD();
         totalwishlist = atoi(CurrentWord.TabWord);
-        CreateEmptyList(Users->TC[ctr].wishlist);
+        CreateEmptyLDP(&(Users->TC[ctr].wishlist));
 
         for (int i = 0; i < totalwishlist; i++){
             ADVWORD();
@@ -120,29 +121,38 @@ void start(TabUser *Users, ArrayDinBarang *array){
                     barang_wishlist[nameindex++] = CurrentWord.TabWord[j];
                 }
             }
-
             barang_wishlist[nameindex] = '\0';
-            
-            Alokasi(barang_wishlist);
-            InsVLast(Users->TC[ctr].wishlist);
+            printf("Debug %s\n", barang_wishlist);
+            InsVLast(&(Users->TC[ctr].wishlist), barang_wishlist);
         }
+        PrintForward(Users->TC[ctr].wishlist);
+        ctr++;
     }
-
-    // for (int i = 0; i < totaluser; i++){
-    //     printf("%d : %s\n", Users->TC[i].money, Users->TC[i].name);
-    // }  
-
-    // for (int i = 0; i < totalinventory; i++){
-    //     printf("%d : %s\n", array->A[i].price, array->A[i].name);
-    // } 
 }    
 
-// int main(){
-//     TabUser user;
-//     ArrayDinBarang items;
-//     MakeArrayDinBarang(&items);
+int main(){
+    TabUser user;
+    ArrayDinBarang items;
+    history barang_riwayat;
+    MakeArrayDinBarang(&items);
+    start(&user, &items);
 
-//     start(&user, &items);
-//     DeallocateArrayDinBarang(&items);
-//     return 0;
-// }
+
+    for (int i = 0; i < totaluser; i++){
+        printf("%d : %s Password : %s\n", user.TC[i].money, user.TC[i].name, user.TC[i].password);
+        printf("Riwayat Pembelian\n");
+        while (!IsEmptyStack(user.TC[i].riwayat_pembelian)){
+            Pop(&(user.TC[i].riwayat_pembelian), &barang_riwayat);
+            printf("%d %s\n", barang_riwayat.total_price, barang_riwayat.nama_barang);
+        }
+        printf("Wishlist Item\n");
+        PrintForward(user.TC[i].wishlist);
+    }  
+
+    for (int i = 0; i < totalinventory; i++){
+        printf("%d : %s\n", items.A[i].price, items.A[i].name);
+    } 
+
+    DeallocateArrayDinBarang(&items);
+    return 0;
+}

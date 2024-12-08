@@ -11,13 +11,13 @@ void CreateEmpty(Map *M){
 }
 
 /* ********* Predikat Untuk test keadaan KOLEKSI ********* */
-boolean IsEmpty(Map M){
+boolean IsEmptyMap(Map M){
 /* Mengirim true jika Map M kosong*/
 /* Ciri Map kosong : count bernilai Nil */
     return M.Count == Nil;
 }
 
-boolean IsFull(Map M){
+boolean IsFullMap(Map M){
 /* Mengirim true jika Map M penuh */
 /* Ciri Map penuh : count bernilai MaxEl */
     return M.Count == MaxEl;
