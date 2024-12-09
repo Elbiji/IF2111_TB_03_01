@@ -57,6 +57,7 @@ void start(TabUser *Users, ArrayDinBarang *array){
     Users->Neff = totaluser;
     int ctr = 0;
     while (ctr < totaluser){
+        CreateEmpty(&(Users->TC[ctr].keranjang));
         ADVWORD();
         Users->TC[ctr].money = atoi(CurrentWord.TabWord);
         
@@ -130,29 +131,29 @@ void start(TabUser *Users, ArrayDinBarang *array){
     }
 }    
 
-int main(){
-    TabUser user;
-    ArrayDinBarang items;
-    history barang_riwayat;
-    MakeArrayDinBarang(&items);
-    start(&user, &items);
+// int main(){
+//     TabUser user;
+//     ArrayDinBarang items;
+//     history barang_riwayat;
+//     MakeArrayDinBarang(&items);
+//     start(&user, &items);
 
 
-    for (int i = 0; i < totaluser; i++){
-        printf("%d : %s Password : %s\n", user.TC[i].money, user.TC[i].name, user.TC[i].password);
-        printf("Riwayat Pembelian\n");
-        while (!IsEmptyStack(user.TC[i].riwayat_pembelian)){
-            Pop(&(user.TC[i].riwayat_pembelian), &barang_riwayat);
-            printf("%d %s\n", barang_riwayat.total_price, barang_riwayat.nama_barang);
-        }
-        printf("Wishlist Item\n");
-        PrintForward(user.TC[i].wishlist);
-    }  
+//     for (int i = 0; i < totaluser; i++){
+//         printf("%d : %s Password : %s\n", user.TC[i].money, user.TC[i].name, user.TC[i].password);
+//         printf("Riwayat Pembelian\n");
+//         while (!IsEmptyStack(user.TC[i].riwayat_pembelian)){
+//             Pop(&(user.TC[i].riwayat_pembelian), &barang_riwayat);
+//             printf("%d %s\n", barang_riwayat.total_price, barang_riwayat.nama_barang);
+//         }
+//         printf("Wishlist Item\n");
+//         PrintForward(user.TC[i].wishlist);
+//     }  
 
-    for (int i = 0; i < totalinventory; i++){
-        printf("%d : %s\n", items.A[i].price, items.A[i].name);
-    } 
+//     for (int i = 0; i < totalinventory; i++){
+//         printf("%d : %s\n", items.A[i].price, items.A[i].name);
+//     } 
 
-    DeallocateArrayDinBarang(&items);
-    return 0;
-}
+//     DeallocateArrayDinBarang(&items);
+//     return 0;
+// }

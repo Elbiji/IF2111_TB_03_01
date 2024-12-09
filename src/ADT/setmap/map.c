@@ -24,14 +24,14 @@ boolean IsFullMap(Map M){
 }
 
 /* ********** Operator Dasar Map ********* */
-valuetype Value(Map M, keytype k){
+valuetype Value(Map M, keytype *k){
 /* Mengembalikan nilai value dengan key k dari M */
 /* Jika tidak ada key k pada M, akan mengembalikan Undefined */
     int i = 0;
     boolean found = false;
 
     while (i < M.Count && !found){
-        if (M.Elements[i].Key == k){
+        if (isStrEqual(k, M.Elements[i].nama_barang_keranjang)){
             found = true;
         } else {
             i++;
@@ -39,13 +39,13 @@ valuetype Value(Map M, keytype k){
     }
 
     if (found){
-        return M.Elements[i].Value;
+        return M.Elements[i].jumlah_barang;
     } else {
         return Undefined;
     }
 }
 
-void Insert(Map *M, keytype k, valuetype v){
+void Insert(Map *M, keytype *k, valuetype v){
 /* Menambahkan Elmt sebagai elemen Map M. */
 /* I.S. M mungkin kosong, M tidak penuh
         M mungkin sudah beranggotakan v dengan key k */
@@ -54,20 +54,25 @@ void Insert(Map *M, keytype k, valuetype v){
     boolean found = false;
 
     while (i < M->Count && !found){
-        if (M->Elements[i].Key == k){
+        if (isStrEqual(k, M->Elements[i].nama_barang_keranjang)){
             found = true;
+            return;
         }
         i++;
     }
 
     if (!found){
-        M->Elements[i].Value = v;
-        M->Elements[i].Key = k;
+        M->Elements[i].jumlah_barang = v;
+        int j;
+        for (j = 0; k[j] != '\0' && j < MAX_LEN-1; j++){
+            M->Elements[i].nama_barang_keranjang[j] = k[j];
+        }
+        M->Elements[i].nama_barang_keranjang[MAX_LEN-1] = '\0' ;
         M->Count++;
     }
 }
 
-void Delete(Map *M, keytype k){
+void Delete(Map *M, keytype *k){
 /* Menghapus Elmt dari Map M. */
 /* I.S. M tidak kosong
         element dengan key k mungkin anggota / bukan anggota dari M */
@@ -76,7 +81,7 @@ void Delete(Map *M, keytype k){
     int pos = 0;
 
     while (pos < M->Count && !found){
-        if (M->Elements[pos].Key == k){
+        if (isStrEqual(k, M->Elements[pos].nama_barang_keranjang)){
             found = true;
         } else {
             pos++;
@@ -92,18 +97,17 @@ void Delete(Map *M, keytype k){
     }
 }
 
-boolean IsMember(Map M, keytype k){
+boolean IsMember(Map M, keytype *k){
 /* Mengembalikan true jika k adalah member dari M */
     boolean found = false;
     int i = 0;
 
     while (i < M.Count && !found){
-        if (M.Elements[i].Key == k){
-            found = true;
+        if (isStrEqual(k, M.Elements[i].nama_barang_keranjang)){
+            return true;
         } else {
             i++;
         }
     }
-
     return found;
 }
