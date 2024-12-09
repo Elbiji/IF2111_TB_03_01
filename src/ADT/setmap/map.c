@@ -67,7 +67,7 @@ void Insert(Map *M, keytype *k, valuetype v){
         for (j = 0; k[j] != '\0' && j < MAX_LEN-1; j++){
             M->Elements[i].nama_barang_keranjang[j] = k[j];
         }
-        M->Elements[i].nama_barang_keranjang[MAX_LEN-1] = '\0' ;
+        M->Elements[i].nama_barang_keranjang[j] = '\0' ;
         M->Count++;
     }
 }

@@ -15,7 +15,7 @@ Deklarasi stack yang dengan implementasi array eksplisit-statik rata kiri
 #define Undefined -999
 
 // typedef int bool;
-typedef int keytype[50];
+typedef char keytype[50];
 typedef int valuetype;
 typedef int address;
 
@@ -51,23 +51,23 @@ boolean IsFullMap(Map M);
 /* Ciri Map penuh : count bernilai MaxEl */
 
 /* ********** Operator Dasar Map ********* */
-valuetype Value(Map M, keytype k);
+valuetype Value(Map M, keytype *k);
 /* Mengembalikan nilai value dengan key k dari M */
 /* Jika tidak ada key k pada M, akan mengembalikan Undefined */
 
-void Insert(Map *M, keytype k, valuetype v);
+void Insert(Map *M, keytype *k, valuetype v);
 /* Menambahkan Elmt sebagai elemen Map M. */
 /* I.S. M mungkin kosong, M tidak penuh
         M mungkin sudah beranggotakan v dengan key k */
 /* F.S. v menjadi anggota dari M dengan key k. Jika k sudah ada, operasi tidak dilakukan */
 
-void Delete(Map *M, keytype k);
+void Delete(Map *M, keytype *k);
 /* Menghapus Elmt dari Map M. */
 /* I.S. M tidak kosong
         element dengan key k mungkin anggota / bukan anggota dari M */
 /* F.S. element dengan key k bukan anggota dari M */
 
-boolean IsMember(Map M, keytype k);
+boolean IsMember(Map M, keytype *k);
 /* Mengembalikan true jika k adalah member dari M */
 
 #endif
