@@ -2,7 +2,6 @@
 #define map_H
 #include <stdio.h>
 #include "../boolean/boolean.h"
-#include "../../../misc.h"
 
 /* MODUL Map
 Deklarasi stack yang dengan implementasi array eksplisit-statik rata kiri
@@ -69,5 +68,9 @@ void Delete(Map *M, keytype *k);
 
 boolean IsMember(Map M, keytype *k);
 /* Mengembalikan true jika k adalah member dari M */
+
+boolean isStrEqualMap(char *str1, char *str2);
+
+int strLengthMap(char *str);
 
 #endif

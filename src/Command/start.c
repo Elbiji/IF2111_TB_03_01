@@ -57,7 +57,7 @@ void start(TabUser *Users, ArrayDinBarang *array){
     Users->Neff = totaluser;
     int ctr = 0;
     while (ctr < totaluser){
-        CreateEmpty(&(Users->TC[ctr].keranjang));
+        // CreateEmpty(&(Users->TC[ctr].keranjang));
         ADVWORD();
         Users->TC[ctr].money = atoi(CurrentWord.TabWord);
         

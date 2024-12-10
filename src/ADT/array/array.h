@@ -21,7 +21,7 @@ typedef struct {
   char name[IdxMax];
   char password[IdxMax];
   integer money;
-  Map keranjang;
+  // Map keranjang;
   Stack riwayat_pembelian;
   List wishlist;
 } User;

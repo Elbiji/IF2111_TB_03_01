@@ -31,7 +31,7 @@ valuetype Value(Map M, keytype *k){
     boolean found = false;
 
     while (i < M.Count && !found){
-        if (isStrEqual(k, M.Elements[i].nama_barang_keranjang)){
+        if (isStrEqualMap(*k, M.Elements[i].nama_barang_keranjang)){
             found = true;
         } else {
             i++;
@@ -54,7 +54,7 @@ void Insert(Map *M, keytype *k, valuetype v){
     boolean found = false;
 
     while (i < M->Count && !found){
-        if (isStrEqual(k, M->Elements[i].nama_barang_keranjang)){
+        if (isStrEqualMap(*k, M->Elements[i].nama_barang_keranjang)){
             found = true;
             return;
         }
@@ -64,8 +64,8 @@ void Insert(Map *M, keytype *k, valuetype v){
     if (!found){
         M->Elements[i].jumlah_barang = v;
         int j;
-        for (j = 0; k[j] != '\0' && j < MAX_LEN-1; j++){
-            M->Elements[i].nama_barang_keranjang[j] = k[j];
+        for (j = 0; (*k)[j] != '\0' && j < 50-1; j++){
+            M->Elements[i].nama_barang_keranjang[j] = (*k)[j];
         }
         M->Elements[i].nama_barang_keranjang[j] = '\0' ;
         M->Count++;
@@ -81,7 +81,7 @@ void Delete(Map *M, keytype *k){
     int pos = 0;
 
     while (pos < M->Count && !found){
-        if (isStrEqual(k, M->Elements[pos].nama_barang_keranjang)){
+        if (isStrEqualMap(*k, M->Elements[pos].nama_barang_keranjang)){
             found = true;
         } else {
             pos++;
@@ -103,11 +103,32 @@ boolean IsMember(Map M, keytype *k){
     int i = 0;
 
     while (i < M.Count && !found){
-        if (isStrEqual(k, M.Elements[i].nama_barang_keranjang)){
+        if (isStrEqualMap(k, M.Elements[i].nama_barang_keranjang)){
             return true;
         } else {
             i++;
         }
     }
     return found;
+}
+
+boolean isStrEqualMap(char *str1, char *str2){
+    if (strLengthMap(str1) != strLengthMap(str2)){
+        return false;
+    }
+    int i;
+    for (i = 0; i < strLengthMap(str2); i++){
+        if (str1[i] != str2[i]){
+            return false;
+        }
+    }
+    return (str1[i] == '\0' && str2[i] == '\0');
+}
+
+int strLengthMap(char *str){
+    int i = 0;
+    while (str[i] != '\0'){
+        i++;
+    }
+    return i;
 }
