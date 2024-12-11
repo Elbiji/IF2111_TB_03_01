@@ -8,7 +8,7 @@
 
 /* Kamus Umum */
 
-#define IdxMax 50
+#define IdxMax 10
 #define IdxMin 1
 #define IdxUndef -999 /* indeks tak terdefinisi*/
 #define integer int
@@ -21,7 +21,7 @@ typedef struct {
   char name[IdxMax];
   char password[IdxMax];
   integer money;
-  // Map keranjang;
+  Map keranjang;
   Stack riwayat_pembelian;
   List wishlist;
 } User;

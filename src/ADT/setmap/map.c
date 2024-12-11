@@ -5,7 +5,7 @@
 /* *** Konstruktor/Kreator *** */
 void CreateEmpty(Map *M){
 /* I.S. Sembarang */
-/* F.S. Membuat sebuah Map M kosong berkapasitas MaxEl */
+/* F.S. Membuat sebuah Map M kosong berkapasitas MaxElMap */
 /* Ciri Map kosong : count bernilai Nil */
     M->Count = Nil;
 }
@@ -19,8 +19,8 @@ boolean IsEmptyMap(Map M){
 
 boolean IsFullMap(Map M){
 /* Mengirim true jika Map M penuh */
-/* Ciri Map penuh : count bernilai MaxEl */
-    return M.Count == MaxEl;
+/* Ciri Map penuh : count bernilai MaxElMap */
+    return M.Count == MaxElMap;
 }
 
 /* ********** Operator Dasar Map ********* */
@@ -103,7 +103,7 @@ boolean IsMember(Map M, keytype *k){
     int i = 0;
 
     while (i < M.Count && !found){
-        if (isStrEqualMap(k, M.Elements[i].nama_barang_keranjang)){
+        if (isStrEqualMap(*k, M.Elements[i].nama_barang_keranjang)){
             return true;
         } else {
             i++;

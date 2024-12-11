@@ -98,7 +98,7 @@ void DelVFirst (List *L, info_barang *X) {
 /*      dan alamat elemen pertama di-dealokasi */
     addressDP P = First(*L);
     int i = 0;
-    while (Info(P)[i] != '\0' && i < sizeof(info_barang) - 1) {
+    while (Info(P)[i] != '\0' && i < 49) {
         (*X)[i] = Info(P)[i];
         i++;
     }
@@ -118,7 +118,7 @@ void DelVLast (List *L, info_barang *X) {
 /*      dan alamat elemen terakhir di-dealokasi */
     addressDP P = Last(*L);
     int i = 0;
-    while (Info(P)[i] != '\0' && i < sizeof(info_barang) - 1) {
+    while (Info(P)[i] != '\0' && i < 49) {
         (*X)[i] = Info(P)[i];
         i++;
     }

@@ -76,7 +76,7 @@ void store_sup(Queue *items_request, ArrayDinBarang *array, IdxType Iduser, TabU
 
                 if (user->TC[Iduser].money - val < 0){
                     printf("Uang kamu tidak mencukupi!\n");
-                    enqueue(&items_request, antrian);
+                    enqueue(items_request, antrian);
                     status = false;
                     break;
                 }
@@ -102,7 +102,7 @@ void store_sup(Queue *items_request, ArrayDinBarang *array, IdxType Iduser, TabU
                     barang_antrian.name[i] = items_request->buffer[itemindex].name[i];
                 }
                 barang_antrian.name[i] = '\0';
-                user->TC[Iduser].money - harga;
+                user->TC[Iduser].money -= harga;
                 printf("%s dengan harga %d telah ditambahkan ke toko.\n", barang_antrian.name, harga);
                 printf("Uangmu sekarang : Rp %d\n", user->TC[Iduser].money);
                 InsertBarang(array, barang_antrian, index);
@@ -124,7 +124,7 @@ void store_sup(Queue *items_request, ArrayDinBarang *array, IdxType Iduser, TabU
             }
             barang_antrian.name[i] = '\0';
             dequeue(items_request, &antrian);
-            printf("%s dibuang dari antrian.\n", barang_antrian.name, harga);
+            printf("%s dibuang dari antrian.\n", barang_antrian.name);
             // displayQueue(*items_request);
         } else if (Hold) {
             int i;
@@ -133,7 +133,7 @@ void store_sup(Queue *items_request, ArrayDinBarang *array, IdxType Iduser, TabU
             }
             barang_antrian.name[i] = '\0';
             dequeue(items_request, &antrian);
-            printf("%s dikembalikan ke antrian.\n", barang_antrian.name, harga);
+            printf("%s dikembalikan ke antrian.\n", barang_antrian.name);
             enqueue(items_request, antrian);
             // displayQueue(*items_request);
         } else if(isDone(response)) {

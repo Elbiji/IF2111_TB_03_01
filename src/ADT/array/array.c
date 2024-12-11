@@ -1,7 +1,7 @@
 #include <stdio.h>
 #include "array.h"
 
-extern job listjob[] = {
+job listjob[] = {
     {"Evil Lab Assistant", 100, 14},
     {"OWCA Hiring Manager", 4200, 21},
     {"Cikapundunginator Caretaker", 7000, 30},

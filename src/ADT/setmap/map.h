@@ -10,7 +10,7 @@ Deklarasi stack yang dengan implementasi array eksplisit-statik rata kiri
 // #define false 0
 // #define true 1
 #define Nil 0
-#define MaxEl 100
+#define MaxElMap 10
 #define Undefined -999
 
 // typedef int bool;
@@ -24,7 +24,7 @@ typedef struct {
 } infotype;
 
 typedef struct {
-	infotype Elements[MaxEl];
+	infotype Elements[MaxElMap];
 	address Count;
 } Map;
 
@@ -37,7 +37,7 @@ typedef struct {
 /* *** Konstruktor/Kreator *** */
 void CreateEmpty(Map *M);
 /* I.S. Sembarang */
-/* F.S. Membuat sebuah Map M kosong berkapasitas MaxEl */
+/* F.S. Membuat sebuah Map M kosong berkapasitas MaxElMap */
 /* Ciri Map kosong : count bernilai Nil */
 
 /* ********* Predikat Untuk test keadaan KOLEKSI ********* */
@@ -47,7 +47,7 @@ boolean IsEmptyMap(Map M);
 
 boolean IsFullMap(Map M);
 /* Mengirim true jika Map M penuh */
-/* Ciri Map penuh : count bernilai MaxEl */
+/* Ciri Map penuh : count bernilai MaxElMap */
 
 /* ********** Operator Dasar Map ********* */
 valuetype Value(Map M, keytype *k);
