@@ -72,6 +72,9 @@ void registerUser(TabUser *list) {
 // Tambah pengguna baru
     stringCopy(list->TC[list->Neff].name, username);
     stringCopy(list->TC[list->Neff].password, password);
+    CreateEmpty(&(list->TC[list->Neff].keranjang));
+    CreateEmptyLDP(&(list->TC[list->Neff].wishlist));
+    CreateEmptyStack(&(list->TC[list->Neff].riwayat_pembelian));
     list->TC[list->Neff].money = money;
     list->Neff++;
     printf("Akun dengan username %s telah berhasil dibuat. Silakan LOGIN untuk melanjutkan.\n", username);
