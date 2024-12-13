@@ -22,14 +22,14 @@ int main() {
         if (isStrEqual(perintah, "START")){
             if (isloggedin == false){
                 printf(">>START\n");
-                printf("STARTING PROGRAM . . .");
+                printf("STARTING PROGRAM . . .\n");
                 start(&user, &items);
                 printf("\nLoaded Users:\n");
                 for (int i = 0; i <  user.Neff; i++) {
                 printf("User %d: %s (Money: %d)\n", 
                     i+1, user.TC[i].name, user.TC[i].money);
                 }
-        
+                
                 printf("\nLoaded Items:\n");
                 for (int i = 0; i < items.Neff; i++) {
                 printf("Item %d: %s (Price: %d)\n", 

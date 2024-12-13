@@ -59,6 +59,9 @@ void start(TabUser *Users, ArrayDinBarang *array){
     while (ctr < totaluser){
         CreateEmpty(&(Users->TC[ctr].keranjang));
         ADVWORD();
+
+        CurrentWord.TabWord[CurrentWord.Length] = '\0';
+        printf("Parsing money for user %d: %s\n", ctr + 1, CurrentWord.TabWord);
         Users->TC[ctr].money = atoi(CurrentWord.TabWord);
         
         ADVWORD();
@@ -66,9 +69,10 @@ void start(TabUser *Users, ArrayDinBarang *array){
             Users->TC[ctr].name[j] = CurrentWord.TabWord[j];
         }
         Users->TC[ctr].name[CurrentWord.Length] = '\0';
-        
+                
         ADVWORD();
-        for (int j = 0; j < CurrentWord.Length; j++) {
+           
+        for (int j = 0; j < CurrentWord.Length; j++) { 
             Users->TC[ctr].password[j] = CurrentWord.TabWord[j];
         }
         Users->TC[ctr].password[CurrentWord.Length] = '\0';
@@ -98,7 +102,6 @@ void start(TabUser *Users, ArrayDinBarang *array){
             }
 
             barang_riwayat.nama_barang[nameindex] = '\0';
-            
             Push(&(Users->TC[ctr].riwayat_pembelian), barang_riwayat);
         }
 

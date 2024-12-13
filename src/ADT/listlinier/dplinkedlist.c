@@ -311,3 +311,17 @@ void PrintBackward (List L) {
     }
     printf("]\n");
 }
+
+void ResetDP(List *L){
+    addressDP currentNode = First(*L);
+    addressDP temp;
+
+    while (currentNode != Kosong){
+        temp = currentNode;
+        currentNode = Next(currentNode);
+        free(temp);
+    }
+
+    First(*L) = Kosong;
+    Last(*L) = Kosong;
+}

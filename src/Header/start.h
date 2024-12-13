@@ -12,6 +12,8 @@
 #include "../ADT/listlinier/dplinkedlist.h"
 #include "../ADT/mesinkarakter/mesinkarakter.h"
 
+
+
 // Program membaca file config
 void start(TabUser *Users, ArrayDinBarang *array);
 

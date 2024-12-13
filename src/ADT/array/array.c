@@ -29,6 +29,7 @@ void ResetTabUser (TabUser *T) {
         }
 
         T->TC[i-IdxMin].money = 0;
+        ResetDP(&(T->TC[i-IdxMin].wishlist));
     }
 }
 

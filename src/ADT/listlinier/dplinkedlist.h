@@ -145,4 +145,8 @@ void PrintBackward (List L);
 /* Tidak ada tambahan karakter apa pun di awal, akhir, atau di tengah */
 /* Terdapat newline di akhir setelah tutup kurung */
 
+void ResetDP(List *L);
+/* I.S. List tidak mungkin kosong */
+/* F.S. Mengembalikan semua list ke sistem untuk load file konfigurasi baru */
+
 #endif

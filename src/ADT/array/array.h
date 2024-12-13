@@ -8,10 +8,10 @@
 
 /* Kamus Umum */
 
-#define IdxMax 10
+#define IdxMax 50
 #define IdxMin 1
 #define IdxUndef -999 /* indeks tak terdefinisi*/
-#define integer int
+
 
 /* Definisi elemen dan koleksi objek */
 typedef int IdxType;
@@ -20,7 +20,7 @@ typedef int ElType;
 typedef struct {
   char name[IdxMax];
   char password[IdxMax];
-  integer money;
+  int money;
   Map keranjang;
   Stack riwayat_pembelian;
   List wishlist;

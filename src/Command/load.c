@@ -1,17 +1,27 @@
 #include "../Header/Load.h"
 
 // #include "../Header/misc.h"
-// #include "../ADT/array/array.h"
+// #include "../ADT/array_load/array_load.h"
 // #include "../ADT/mesinkarakter/mesinkarakter.h"
 // #include "../ADT/mesinkata/mesinkata.h"
 // #include "../ADT/arraydin/arraydin.h"
-// #include "../ADT/array/array.c"
+// #include "../ADT/array_load/array_load.c"
 // #include "../ADT/arraydin/arraydin.c"
 // #include "../ADT/mesinkarakter/mesinkarakter.c"
 // #include "../ADT/mesinkata/mesinkata.c"
 
 #include <stdio.h>
 #include <stdlib.h>
+
+
+int totalinventory_load;
+int totalhistory_load;
+int totalwishlist_load;
+int totaluser_load;
+info_barang barang_wishlist_load;
+history barang_riwayat_load;
+Barang inventory_load;
+ArrayDinBarang array_load;
 
 // customStrcat("save/", filename);
 void customStrcat(char *dest, char *src) {
@@ -29,16 +39,18 @@ void customStrcat(char *dest, char *src) {
 }
 
 
-void load(TabUser *Users, ArrayDinBarang *array) {
+void load(TabUser *Users, ArrayDinBarang *array_load) {
     // Inisialisasi ulang struktur data
-    Barang inventory;
+    Barang inventory_load;
     char filename[MAX_LEN];
     
+    // Avoids system to access unauthorized memory so dont remove this part
+    if(!IsUserEmpty){
+        ResetTabUser(Users);
+    }
 
-    ResetTabUser(Users);
-
-    DeallocateArrayDinBarang(array);
-    MakeArrayDinBarang(array);
+    DeallocateArrayDinBarang(array_load);
+    MakeArrayDinBarang(array_load);
 
     // Membuat path file lengkap
 
@@ -64,58 +76,111 @@ void load(TabUser *Users, ArrayDinBarang *array) {
             continue;
         }
 
-        // Membaca jumlah barang
-        int totalinventory = atoi(CurrentWord.TabWord);
+        totalinventory_load = atoi(CurrentWord.TabWord);
 
-
-        // Membaca data barang
-        for (int i = 0; i < totalinventory; i++) {
+        // Setup items
+        for (int i = 0; i < totalinventory_load; i++){
             ADVWORD();
-
-            inventory.price = atoi(CurrentWord.TabWord);
+            inventory_load.price = atoi(CurrentWord.TabWord);
 
             ADVWORD();
-
-            // Membaca nama barang
             int nameindex = 0;
-            for (int j = 0; j < CurrentWord.Length; j++) {
-                inventory.name[nameindex++] = CurrentWord.TabWord[j];
+
+            for (int j = 0; j < CurrentWord.Length; j++){
+                inventory_load.name[nameindex++] = CurrentWord.TabWord[j];
             }
-            
+
             while(GetCC() == ' '){
-                inventory.name[nameindex++] = ' ';
+                inventory_load.name[nameindex++] = ' ';
                 ADVWORD();
 
                 for (int j = 0; j < CurrentWord.Length; j++){
-                    inventory.name[nameindex++] = CurrentWord.TabWord[j];
+                    inventory_load.name[nameindex++] = CurrentWord.TabWord[j];
                 }
             }
 
-            inventory.name[nameindex] = '\0';
-            // printf("Adding item: %s, price: %d\n", inventory.name, inventory.price);
-            InsertBarang(array, inventory, i);
-
+            inventory_load.name[nameindex] = '\0';
+            // printf("Adding item: %s, price: %d\n", inventory_load.name, inventory_load.price);
+            InsertBarang(array_load, inventory_load, i);
         }
 
         // Setup users
         ADVWORD();
-        int totaluser = atoi(CurrentWord.TabWord);
-        Users->Neff = totaluser;
-        for (int i = 0; i < totaluser; i++) {
+        totaluser_load = atoi(CurrentWord.TabWord);
+        Users->Neff = totaluser_load;
+        int ctr = 0;
+        while (ctr < totaluser_load){
+            CreateEmpty(&(Users->TC[ctr].keranjang));
             ADVWORD();
-            Users->TC[i].money = atoi(CurrentWord.TabWord);
+            Users->TC[ctr].money = atoi(CurrentWord.TabWord);
             
             ADVWORD();
             for (int j = 0; j < CurrentWord.Length; j++) {
-                Users->TC[i].name[j] = CurrentWord.TabWord[j];
+                Users->TC[ctr].name[j] = CurrentWord.TabWord[j];
             }
-            Users->TC[i].name[CurrentWord.Length] = '\0';
+            Users->TC[ctr].name[CurrentWord.Length] = '\0';
             
             ADVWORD();
             for (int j = 0; j < CurrentWord.Length; j++) {
-                Users->TC[i].password[j] = CurrentWord.TabWord[j];
+                Users->TC[ctr].password[j] = CurrentWord.TabWord[j];
             }
-            Users->TC[i].password[CurrentWord.Length] = '\0';
+            Users->TC[ctr].password[CurrentWord.Length] = '\0';
+
+            ADVWORD();
+            totalhistory_load = atoi(CurrentWord.TabWord);
+            CreateEmptyStack(&(Users->TC[ctr].riwayat_pembelian));
+
+            for (int i = 0; i < totalhistory_load; i++){
+                ADVWORD();
+                barang_riwayat_load.total_price = atoi(CurrentWord.TabWord);
+
+                ADVWORD();
+                int nameindex = 0;
+
+                for (int j = 0; j < CurrentWord.Length; j++){
+                    barang_riwayat_load.nama_barang[nameindex++] = CurrentWord.TabWord[j];
+                }
+
+                while(GetCC() == ' '){
+                    barang_riwayat_load.nama_barang[nameindex++] = ' ';
+                    ADVWORD();
+
+                    for (int j = 0; j < CurrentWord.Length; j++){
+                        barang_riwayat_load.nama_barang[nameindex++] = CurrentWord.TabWord[j];
+                    }
+                }
+
+                barang_riwayat_load.nama_barang[nameindex] = '\0';
+                
+                Push(&(Users->TC[ctr].riwayat_pembelian), barang_riwayat_load);
+            }
+
+            ADVWORD();
+            totalwishlist_load = atoi(CurrentWord.TabWord);
+            CreateEmptyLDP(&(Users->TC[ctr].wishlist));
+
+            for (int i = 0; i < totalwishlist_load; i++){
+                ADVWORD();
+                int nameindex = 0;
+
+                for (int j = 0; j < CurrentWord.Length; j++){
+                    barang_wishlist_load[nameindex++] = CurrentWord.TabWord[j];
+                }
+
+                while(GetCC() == ' '){
+                    barang_wishlist_load[nameindex++] = ' ';
+                    ADVWORD();
+
+                    for (int j = 0; j < CurrentWord.Length; j++){
+                        barang_wishlist_load[nameindex++] = CurrentWord.TabWord[j];
+                    }
+                }
+                barang_wishlist_load[nameindex] = '\0';
+                printf("Debug %s\n", barang_wishlist_load);
+                InsVLast(&(Users->TC[ctr].wishlist), barang_wishlist_load);
+            }
+            PrintForward(Users->TC[ctr].wishlist);
+            ctr++;
         }
         printf("Save file berhasil dibaca. PURRMART berhasil dijalankan.\n");
             break; // Keluar dari loop jika file valid
