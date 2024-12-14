@@ -179,6 +179,13 @@ int main() {
                 wishlist_add(&user, items, userid);
             }
         }
+        else if (isStrEqual(perintah, "WISHLIST REMOVE")){
+            if (isloggedin == false) {
+                printf("Perintah belum bisa dijalankan, karena anda belom LOGIN!\n");
+            } else {
+                wishlist_remove2(&(user.TC[userid].wishlist));
+            }
+        }
         else if (isInputWishlistSwap(perintah, &posisi1, &posisi2)){
             if (isloggedin == false) {
                 printf("Perintah belum bisa dijalankan, karena anda belom LOGIN!\n");
