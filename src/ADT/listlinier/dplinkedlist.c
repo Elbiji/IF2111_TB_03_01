@@ -341,3 +341,13 @@ void ResetDP(List *L){
     First(*L) = Kosong;
     Last(*L) = Kosong;
 }
+
+int CountElmt(List L){
+    int ctr = 0;
+    addressDP currentNode = First(L); 
+    while (currentNode != Kosong){
+        currentNode = Next(currentNode);
+        ctr++;
+    }
+    return ctr;
+}

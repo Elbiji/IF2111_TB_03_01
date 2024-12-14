@@ -276,6 +276,59 @@ void stringCopy(char *dest, const char *src) {
     while ((*dest++ = *src++) != '\0'); // Salin setiap karakter hingga null terminator
 }
 
+boolean isInputWishlistSwap(char *input,int *posisi1, int *posisi2){
+    const char *command = "WISHLIST SWAP";
+    int i = 0;
+
+    while (command[i] != '\0'){
+        if (input[i] != command[i]){
+            return false;
+        }
+        i++;
+    }
+
+    while (input[i] == ' '){
+        i++;
+    }
+
+    char num1[3];
+    int j = 0;
+    while (input[i] >= '0' && input[i] <= '9' && j < 9){
+        num1[j++] = input[i++];
+    }
+    num1[j] = '\0';
+    *posisi1 = atoi(num1);
+
+    while (input[i] == ' '){
+        i++;
+    }
+
+    char num2[3];
+    j = 0;
+    while (input[i] >= '0' && input[i] <= '9' && j < 9){
+        num2[j++] = input[i++];
+    }
+    num2[j] = '\0';
+    *posisi2 = atoi(num2);
+
+
+    while (input[i] != '\0') {
+        if (input[i] != ' ') {
+            return false;
+        }
+        i++;
+    }
+
+    if (*posisi1 > 0 && *posisi2 > 0){
+        return true;
+    }
+    else{
+        return false;
+    }
+
+    return true;
+}
+
 // int main(){
 //     START("","");
 //     if (!isStrEqual(CurrentWord, "START")){

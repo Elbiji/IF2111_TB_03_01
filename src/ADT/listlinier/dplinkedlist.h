@@ -149,4 +149,8 @@ void ResetDP(List *L);
 /* I.S. List tidak mungkin kosong */
 /* F.S. Mengembalikan semua list ke sistem untuk load file konfigurasi baru */
 
+int CountElmt(List L);
+/* I.S. List  mungkin kosong */
+/* F.S. Mengembalikan nilai jumlah elemen suatu list*/
+
 #endif
