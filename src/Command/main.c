@@ -50,6 +50,14 @@ int main() {
                 break;
             }
         }
+        else if (isStrEqual(perintah, "PROFILE")){
+            if (isloggedin == false){
+                printf("Perintah belum bisa dijalankan, karena anda belum LOGIN!\n");
+            } else {
+                printf(">> PROFILE\n");
+                profile(isloggedin, user, userid);
+            }
+        }
         else if (isStrEqual(perintah, "LOAD")){
             if(isloggedin == false){
                 printf(">> LOAD\n");
@@ -69,7 +77,7 @@ int main() {
                 }
                 change_menu(&current_menu, login_menu);
             } else {
-                printf("Untuk memulai sesi baru kamu diharuskan untuk logout terlebih dahulu\n");
+                printf("Untuk memulai sesi baru kamu diharuskan untuk LOGOUT terlebih dahulu\n");
             }
         }
         else if (isStrEqual(perintah, "SAVE")){

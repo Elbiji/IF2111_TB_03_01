@@ -1,6 +1,6 @@
 # Compiler and flags
 CC = gcc
-CFLAGS += -std=c99 -Wall -Wextra
+CFLAGS = -Wall -Wextra -g
 
 # Directories
 SRC_DIR = src
@@ -51,7 +51,8 @@ SRCS = $(ROOT_SRCS) \
        $(STACK_DIR)/stack.c \
        $(LINKEDLIST_DIR)/dplinkedlist.c \
        $(MESINKATA_DIR)/mesinkata.c \
-       $(MESINKAR_DIR)/mesinkarakter.c
+       $(MESINKAR_DIR)/mesinkarakter.c \
+       $(CMD_DIR)/profile.c \
 
 # Object files (replace .c with .o in SRCS)
 OBJS = $(SRCS:.c=.o)
