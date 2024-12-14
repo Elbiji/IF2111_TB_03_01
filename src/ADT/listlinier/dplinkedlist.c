@@ -275,6 +275,7 @@ void DelAfter (List *L, addressDP *Pdel, addressDP Prec) {
     Prev(Next(*Pdel)) = Prec;
     Next(*Pdel) = Kosong;
     Prev(*Pdel) = Kosong;
+    free(*Pdel);
 }
 
 void DelBefore (List *L, addressDP *Pdel, addressDP Succ) {
@@ -286,6 +287,7 @@ void DelBefore (List *L, addressDP *Pdel, addressDP Succ) {
     Prev(Succ) = Prev(*Pdel);
     Next(*Pdel) = Kosong;
     Prev(*Pdel) = Kosong;
+    free(*Pdel);
 }
 
 /****************** PROSES SEMUA ELEMEN LIST ******************/
@@ -299,15 +301,12 @@ void PrintForward (List L) {
 /* Terdapat newline di akhir setelah tutup kurung */
     addressDP P = First(L);
 
-    printf("[");
+    int i = 1;
     while (P != Kosong) {
-        printf("%s", Info(P));
-        if (P != Last(L)) {
-            printf(",");
-        }
+        printf("%d. %s\n", i, Info(P));
         P = Next(P);
+        i++;
     }
-    printf("]\n");
 }
 
 void PrintBackward (List L) {

@@ -1,8 +1,9 @@
-4
+5
 10 AK47
 20 Lalabu
 20 Ayam Goreng Crisbar
 500 Meong
+200 Ligmainator
 2
 100 user1 alstrukdatkeren
 6

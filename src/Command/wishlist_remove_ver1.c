@@ -15,7 +15,7 @@ boolean isInputWishlistRemove(char *input,int *posisi1){
         i++;
     }
 
-    char num1[3];
+    char num1[10];
     int j = 0;
     while (input[i] >= '0' && input[i] <= '9' && j < 9){
         num1[j++] = input[i++];
@@ -51,7 +51,6 @@ void wishlist_remove1(List *user_wishlist, int pos1, int tot_wishlist){
             }
             Pdel = Next(P);
             DelAfter(user_wishlist, &Pdel, P);
-            free(Pdel);
         }
     }
 }

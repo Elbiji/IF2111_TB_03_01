@@ -15,7 +15,7 @@ boolean isInputWishlistSwap(char *input,int *posisi1, int *posisi2){
         i++;
     }
 
-    char num1[3];
+    char num1[10];
     int j = 0;
     while (input[i] >= '0' && input[i] <= '9' && j < 9){
         num1[j++] = input[i++];
@@ -27,7 +27,7 @@ boolean isInputWishlistSwap(char *input,int *posisi1, int *posisi2){
         i++;
     }
 
-    char num2[3];
+    char num2[10];
     j = 0;
     while (input[i] >= '0' && input[i] <= '9' && j < 9){
         num2[j++] = input[i++];

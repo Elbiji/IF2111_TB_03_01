@@ -188,11 +188,11 @@ int main() {
                     printf("wishlist anda kosong!\n");
                 } else if (tot_wishlist == 1){
                     printf("Hanya terdapat satu element dalam wishlist anda!\n");
-                } else if (posisi1 == posisi2 || posisi1 > tot_wishlist || posisi2 > tot_wishlist || posisi1 == 0 || posisi2 == 0 || posisi1 < 1 || posisi2 < 1){
+                } else if (posisi1 == posisi2 || posisi1 > tot_wishlist || posisi2 > tot_wishlist || posisi1 == 0 || posisi2 == 0){
                     printf("Pastikan anda masukkan angka yang valid untuk melakukan swap!\n");
                     printf("e.g. WISHLIST SWAP <i> <j> dengan i dan j merupakan angka yang valid dalam wishlist anda! (integer positive dan tidak sama)\n");
                 } else {
-                    printf(">>> WISHLIST SWAP %d %d\n", posisi1, posisi2);
+                    printf(">> WISHLIST SWAP %d %d\n", posisi1, posisi2);
                     // printf("sebelum SWAP\n");
                     // PrintForward(user.TC[userid].wishlist);
                     wishlist_swap(&(user.TC[userid].wishlist), posisi1, posisi2);
@@ -212,9 +212,10 @@ int main() {
                     printf("Pastikan anda masukkan angka yang valid untuk melakukan remove!\n");
                     printf("e.g. WISHLIST REMOVE <i> dengan i  merupakan angka yang valid dalam wishlist anda! (integer positive dan didalam indeks efektif)\n");
                 } else {
-                    PrintForward(user.TC[userid].wishlist);
+                    printf(">> WISHLIST REMOVE %d\n", posisi1);
+                    // PrintForward(user.TC[userid].wishlist);
                     wishlist_remove1(&(user.TC[userid].wishlist), posisi1, tot_wishlist);
-                    PrintForward(user.TC[userid].wishlist);
+                    // PrintForward(user.TC[userid].wishlist);
                     printf("Berhasil menghapus barang posisi ke-%d dari wishlist!\n", posisi1);
                 }
             }
