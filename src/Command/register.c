@@ -1,10 +1,6 @@
 #include <stdio.h>
 #include "../Header/register.h"
 
-// Fungsi menyalin string
-void stringCopy(char *dest, const char *src) {
-    while ((*dest++ = *src++) != '\0'); // Salin setiap karakter hingga null terminator
-}
 
 // Registrasi pengguna dengan validasi username, password, dan uang
 void registerUser(TabUser *list) {

@@ -271,6 +271,10 @@ void visual(char *path) {
     }
 }
 
+// Fungsi menyalin string
+void stringCopy(char *dest, const char *src) {
+    while ((*dest++ = *src++) != '\0'); // Salin setiap karakter hingga null terminator
+}
 
 // int main(){
 //     START("","");

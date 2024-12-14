@@ -169,6 +169,14 @@ int main() {
                 DoWork(&user, userid);
             }
         }
+        else if (isStrEqual(perintah, "WISHLIST ADD")){
+            if (isloggedin == false) {
+                printf("Perintah belum bisa dijalankan, karena anda belom LOGIN!\n");
+            } else {
+                printf(">>>WISHLIST ADD\n");
+                wishlist_add(&user, items, userid);
+            }
+        }
         else {
             printf("Perintah tidak valid!\n");
         }

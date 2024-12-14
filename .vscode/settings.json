@@ -1,6 +1,7 @@
 {
     "files.associations": {
         "stdlib.h": "c",
-        "array.h": "c"
+        "array.h": "c",
+        "dplinkedlist.h": "c"
     }
 }

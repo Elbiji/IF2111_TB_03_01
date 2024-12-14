@@ -20,5 +20,6 @@
 #include "login.h"
 #include "register.h"
 #include "logout.h"
+#include "wishlist_add.h"
 
 #endif

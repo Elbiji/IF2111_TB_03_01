@@ -2,6 +2,17 @@
 #include <stdlib.h>
 #include "dplinkedlist.h"
 
+boolean isStrEqualLDP(info_barang str1, info_barang str2){
+    int i = 0;
+    while (str1[i] != '\0' && str2[i] != '\0') {
+        if (str1[i] != str2[i]) {
+            return false;
+        }
+        i++;
+    }
+    return (str1[i] == '\0' && str2[i] == '\0');
+}
+
 /* PROTOTYPE */
 /****************** TEST LIST KOSONG ******************/
 boolean IsEmptyLDP (List L) {
@@ -51,10 +62,15 @@ addressDP Search (List L, info_barang X) {
 /* Jika ada, mengirimkan addressDP elemen tersebut. */
 /* Jika tidak ada, mengirimkan Kosong */
     addressDP P = First(L);
-    while (P != Kosong && Info(P) != X){
-        P = Next(P);
+    while (P != Kosong){
+        // printf("aa\n");
+        if (isStrEqualLDP(X, Info(P))){
+            return P;
+        } else {
+            P = Next(P);
+        }
     }
-    return P;
+    return Kosong;
 }
 
 /****************** PRIMITIF BERDASARKAN KosongAI ******************/
