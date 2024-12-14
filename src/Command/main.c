@@ -23,7 +23,7 @@ int main() {
         readInput(perintah, MAX_LEN);
         if (isStrEqual(perintah, "START")){
             if (isloggedin == false){
-                printf(">>START\n");
+                printf(">> START\n");
                 printf("STARTING PROGRAM . . .\n");
                 start(&user, &items);
                 printf("\nLoaded Users:\n");
@@ -52,7 +52,7 @@ int main() {
         }
         else if (isStrEqual(perintah, "LOAD")){
             if(isloggedin == false){
-                printf(">>LOAD\n");
+                printf(">> LOAD\n");
                 printf("LOAD PROGRAM\n");
                 load(&user, &items);
                 printf("LOADING PROGRAM . . .");
@@ -99,14 +99,14 @@ int main() {
             if (user.Neff == 0 || isloggedin){
                 printf("Untuk registrasi diharuskan untuk memulai file konfigurasi terlebih dahulu atau anda diharuskan untuk keluar dari sesi user lain!\n");
             } else {
-                printf(">>REGISTER\n");
+                printf(">> REGISTER\n");
                 registerUser(&user);
                 isloggedin = false;
             }
         }
         else if (isStrEqual(perintah, "LOGOUT")){
             if (isloggedin){
-                printf(">>LOGOUT\n");
+                printf(">> LOGOUT\n");
                 logout(&isloggedin, user, &userid);
                 change_menu(&current_menu, login_menu);
             } else {
@@ -122,7 +122,7 @@ int main() {
                     printf("Antrian penuh, harap hilangkan atau masukkan beberapa barang dari antrian.\n");
                 } else {
                     printf("\n");
-                    printf(">>STORE REQUEST\n");
+                    printf(">> STORE REQUEST\n");
                     store_request(&item_req, items);
                 }
             }
@@ -133,7 +133,7 @@ int main() {
             } else {
                 visual("storesupply.txt");
                 printf("\n");
-                printf(">>STORE SUPPLY\n");
+                printf(">> STORE SUPPLY\n");
                 store_sup(&item_req, &items, userid, &user);
             }
         }
@@ -151,7 +151,7 @@ int main() {
             if (isloggedin == false){
                 printf("Perintah belum bisa dijalankan, karena anda belom LOGIN!\n");
             } else {
-                printf(">>STORE LIST\n");
+                printf(">> STORE LIST\n");
                 printf("\n");
                 DisplayStore(items);
             }
@@ -167,7 +167,7 @@ int main() {
             if (isloggedin == false) {
                 printf("Perintah belum bisa dijalankan, karena anda belom LOGIN!\n");
             } else {
-                printf(">>WORK\n");
+                printf(">> WORK\n");
                 DoWork(&user, userid);
             }
         }
@@ -175,7 +175,7 @@ int main() {
             if (isloggedin == false) {
                 printf("Perintah belum bisa dijalankan, karena anda belom LOGIN!\n");
             } else {
-                printf(">>>WISHLIST ADD\n");
+                printf(">>> WISHLIST ADD\n");
                 wishlist_add(&user, items, userid);
             }
         }
@@ -193,10 +193,10 @@ int main() {
                     printf("e.g. WISHLIST SWAP <i> <j> dengan i dan j merupakan angka yang valid dalam wishlist anda! (integer positive dan tidak sama)\n");
                 } else {
                     printf(">>> WISHLIST SWAP %d %d\n", posisi1, posisi2);
-                    printf("sebelum SWAP\n");
+                    // printf("sebelum SWAP\n");
                     // PrintForward(user.TC[userid].wishlist);
                     wishlist_swap(&(user.TC[userid].wishlist), posisi1, posisi2);
-                    printf("sesudah SWAP\n");
+                    // printf("sesudah SWAP\n");
                     // PrintForward(user.TC[userid].wishlist);
                 }
             }

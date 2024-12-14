@@ -82,8 +82,4 @@ void visual(char* path);
 // Untuk menyalin sebuah string
 void stringCopy(char *dest, const char *src);
 
-// Memeriksa input pengguna yang berhubungan dengan
-// wishlist_remove <i> dan wishlist swap <i> <j>
-boolean isInputWishlistSwap (char *input, int *posisi1, int *posisi2);
-
 #endif
