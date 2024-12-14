@@ -21,5 +21,6 @@
 #include "register.h"
 #include "logout.h"
 #include "wishlist_add.h"
+#include "wishlist_swap.h"
 
 #endif

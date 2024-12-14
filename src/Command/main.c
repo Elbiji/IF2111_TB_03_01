@@ -184,13 +184,20 @@ int main() {
                 printf("Perintah belum bisa dijalankan, karena anda belom LOGIN!\n");
             } else {
                 int tot_wishlist = CountElmt(user.TC[userid].wishlist);
-                if (IsEmptyLDP(user.TC[userid].wishlist)){
+                if (tot_wishlist == 0){
                     printf("wishlist anda kosong!\n");
-                } else if (posisi1 == posisi2 || posisi1 > tot_wishlist || posisi2 > tot_wishlist || posisi1 == 0 || posisi2 == 0){
+                } else if (tot_wishlist == 1){
+                    printf("Hanya terdapat satu element dalam wishlist anda!\n");
+                } else if (posisi1 == posisi2 || posisi1 > tot_wishlist || posisi2 > tot_wishlist || posisi1 == 0 || posisi2 == 0 || posisi1 < 1 || posisi2 < 1){
                     printf("Pastikan anda masukkan angka yang valid untuk melakukan swap!\n");
-                    printf("e.g. WISHLIST SWAP <i> <j> dengan i dan j merupakan angka yang valid dalam wishlist anda!\n");
+                    printf("e.g. WISHLIST SWAP <i> <j> dengan i dan j merupakan angka yang valid dalam wishlist anda! (integer positive dan tidak sama)\n");
                 } else {
                     printf(">>> WISHLIST SWAP %d %d\n", posisi1, posisi2);
+                    printf("sebelum SWAP\n");
+                    // PrintForward(user.TC[userid].wishlist);
+                    wishlist_swap(&(user.TC[userid].wishlist), posisi1, posisi2);
+                    printf("sesudah SWAP\n");
+                    // PrintForward(user.TC[userid].wishlist);
                 }
             }
         }

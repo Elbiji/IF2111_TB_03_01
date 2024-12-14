@@ -7,6 +7,6 @@
 
 // Menerima masukkan berupa tabuser, arraydin, serta id user untuk memasukkan
 // barang ke daftar wishlist pengguna
-void wishlist_swap (TabUser *user_wishlist, IdxType userid, int pos1, int pos2);
+void wishlist_swap (List *user_wishlist, int pos1, int pos2);
 
 #endif
