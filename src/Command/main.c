@@ -201,6 +201,24 @@ int main() {
                 }
             }
         }
+        else if (isInputWishlistRemove(perintah, &posisi1)){
+            if (isloggedin == false) {
+                printf("Perintah belum bisa dijalankan, karena anda belom LOGIN!\n");
+            } else {
+                int tot_wishlist = CountElmt(user.TC[userid].wishlist);
+                if (tot_wishlist == 0){
+                    printf("wishlist anda kosong!\n");
+                } else if (posisi1 > tot_wishlist){
+                    printf("Pastikan anda masukkan angka yang valid untuk melakukan remove!\n");
+                    printf("e.g. WISHLIST REMOVE <i> dengan i  merupakan angka yang valid dalam wishlist anda! (integer positive dan didalam indeks efektif)\n");
+                } else {
+                    PrintForward(user.TC[userid].wishlist);
+                    wishlist_remove1(&(user.TC[userid].wishlist), posisi1, tot_wishlist);
+                    PrintForward(user.TC[userid].wishlist);
+                    printf("Berhasil menghapus barang posisi ke-%d dari wishlist!\n", posisi1);
+                }
+            }
+        }
         else {
             printf("Perintah tidak valid!\n");
         }

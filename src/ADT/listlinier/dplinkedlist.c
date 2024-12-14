@@ -210,10 +210,11 @@ void DelFirst (List *L, addressDP *P) {
         Last(*L) = Kosong;
     } else {
         First(*L) = Next(First(*L));
-        Prev(First(*L)) = Kosong;
-        Next(*P) = Kosong;
-        Prev(*P) = Kosong;
+        if (First(*L) != Kosong){
+            Prev(First(*L)) = Kosong;
+        }
     }
+    free(*P);
 }
 
 void DelLast (List *L, addressDP *P) {
@@ -231,6 +232,7 @@ void DelLast (List *L, addressDP *P) {
         Next(*P) = Kosong;
         Prev(*P) = Kosong;
     }
+    free(*P);
 }
 
 void DelP (List *L, info_barang X) {
@@ -274,6 +276,7 @@ void DelAfter (List *L, addressDP *Pdel, addressDP Prec) {
     Next(*Pdel) = Kosong;
     Prev(*Pdel) = Kosong;
 }
+
 void DelBefore (List *L, addressDP *Pdel, addressDP Succ) {
 /* I.S. List tidak kosong. Succ adalah anggota list. */
 /* F.S. Menghapus Prev(Succ): */
