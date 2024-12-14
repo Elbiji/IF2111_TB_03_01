@@ -246,7 +246,7 @@ void DelP (List *L, info_barang X) {
 
     P = First(*L);
     while (!found && P != Kosong) {
-        if (Info(P) == X) {
+        if (isStrEqualLDP(Info(P), X)) {
             found = true;
         } else {
             P = Next(P);
