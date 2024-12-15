@@ -239,15 +239,27 @@ int main() {
         else if (isInputCartAdd(perintah, &amount, nama_barang)){
             if (isloggedin == false) {
                 printf("Perintah belum bisa dijalankan, karena anda belom LOGIN!\n");
-            } else if (amount == 0){
-                printf("Pastikan anda masukkan angka yang valid untuk melakukan CART ADD!\n");
-                printf("e.g. CART ADD <nama> <i> dengan i  merupakan jumlah barang anda! (integer positive)\n");
             } else {
                 if (IsFullMap(user.TC[userid].keranjang)){
                     printf("Keranjang anda penuh!\n");
+                    printf("Perintah tidak dijalankan!\n");
                 } else {
-                    printf(">> CART ADD %d\n", amount);
+                    printf(">> CART ADD %s %d\n", nama_barang ,amount);
                     cart_add(&(user.TC[userid].keranjang), items, nama_barang ,amount);
+                    printf("%s : %d\n", user.TC[userid].keranjang.Elements[0].nama_barang_keranjang, user.TC[userid].keranjang.Elements[0].jumlah_barang);
+                }
+            }
+        }
+        else if (isInputCartRemove(perintah, &amount, nama_barang)){
+            if (isloggedin == false) {
+                printf("Perintah belum bisa dijalankan, karena anda belom LOGIN!\n");
+            } else {
+                if (IsEmptyMap(user.TC[userid].keranjang)){
+                    printf("Keranjang anda kosong!\n");
+                    printf("Perintah tidak dijalankan!\n");
+                } else {
+                    printf(">> CART REMOVE %s %d\n", nama_barang ,amount);
+                    cart_remove(&(user.TC[userid].keranjang), nama_barang, amount);
                     printf("%s : %d\n", user.TC[userid].keranjang.Elements[0].nama_barang_keranjang, user.TC[userid].keranjang.Elements[0].jumlah_barang);
                 }
             }

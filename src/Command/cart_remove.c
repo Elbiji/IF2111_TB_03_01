@@ -1,57 +1,76 @@
 #include "../Header/cart_remove.h"
 
-void cart_remove(Map *keranjang) {
-    // Variabel sementara untuk menyimpan nama barang dan jumlah barang
-    char nama_barang_copy[50];
-    valuetype jumlah_barang_copy;
-    printf("Ketik Purry untuk keluar\n");
+boolean isInputCartRemove(char *input, int *amount, char *nama_barang){
+    const char *command = "CART REMOVE";
+    int j;
+    int i = 0;
 
-    while (1) {
-        printf("Masukkan nama barang yang akan dihapus: \n");
-        if (!readInput(nama_barang_copy, 50)) continue; // Validasi input nama barang
-
-        // Cek apakah pengguna ingin keluar
-        if (isDone(nama_barang_copy)) {
-            printf("Anda telah keluar dari CART REMOVE.\n");
-            break;
+    while (command[i] != '\0'){
+        if (input[i] != command[i]){
+            return false;
         }
-
-        // Cek apakah barang ada di keranjang
-        if (!IsMember(*keranjang, nama_barang_copy)) {
-            printf("Barang tidak ada di keranjang belanja!\n");
-            continue;
-        }
-
-        // Ambil jumlah barang saat ini di keranjang
-        jumlah_barang_copy = Value(*keranjang, nama_barang_copy);
-
-        printf("Masukkan jumlah yang akan dikurangi: \n");
-        int jumlah_dikurangi = strToInteger();
-
-        if (jumlah_dikurangi == -1 || jumlah_dikurangi <= 0) {
-            printf("Jumlah tidak valid! Masukkan angka positif.\n");
-            continue;
-        }
-
-        // Validasi jumlah barang yang akan dikurangi
-        if (jumlah_barang_copy < jumlah_dikurangi) {
-            printf("Tidak berhasil mengurangi, hanya terdapat %d %s pada keranjang!\n", jumlah_barang_copy, nama_barang_copy);
-            continue;
-        }
-
-        // Kurangi jumlah barang atau hapus jika jumlah menjadi nol
-        if (jumlah_barang_copy == jumlah_dikurangi) {
-            Delete(keranjang, nama_barang_copy);
-        } else {
-            Insert(keranjang, nama_barang_copy, jumlah_barang_copy - jumlah_dikurangi);
-        }
-
-        printf("Berhasil mengurangi %d %s dari keranjang belanja!\n", jumlah_dikurangi, nama_barang_copy);
-
-        break; // Keluar setelah berhasil mengurangi barang
+        i++;
     }
 
-    printf("Anda sudah keluar dari CART REMOVE!\n");
+    while (input[i] == ' '){
+        i++;
+    }
+
+   j = 0;
+    while (input[i] != ' ' && input[i] != '\0'){
+        nama_barang[j++] = input[i++];
+    }
+    nama_barang[j] = '\0';
+
+    while (input[i] == ' '){
+        i++;
+    }
+
+    char num1[10];
+    j = 0;
+    while (input[i] >= '0' && input[i] <= '9' && j < 9){
+        num1[j++] = input[i++];
+    }
+    num1[j] = '\0';
+    *amount = atoi(num1);
+
+    if (*amount > 0){
+        return true;
+    }
+    else{
+        printf("Pastikan anda masukkan angka yang valid untuk melakukan CART ADD!\n");
+        printf("e.g. CART REMOVE <nama> <i> dengan i  merupakan jumlah barang anda! (integer positive)\n");
+        return false;
+    }
+
+    return true;
+}
+
+void cart_remove(Map *keranjang, char *nama_barang_keranjang, int jumlah_barang) {
+    // Variabel sementara untuk menyimpan nama barang dan jumlah barang
+    infotype informasi_barang;
+    valuetype jumlah_barang_current;
+
+    stringCopy(informasi_barang.nama_barang_keranjang, nama_barang_keranjang);
+    informasi_barang.jumlah_barang = jumlah_barang;
+
+    if (!IsMember(*keranjang, &informasi_barang.nama_barang_keranjang)){
+        printf("Tidak ada barang dengan nama %s dalam keranjang anda!\n", informasi_barang.nama_barang_keranjang);
+    } else {
+        jumlah_barang_current = Value(*keranjang, &informasi_barang.nama_barang_keranjang);
+        if (informasi_barang.jumlah_barang > jumlah_barang_current){
+            printf("Angka yang anda masukkan melebihi jumlah barang saat ini!\n");
+            printf("Pengurangan gagal dilakukan!\n");
+            return;
+        } else {
+            if (informasi_barang.jumlah_barang == jumlah_barang_current){
+                Delete(keranjang, &informasi_barang.nama_barang_keranjang);
+            } else {
+                SubtractAmount(keranjang, &informasi_barang.nama_barang_keranjang, informasi_barang.jumlah_barang);
+                printf("Berhasil mengurangi %d %s dari keranjang belanja!\n", informasi_barang.jumlah_barang ,informasi_barang.nama_barang_keranjang);
+            }
+        }
+    }
 }
 
 

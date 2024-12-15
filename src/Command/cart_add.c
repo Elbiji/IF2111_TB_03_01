@@ -38,6 +38,8 @@ boolean isInputCartAdd(char *input, int *amount, char *nama_barang){
         return true;
     }
     else{
+        printf("Pastikan anda masukkan angka yang valid untuk melakukan CART ADD!\n");
+        printf("e.g. CART ADD <nama> <i> dengan i  merupakan jumlah barang anda! (integer positive)\n");
         return false;
     }
 

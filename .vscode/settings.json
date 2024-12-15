@@ -9,6 +9,7 @@
         "wishlist_add.h": "c",
         "cart_add.h": "c",
         "map.h": "c",
-        "arraydin.h": "c"
+        "arraydin.h": "c",
+        "cart_remove.h": "c"
     }
 }
