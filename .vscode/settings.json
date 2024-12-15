@@ -5,6 +5,7 @@
         "dplinkedlist.h": "c",
         "wishlist_swap.h": "c",
         "stdio.h": "c",
-        "misc.h": "c"
+        "misc.h": "c",
+        "wishlist_add.h": "c"
     }
 }
