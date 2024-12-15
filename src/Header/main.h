@@ -2,7 +2,6 @@
 #define __MAIN_H_
 
 #include <stdlib.h>
-
 #include "../../misc.h"
 #include "help.h"
 #include "store_rmv.h"

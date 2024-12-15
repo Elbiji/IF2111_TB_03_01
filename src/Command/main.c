@@ -1,7 +1,4 @@
 #include "../Header/main.h"
-#include <stdlib.h>
-
-
 
 int main() {
     boolean isloggedin = false;
