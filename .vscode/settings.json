@@ -1,6 +1,10 @@
 {
     "files.associations": {
         "stdlib.h": "c",
-        "array.h": "c"
+        "array.h": "c",
+        "dplinkedlist.h": "c",
+        "wishlist_swap.h": "c",
+        "stdio.h": "c",
+        "misc.h": "c"
     }
 }

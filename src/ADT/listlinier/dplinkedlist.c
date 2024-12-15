@@ -2,6 +2,17 @@
 #include <stdlib.h>
 #include "dplinkedlist.h"
 
+boolean isStrEqualLDP(info_barang str1, info_barang str2){
+    int i = 0;
+    while (str1[i] != '\0' && str2[i] != '\0') {
+        if (str1[i] != str2[i]) {
+            return false;
+        }
+        i++;
+    }
+    return (str1[i] == '\0' && str2[i] == '\0');
+}
+
 /* PROTOTYPE */
 /****************** TEST LIST KOSONG ******************/
 boolean IsEmptyLDP (List L) {
@@ -51,10 +62,15 @@ addressDP Search (List L, info_barang X) {
 /* Jika ada, mengirimkan addressDP elemen tersebut. */
 /* Jika tidak ada, mengirimkan Kosong */
     addressDP P = First(L);
-    while (P != Kosong && Info(P) != X){
-        P = Next(P);
+    while (P != Kosong){
+        // printf("aa\n");
+        if (isStrEqualLDP(X, Info(P))){
+            return P;
+        } else {
+            P = Next(P);
+        }
     }
-    return P;
+    return Kosong;
 }
 
 /****************** PRIMITIF BERDASARKAN KosongAI ******************/
@@ -194,10 +210,11 @@ void DelFirst (List *L, addressDP *P) {
         Last(*L) = Kosong;
     } else {
         First(*L) = Next(First(*L));
-        Prev(First(*L)) = Kosong;
-        Next(*P) = Kosong;
-        Prev(*P) = Kosong;
+        if (First(*L) != Kosong){
+            Prev(First(*L)) = Kosong;
+        }
     }
+    free(*P);
 }
 
 void DelLast (List *L, addressDP *P) {
@@ -215,6 +232,7 @@ void DelLast (List *L, addressDP *P) {
         Next(*P) = Kosong;
         Prev(*P) = Kosong;
     }
+    free(*P);
 }
 
 void DelP (List *L, info_barang X) {
@@ -228,7 +246,7 @@ void DelP (List *L, info_barang X) {
 
     P = First(*L);
     while (!found && P != Kosong) {
-        if (Info(P) == X) {
+        if (isStrEqualLDP(Info(P), X)) {
             found = true;
         } else {
             P = Next(P);
@@ -257,7 +275,9 @@ void DelAfter (List *L, addressDP *Pdel, addressDP Prec) {
     Prev(Next(*Pdel)) = Prec;
     Next(*Pdel) = Kosong;
     Prev(*Pdel) = Kosong;
+    free(*Pdel);
 }
+
 void DelBefore (List *L, addressDP *Pdel, addressDP Succ) {
 /* I.S. List tidak kosong. Succ adalah anggota list. */
 /* F.S. Menghapus Prev(Succ): */
@@ -267,6 +287,7 @@ void DelBefore (List *L, addressDP *Pdel, addressDP Succ) {
     Prev(Succ) = Prev(*Pdel);
     Next(*Pdel) = Kosong;
     Prev(*Pdel) = Kosong;
+    free(*Pdel);
 }
 
 /****************** PROSES SEMUA ELEMEN LIST ******************/
@@ -280,15 +301,12 @@ void PrintForward (List L) {
 /* Terdapat newline di akhir setelah tutup kurung */
     addressDP P = First(L);
 
-    printf("[");
+    int i = 1;
     while (P != Kosong) {
-        printf("%s", Info(P));
-        if (P != Last(L)) {
-            printf(",");
-        }
+        printf("%d. %s\n", i, Info(P));
         P = Next(P);
+        i++;
     }
-    printf("]\n");
 }
 
 void PrintBackward (List L) {
@@ -324,4 +342,14 @@ void ResetDP(List *L){
 
     First(*L) = Kosong;
     Last(*L) = Kosong;
+}
+
+int CountElmt(List L){
+    int ctr = 0;
+    addressDP currentNode = First(L); 
+    while (currentNode != Kosong){
+        currentNode = Next(currentNode);
+        ctr++;
+    }
+    return ctr;
 }

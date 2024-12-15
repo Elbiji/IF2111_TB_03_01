@@ -79,5 +79,7 @@ int strToInteger ();
 // visual
 void visual(char* path);
 
+// Untuk menyalin sebuah string
+void stringCopy(char *dest, const char *src);
 
 #endif
