@@ -6,6 +6,7 @@
 int main() {
     boolean isloggedin = false;
     char perintah[50];
+    char nama_barang[50];
     TabUser user;
     IdxType userid;
     ArrayDinBarang items;
@@ -16,7 +17,7 @@ int main() {
     visual("welcome.txt");
     MakeEmpty(&user);
     printf("\n");
-    int posisi1 = 0, posisi2 = 0;
+    int posisi1 = 0, posisi2 = 0, amount = 0;
 
     while(1){
         // printf("Silahkan masukkan perintah yang sesuai\n");
@@ -232,6 +233,34 @@ int main() {
                     wishlist_remove1(&(user.TC[userid].wishlist), posisi1, tot_wishlist);
                     // PrintForward(user.TC[userid].wishlist);
                     printf("Berhasil menghapus barang posisi ke-%d dari wishlist!\n", posisi1);
+                }
+            }
+        }
+        else if (isInputCartAdd(perintah, &amount, nama_barang)){
+            if (isloggedin == false) {
+                printf("Perintah belum bisa dijalankan, karena anda belom LOGIN!\n");
+            } else {
+                if (IsFullMap(user.TC[userid].keranjang)){
+                    printf("Keranjang anda penuh!\n");
+                    printf("Perintah tidak dijalankan!\n");
+                } else {
+                    printf(">> CART ADD %s %d\n", nama_barang ,amount);
+                    cart_add(&(user.TC[userid].keranjang), items, nama_barang ,amount);
+                    printf("%s : %d\n", user.TC[userid].keranjang.Elements[0].nama_barang_keranjang, user.TC[userid].keranjang.Elements[0].jumlah_barang);
+                }
+            }
+        }
+        else if (isInputCartRemove(perintah, &amount, nama_barang)){
+            if (isloggedin == false) {
+                printf("Perintah belum bisa dijalankan, karena anda belom LOGIN!\n");
+            } else {
+                if (IsEmptyMap(user.TC[userid].keranjang)){
+                    printf("Keranjang anda kosong!\n");
+                    printf("Perintah tidak dijalankan!\n");
+                } else {
+                    printf(">> CART REMOVE %s %d\n", nama_barang ,amount);
+                    cart_remove(&(user.TC[userid].keranjang), nama_barang, amount);
+                    printf("%s : %d\n", user.TC[userid].keranjang.Elements[0].nama_barang_keranjang, user.TC[userid].keranjang.Elements[0].jumlah_barang);
                 }
             }
         }

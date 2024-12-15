@@ -73,4 +73,6 @@ boolean isStrEqualMap(char *str1, char *str2);
 
 int strLengthMap(char *str);
 
+void SubtractAmount(Map *M, keytype *k, valuetype val);
+
 #endif

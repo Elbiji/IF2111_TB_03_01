@@ -132,3 +132,16 @@ int strLengthMap(char *str){
     }
     return i;
 }
+
+void SubtractAmount(Map *M, keytype *k, valuetype val){
+    boolean found = false;
+    int i = 0;
+    while (!found){
+        if (isStrEqualMap(*k, M->Elements[i].nama_barang_keranjang)){
+            M->Elements[i].jumlah_barang -= val;
+            found = true;
+        } else {
+            i++;
+        }
+    }
+}
