@@ -27,7 +27,7 @@ void cart_add(Map *keranjang, Map *shop, char *nama_barang_keranjang, int jumlah
     // Tambahkan ke keranjang
     if (IsMember(*keranjang, nama_barang_copy)) {
         // Jika barang sudah ada di keranjang, tambahkan jumlahnya
-        for (int i = 0; i < keranjang->Count; i++) {
+        for (address i = 0; i < keranjang->Count; i++) {
             if (isStrEqualMap(keranjang->Elements[i].nama_barang_keranjang, nama_barang_copy)) {
                 keranjang->Elements[i].jumlah_barang += jumlah_barang_copy;
                 break;
@@ -37,6 +37,5 @@ void cart_add(Map *keranjang, Map *shop, char *nama_barang_keranjang, int jumlah
         // Jika barang belum ada di keranjang, tambahkan barang baru
         Insert(keranjang, &nama_barang_copy, jumlah_barang_copy);
     }
-    printf("Berhasil menambah %d %s ke keranjang belanja!.\n", jumlah_barang_copy, nama_barang_copy);
+    printf("%s sebanyak %d telah ditambahkan ke keranjang.\n", nama_barang_copy, jumlah_barang_copy);
 }
-

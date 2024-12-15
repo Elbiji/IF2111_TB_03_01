@@ -5,14 +5,8 @@
 #include <stdlib.h>
 
 #include "../../misc.h"
-#include "../ADT/array/array.h"
 #include "../ADT/arraydin/arraydin.h"
-#include "../ADT/queue/queue.h"
-#include "../ADT/boolean/boolean.h"
 #include "../ADT/setmap/map.h"
-
-char nama_barang_keranjang[50];
-int jumlah_barang;
 
 // Fungsi untuk menambahkan barang ke keranjang
 // Menerima masukkan nama barang dan kuantitas barang yang ingin ditambahkan ke keranjang
