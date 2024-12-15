@@ -1,62 +1,58 @@
 #include "cart_remove.h"
 
 void cart_remove(Map *keranjang) {
-    char buffer[50];
+    // Variabel sementara untuk menyimpan nama barang dan jumlah barang
+    char nama_barang_copy[50];
+    valuetype jumlah_barang_copy;
     printf("Ketik Purry untuk keluar\n");
 
     while (1) {
         printf("Masukkan nama barang yang akan dihapus: \n");
-        if (!readInput(buffer, 50)) continue;  // Jika input terlalu panjang atau tidak valid, ulangi
+        if (!readInput(nama_barang_copy, 50)) continue; // Validasi input nama barang
 
         // Cek apakah pengguna ingin keluar
-        if (isDone(buffer)) {
+        if (isDone(nama_barang_copy)) {
             printf("Anda telah keluar dari CART REMOVE.\n");
             break;
         }
 
-        // Cari item dalam keranjang
-        valuetype currentQuantity = Value(*keranjang, buffer);
-        if (currentQuantity == Undefined) {
+        // Cek apakah barang ada di keranjang
+        if (!IsMember(*keranjang, nama_barang_copy)) {
             printf("Barang tidak ada di keranjang belanja!\n");
             continue;
         }
 
-        printf("Masukkan jumlah yang akan dikurangi: \n");
-        int quantity = strToInteger();
+        // Ambil jumlah barang saat ini di keranjang
+        jumlah_barang_copy = Value(*keranjang, nama_barang_copy);
 
-        if (quantity == -1 || quantity <= 0) {
+        printf("Masukkan jumlah yang akan dikurangi: \n");
+        int jumlah_dikurangi = strToInteger();
+
+        if (jumlah_dikurangi == -1 || jumlah_dikurangi <= 0) {
             printf("Jumlah tidak valid! Masukkan angka positif.\n");
             continue;
         }
 
-        // Validasi jumlah barang
-        if (currentQuantity < quantity) {
-            printf("Tidak berhasil mengurangi, hanya terdapat %d ", currentQuantity);
-            for (int i = 0; buffer[i] != '\0'; i++) {
-                putchar(buffer[i]);
-            }
-            printf(" pada keranjang!\n");
+        // Validasi jumlah barang yang akan dikurangi
+        if (jumlah_barang_copy < jumlah_dikurangi) {
+            printf("Tidak berhasil mengurangi, hanya terdapat %d %s pada keranjang!\n", jumlah_barang_copy, nama_barang_copy);
             continue;
         }
 
-        // Kurangi jumlah barang
-        if (currentQuantity == quantity) {
-            Delete(keranjang, buffer);
+        // Kurangi jumlah barang atau hapus jika jumlah menjadi nol
+        if (jumlah_barang_copy == jumlah_dikurangi) {
+            Delete(keranjang, nama_barang_copy);
         } else {
-            Insert(keranjang, buffer, currentQuantity - quantity);
+            Insert(keranjang, nama_barang_copy, jumlah_barang_copy - jumlah_dikurangi);
         }
 
-        printf("Berhasil mengurangi %d ", quantity);
-        for (int i = 0; buffer[i] != '\0'; i++) {
-            putchar(buffer[i]);
-        }
-        printf(" dari keranjang belanja!\n");
+        printf("Berhasil mengurangi %d %s dari keranjang belanja!\n", jumlah_dikurangi, nama_barang_copy);
 
-        break;  // Keluar setelah berhasil mengurangi barang
+        break; // Keluar setelah berhasil mengurangi barang
     }
 
     printf("Anda sudah keluar dari CART REMOVE!\n");
-} 
+}
 
 
 
@@ -75,7 +71,7 @@ void cart_remove(Map *keranjang) {
 
 //     // Tampilkan isi keranjang sebelum penghapusan
 //     printf("Keranjang belanja sebelum penghapusan:\n");
-//     PrintMap(keranjang);  // Asumsi ada fungsi untuk mencetak isi map/keranjang
+//     PrintMap(keranjang);  
 
 //     // Test fungsi cart_remove
 //     printf("\nMenghapus barang dari keranjang:\n");
@@ -83,10 +79,7 @@ void cart_remove(Map *keranjang) {
 
 //     // Tampilkan isi keranjang setelah penghapusan
 //     printf("\nKeranjang belanja setelah penghapusan:\n");
-//     PrintMap(keranjang);  // Asumsi ada fungsi untuk mencetak isi map/keranjang
-
-//     // Clean up jika perlu (misalnya delete map atau sejenisnya)
-//     // FreeMap(&keranjang);
+//     PrintMap(keranjang);  
 
 //     return 0;
 // }
