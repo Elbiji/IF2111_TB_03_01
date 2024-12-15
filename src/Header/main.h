@@ -19,10 +19,12 @@
 #include "login.h"
 #include "register.h"
 #include "logout.h"
+#include "profile.h"
 #include "wishlist_add.h"
 #include "wishlist_swap.h"
 #include "wishlist_remove_ver1.h"
 #include "wishlist_remove_ver2.h"
 #include "cart_add.h"
+#include "cart_remove.h"
 
 #endif
