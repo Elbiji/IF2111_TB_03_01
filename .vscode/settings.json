@@ -6,6 +6,9 @@
         "wishlist_swap.h": "c",
         "stdio.h": "c",
         "misc.h": "c",
-        "wishlist_add.h": "c"
+        "wishlist_add.h": "c",
+        "cart_add.h": "c",
+        "map.h": "c",
+        "arraydin.h": "c"
     }
 }

@@ -6,6 +6,7 @@
 int main() {
     boolean isloggedin = false;
     char perintah[50];
+    char nama_barang[50];
     TabUser user;
     IdxType userid;
     ArrayDinBarang items;
@@ -16,7 +17,7 @@ int main() {
     visual("welcome.txt");
     MakeEmpty(&user);
     printf("\n");
-    int posisi1 = 0, posisi2 = 0;
+    int posisi1 = 0, posisi2 = 0, amount = 0;
 
     while(1){
         // printf("Silahkan masukkan perintah yang sesuai\n");
@@ -232,6 +233,22 @@ int main() {
                     wishlist_remove1(&(user.TC[userid].wishlist), posisi1, tot_wishlist);
                     // PrintForward(user.TC[userid].wishlist);
                     printf("Berhasil menghapus barang posisi ke-%d dari wishlist!\n", posisi1);
+                }
+            }
+        }
+        else if (isInputCartAdd(perintah, &amount, nama_barang)){
+            if (isloggedin == false) {
+                printf("Perintah belum bisa dijalankan, karena anda belom LOGIN!\n");
+            } else if (amount == 0){
+                printf("Pastikan anda masukkan angka yang valid untuk melakukan CART ADD!\n");
+                printf("e.g. CART ADD <nama> <i> dengan i  merupakan jumlah barang anda! (integer positive)\n");
+            } else {
+                if (IsFullMap(user.TC[userid].keranjang)){
+                    printf("Keranjang anda penuh!\n");
+                } else {
+                    printf(">> CART ADD %d\n", amount);
+                    cart_add(&(user.TC[userid].keranjang), items, nama_barang ,amount);
+                    printf("%s : %d\n", user.TC[userid].keranjang.Elements[0].nama_barang_keranjang, user.TC[userid].keranjang.Elements[0].jumlah_barang);
                 }
             }
         }
