@@ -54,6 +54,7 @@ SRCS = $(ROOT_SRCS) \
        $(MESINKAR_DIR)/mesinkarakter.c \
        $(CMD_DIR)/profile.c \
 
+
 # Object files (replace .c with .o in SRCS)
 OBJS = $(SRCS:.c=.o)
 

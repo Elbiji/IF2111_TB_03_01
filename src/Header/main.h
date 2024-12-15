@@ -24,5 +24,6 @@
 #include "wishlist_swap.h"
 #include "wishlist_remove_ver1.h"
 #include "wishlist_remove_ver2.h"
+#include "cart_add.h"
 
 #endif
