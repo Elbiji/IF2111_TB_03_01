@@ -2,7 +2,6 @@
 #define __MAIN_H_
 
 #include <stdlib.h>
-
 #include "../../misc.h"
 #include "help.h"
 #include "store_rmv.h"
@@ -27,5 +26,6 @@
 #include "wishlist_remove_ver2.h"
 #include "cart_add.h"
 #include "cart_remove.h"
+#include "cart_show.h"
 
 #endif

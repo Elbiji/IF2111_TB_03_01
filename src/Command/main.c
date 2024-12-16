@@ -1,7 +1,4 @@
 #include "../Header/main.h"
-#include <stdlib.h>
-
-
 
 int main() {
     boolean isloggedin = false;
@@ -193,6 +190,18 @@ int main() {
                 printf("Perintah belum bisa dijalankan, karena anda belom LOGIN!\n");
             } else {
                 wishlist_remove2(&(user.TC[userid].wishlist));
+            }
+        }
+        else if (isStrEqual(perintah, "CART SHOW")){
+            if (isloggedin == false) {
+                printf("Perintah belum bisa dijalankan, karena anda belom LOGIN!\n");
+            } else {
+                if (IsEmptyMap(user.TC[userid].keranjang)){
+                    printf("Keranjang anda kosong!\n");
+                    printf("Perintah tidak dijalankan!\n");
+                } else {
+                    cart_show(&(user.TC[userid].keranjang), &items);
+                }
             }
         }
         else if (isInputWishlistSwap(perintah, &posisi1, &posisi2)){
