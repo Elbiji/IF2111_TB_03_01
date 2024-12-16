@@ -7,7 +7,6 @@
 #include "../ADT/setmap/map.h"
 #include "../ADT/stack/stack.h"
 #include "../ADT/array/array.h"
-#include "../ADT/boolean/boolean.h"
 
 void CartPay(TabUser *T, IdxType userIdx, Map *cart, Stack *history);
 
