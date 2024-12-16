@@ -63,7 +63,11 @@ void CartPay(TabUser *T, IdxType userIdx, Map *cart, Stack *history) {
 
     printf("Total biaya yang harus dikeluarkan adalah %d, apakah jadi dibeli? (Ya/Tidak): ", totalCost);
     char response[10];
-    scanf("%s", response);
+
+    if (!readInput(response, 10)) {
+        printf("Gagal membaca input.\n");
+        return;
+    }
 
     // Cek respon pengguna
     if (isStrEqualMap(response, "Purry")) {
@@ -76,16 +80,22 @@ void CartPay(TabUser *T, IdxType userIdx, Map *cart, Stack *history) {
             // Kurangi uang pengguna
             T->TC[userIdx].money -= totalCost;
 
-            // Tambahkan riwayat pembelian
-            history newHistory;
-            newHistory.totalHarga = mostExpensiveValue;
-
-            for (int j = 0; j < 50 - 1 && mostExpensiveName[j] != '\0'; j++) {
-                newHistory.namaBarang[j] = mostExpensiveName[j];
-                newHistory.namaBarang[j + 1] = '\0';
+            // Tambahkan riwayat pembelian ke stack history yang sudah ada
+            history topHistory;
+            if (IsEmptyStack(*history)) {
+                topHistory.totalHarga = 0;
+                topHistory.namaBarang[0] = '\0';
+            } else {
+                Pop(history, &topHistory);
             }
 
-            Push(history, newHistory);
+            topHistory.totalHarga += mostExpensiveValue;
+            for (int j = 0; j < 50 - 1 && mostExpensiveName[j] != '\0'; j++) {
+                topHistory.namaBarang[j] = mostExpensiveName[j];
+                topHistory.namaBarang[j + 1] = '\0';
+            }
+
+            Push(history, topHistory);
 
             printf("Selamat kamu telah membeli barang-barang tersebut!\n");
         } else {
