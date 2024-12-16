@@ -83,7 +83,7 @@ void cart_pay(TabUser *T, IdxType userIdx, Map *cart, Stack *riwayat) {
             // Tambahkan riwayat pembelian ke stack history yang sudah ada
             riwayat topHistory;
             topHistory.total_price = mostExpensiveValue;
-            topHistory.total_price += mostExpensiveValue;
+
             for (int j = 0; j < 50 - 1 && mostExpensiveName[j] != '\0'; j++) {
                 topHistory.nama_barang[j] = mostExpensiveName[j];
                 topHistory.nama_barang[j + 1] = '\0';
