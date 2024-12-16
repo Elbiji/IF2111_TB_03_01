@@ -8,6 +8,6 @@
 #include "../ADT/stack/stack.h"
 #include "../ADT/array/array.h"
 
-void cart_pay(TabUser *T, IdxType userIdx, Map *cart, Stack *history);
+void cart_pay(TabUser *T, IdxType userIdx, Map *cart, Stack *riwayat, ArrayDinBarang informasi_barang);
 
 #endif

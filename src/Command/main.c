@@ -204,6 +204,18 @@ int main() {
                 }
             }
         }
+        else if (isStrEqual(perintah, "CART PAY")){
+            if (isloggedin == false) {
+                printf("Perintah belum bisa dijalankan, karena anda belom LOGIN!\n");
+            } else {
+                if (IsEmptyMap(user.TC[userid].keranjang)){
+                    printf("Keranjang anda kosong!\n");
+                    printf("Perintah tidak dijalankan!\n");
+                } else {
+                    cart_pay(&user,userid, &(user.TC[userid].keranjang), &(user.TC[userid].riwayat_pembelian), items);
+                }
+            }
+        }
         else if (isInputWishlistSwap(perintah, &posisi1, &posisi2)){
             if (isloggedin == false) {
                 printf("Perintah belum bisa dijalankan, karena anda belom LOGIN!\n");

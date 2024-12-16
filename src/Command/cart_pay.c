@@ -23,9 +23,8 @@ int compareStrings(const char *str1, const char *str2) {
 }
 
 
-void cart_pay(TabUser *T, IdxType userIdx, Map *cart, Stack *riwayat) {
+void cart_pay(TabUser *T, IdxType userIdx, Map *cart, Stack *riwayat, ArrayDinBarang informasi_barang) {
     // Jika keranjang kosong
-    history topHistory;
     if (IsEmptyMap(*cart)) {
         printf("Keranjang kamu kosong!\n");
         return;
@@ -44,7 +43,8 @@ void cart_pay(TabUser *T, IdxType userIdx, Map *cart, Stack *riwayat) {
     for (int i = 0; i < cart->Count; i++) {
         int quantity = cart->Elements[i].jumlah_barang;
         char *name = cart->Elements[i].nama_barang_keranjang;
-        int price = cart->Elements[i].jumlah_barang; // Harga barang dari keranjang
+        IdxType index_barang = IndexItemInShop(informasi_barang, name);
+        int price = informasi_barang.A[index_barang].price; // Harga barang dari keranjang
         int totalPrice = quantity * price;
 
         // Cetak baris dengan format yang rapi
@@ -65,8 +65,12 @@ void cart_pay(TabUser *T, IdxType userIdx, Map *cart, Stack *riwayat) {
     printf("Total biaya yang harus dikeluarkan adalah %d, apakah jadi dibeli? (Ya/Tidak): ", totalCost);
     char response[10];
 
-    while (!readInput(response, 10)){
-        printf("Gagal membaca input.\n");
+    while (1){
+        if(!readInput(response, 10)){
+            printf("Masukkan perintah yang valid!(Ya/Purry)\n");
+            continue;
+        }
+        break;
     }
 
     // Cek respon pengguna
@@ -81,7 +85,7 @@ void cart_pay(TabUser *T, IdxType userIdx, Map *cart, Stack *riwayat) {
             T->TC[userIdx].money -= totalCost;
 
             // Tambahkan riwayat pembelian ke stack history yang sudah ada
-            riwayat topHistory;
+            history topHistory;
             topHistory.total_price = mostExpensiveValue;
 
             for (int j = 0; j < 50 - 1 && mostExpensiveName[j] != '\0'; j++) {
@@ -92,10 +96,12 @@ void cart_pay(TabUser *T, IdxType userIdx, Map *cart, Stack *riwayat) {
             Push(riwayat, topHistory);
 
             printf("Selamat kamu telah membeli barang-barang tersebut!\n");
+            CreateEmpty(cart);
+            return;
         } else {
             printf("Uang kamu hanya %d, tidak cukup untuk membeli keranjang!\n", userMoney);
         }
     } else {
-        printf("Pembelian dibatalkan.\n");
+        printf("Pembelian dibatalkan anda dikeluarkan dari CART PAY!\n");
     }
 }
