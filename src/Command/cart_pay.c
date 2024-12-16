@@ -23,7 +23,7 @@ int compareStrings(const char *str1, const char *str2) {
 }
 
 
-void CartPay(TabUser *T, IdxType userIdx, Map *cart, Stack *riwayat) {
+void cart_pay(TabUser *T, IdxType userIdx, Map *cart, Stack *riwayat) {
     // Jika keranjang kosong
     history topHistory;
     if (IsEmptyMap(*cart)) {
@@ -81,13 +81,8 @@ void CartPay(TabUser *T, IdxType userIdx, Map *cart, Stack *riwayat) {
             T->TC[userIdx].money -= totalCost;
 
             // Tambahkan riwayat pembelian ke stack history yang sudah ada
-            if (IsEmptyStack(*riwayat)) {
-                topHistory.total_price = 0;
-                topHistory.nama_barang[0] = '\0';
-            } else {
-                Pop(riwayat, &topHistory);
-            }
-
+            riwayat topHistory;
+            topHistory.total_price = mostExpensiveValue;
             topHistory.total_price += mostExpensiveValue;
             for (int j = 0; j < 50 - 1 && mostExpensiveName[j] != '\0'; j++) {
                 topHistory.nama_barang[j] = mostExpensiveName[j];
