@@ -28,5 +28,7 @@
 #include "cart_remove.h"
 #include "cart_show.h"
 #include "cart_pay.h"
+#include "wishlist_clear.h"
+#include "wishlist_show.h"
 
 #endif

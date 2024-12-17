@@ -189,7 +189,28 @@ int main() {
             if (isloggedin == false) {
                 printf("Perintah belum bisa dijalankan, karena anda belom LOGIN!\n");
             } else {
-                wishlist_remove2(&(user.TC[userid].wishlist));
+                if (IsEmptyLDP(user.TC[userid].wishlist)){
+                    printf("Wishlist anda kosong!\n");
+                } else {
+                    wishlist_remove2(&(user.TC[userid].wishlist));
+                }
+            }
+        }
+        else if (isStrEqual(perintah, "WISHLIST SHOW")){
+            if (isloggedin == false) {
+                printf("Perintah belum bisa dijalankan, karena anda belom LOGIN!\n");
+            } else {
+                printf(">> WISHLIST SHOW\n");
+                wishlist_show(&user, userid);
+            }
+        }
+        else if (isStrEqual(perintah, "WISHLIST CLEAR")){
+            if (isloggedin == false) {
+                printf("Perintah belum bisa dijalankan, karena anda belom LOGIN!\n");
+            } else {
+                printf(">> WISHLIST CLEAR\n");
+                wishlist_clear(&user.TC[userid].wishlist);
+                printf("Wishlist berhasil dikosongkan!\n");
             }
         }
         else if (isStrEqual(perintah, "CART SHOW")){

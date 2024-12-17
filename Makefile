@@ -38,6 +38,8 @@ SRCS = $(ROOT_SRCS) \
        $(CMD_DIR)/register.c \
        $(CMD_DIR)/wishlist_add.c \
        $(CMD_DIR)/wishlist_swap.c \
+       $(CMD_DIR)/wishlist_clear.c \
+       $(CMD_DIR)/wishlist_show.c \
        $(CMD_DIR)/wishlist_remove_ver1.c \
        $(CMD_DIR)/wishlist_remove_ver2.c \
        $(CMD_DIR)/cart_add.c \
@@ -78,7 +80,7 @@ $(OUTPUT): $(OBJS)
 
 # Clean build files
 clean:
-	cmd /C "del /Q main.exe misc.o src\Command\cart_pay.o src\Command\cart_show.o src\Command\cart_remove.o src\Command\cart_add.o src\Command\profile.o src\Command\wishlist_remove_ver2.o src\Command\wishlist_remove_ver1.o src\Command\wishlist_swap.o src\Command\wishlist_add.o src\Command\quit.o src\Command\wordl399.o src\Command\work_challenge.o src\Command\login.o src\Command\logout.o src\Command\register.o src\Command\tebakangka.o src\Command\save.o src\Command\help.o src\Command\main.o src\Command\store_list.o src\Command\load.o src\Command\work.o src\Command\store_req.o src\Command\start.o src\Command\store_sup.o src\Command\store_rmv.o src\ADT\array\array.o src\ADT\arraydin\arraydin.o src\ADT\queue\queue.o src\ADT\mesinkata\mesinkata.o src\ADT\mesinkarakter\mesinkarakter.o src\ADT\listlinier\dplinkedlist.o src\ADT\setmap\map.o src\ADT\stack\stack.o"
+	cmd /C "del /Q main.exe misc.o  src\Command\wishlist_show.o src\Command\wishlist_clear.o src\Command\cart_pay.o src\Command\cart_show.o src\Command\cart_remove.o src\Command\cart_add.o src\Command\profile.o src\Command\wishlist_remove_ver2.o src\Command\wishlist_remove_ver1.o src\Command\wishlist_swap.o src\Command\wishlist_add.o src\Command\quit.o src\Command\wordl399.o src\Command\work_challenge.o src\Command\login.o src\Command\logout.o src\Command\register.o src\Command\tebakangka.o src\Command\save.o src\Command\help.o src\Command\main.o src\Command\store_list.o src\Command\load.o src\Command\work.o src\Command\store_req.o src\Command\start.o src\Command\store_sup.o src\Command\store_rmv.o src\ADT\array\array.o src\ADT\arraydin\arraydin.o src\ADT\queue\queue.o src\ADT\mesinkata\mesinkata.o src\ADT\mesinkarakter\mesinkarakter.o src\ADT\listlinier\dplinkedlist.o src\ADT\setmap\map.o src\ADT\stack\stack.o"
 
 run: $(OUTPUT)
 	.\$(OUTPUT)

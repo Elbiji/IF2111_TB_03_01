@@ -21,7 +21,7 @@ void wishlist_add (TabUser *user_wishlist, ArrayDinBarang item_shop, IdxType use
         }
 
         InsVFirst(&(user_wishlist->TC[userid].wishlist), barang_wishlist);
-        PrintForward(user_wishlist->TC[userid].wishlist);
+        // PrintForward(user_wishlist->TC[userid].wishlist);
         break;
     }
     printf("Anda sudah keluar dari WISHLIST ADD!\n");

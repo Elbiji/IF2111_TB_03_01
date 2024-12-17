@@ -6,6 +6,6 @@
 #include "../../misc.h"
 #include "../ADT/listlinier/dplinkedlist.h"
 
-void wishlist_clear(TabUser *user_wishlist, IdxType userid);
+void wishlist_clear(List *user_wishlist);
 
 #endif
