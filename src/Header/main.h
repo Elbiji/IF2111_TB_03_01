@@ -30,5 +30,6 @@
 #include "cart_pay.h"
 #include "wishlist_clear.h"
 #include "wishlist_show.h"
+#include "history.h"
 
 #endif

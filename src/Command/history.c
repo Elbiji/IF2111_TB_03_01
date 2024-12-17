@@ -1,79 +1,72 @@
 #include "../Header/history.h"
 
-History *createHistory() {
-    History *history = (History *)malloc(sizeof(History));
-    if (history == NULL) { 
-        printf("Error: Alokasi memori gagal!\n");
-        exit(1);
-    }
-    history->head = NULL;
-    history->count = 0;
-    return history;
-}
-
-void addPurchase(History *history, char *itemName, int quantity) {
-    if (history == NULL || itemName == NULL) {
-        printf("Error: Parameter tidak valid pada addPurchase!\n");
-        return;
-    }
-
-    Purchase *newPurchase = (Purchase *)malloc(sizeof(Purchase));
-    if (newPurchase == NULL) { 
-        printf("Error: Alokasi memori gagal!\n");
-        exit(1);
-    }
-
+boolean isInputHistory(char *input,int *posisi1){
+    const char *command = "HISTORY";
     int i = 0;
-    while (itemName[i] != '\0' && i < MAX_NAME_LENGTH - 1) {
-        newPurchase->itemName[i] = itemName[i];
+
+    while (command[i] != '\0'){
+        if (input[i] != command[i]){
+            return false;
+        }
         i++;
     }
-    newPurchase->itemName[i] = '\0';
 
-    newPurchase->quantity = quantity;
-    newPurchase->next = history->head;
+    while (input[i] == ' '){
+        i++;
+    }
 
-    history->head = newPurchase;
-    history->count++;
+    char num1[10];
+    int j = 0;
+    while (input[i] >= '0' && input[i] <= '9' && j < 9){
+        num1[j++] = input[i++];
+    }
+    num1[j] = '\0';
+    *posisi1 = atoi(num1);
+
+    if (*posisi1 > 0 ){
+        return true;
+    }
+    else{
+        return false;
+    }
+
+    return true;
 }
 
-void displayHistory(History *history, int n) {
-    if (history == NULL) {
-        printf("Error: Parameter tidak valid pada displayHistory!\n");
-        return;
+void displayHistory(Stack *user_history, int n) {
+    history temp;
+    Stack temp_stack;
+    CreateEmptyStack(&temp_stack);
+    int count = 0;
+
+    while (!IsEmptyStack(*user_history)){
+        Pop(user_history,&temp);
+        Push(&temp_stack, temp);
+        count++;
+    } 
+    int ctr = 0;
+    int index = 1;
+    if (n < count){
+        printf("Riwayat pembelian barang:\n");
+        while (ctr != n){
+            Pop(&temp_stack, &temp);
+            printf("%d. %s %d\n", index, temp.nama_barang, temp.total_price);
+            Push(user_history, temp);
+            ctr++;
+            index++;
+        }
+    } else {
+        printf("Riwayat pembelian barang:\n");
+        while (!IsEmptyStack(temp_stack)){
+            Pop(&temp_stack, &temp);
+            printf("%d. %s %d\n", index, temp.nama_barang, temp.total_price);
+            Push(user_history, temp);
+            index++;
+        }
+    }   
+
+    while (!IsEmptyStack(temp_stack)){
+            Pop(&temp_stack, &temp);
+            Push(user_history, temp);
     }
-
-    if (history->count == 0) {
-        printf("Kamu belum membeli barang apapun!\n");
-        return;
-    }
-
-    printf("Riwayat pembelian barang:\n");
-
-    Purchase *current = history->head;
-    int displayed = 0;
-
-    while (current != NULL && displayed < n) {
-        printf("%d. %s %d\n", displayed + 1, current->itemName, current->quantity);
-        current = current->next;
-        displayed++;
-    }
-
-    printf("\n");
-}
-
-void freeHistory(History *history) {
-    if (history == NULL) {
-        return;
-    }
-
-    Purchase *current = history->head;
-
-    while (current != NULL) {
-        Purchase *temp = current;
-        current = current->next;
-        free(temp);
-    }
-
-    free(history);
 }

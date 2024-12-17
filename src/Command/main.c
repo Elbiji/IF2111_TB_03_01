@@ -306,6 +306,19 @@ int main() {
                 }
             }
         }
+        else if (isInputHistory(perintah, &amount)){
+            if (isloggedin == false) {
+                printf("Perintah belum bisa dijalankan, karena anda belom LOGIN!\n");
+            } else {
+                if(IsEmptyStack(user.TC[userid].riwayat_pembelian)){
+                    printf("Tidak ada riwayat pembelian!\n");
+                } else {
+                    printf(">> HISTORY %d\n", amount);
+                    displayHistory(&user.TC[userid].riwayat_pembelian, amount);
+                    printf("Penampilan riwayat selesai!\n");
+                }
+            }
+        }
         else {
             printf("Perintah tidak valid!\n");
         }

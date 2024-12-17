@@ -8,22 +8,8 @@
 
 #include "../ADT/stack/stack.h"
 
-#define MAX_NAME_LENGTH 50
+boolean isInputHistory(char *input,int *posisi1);
+void displayHistory(Stack *user_history, int n);
 
-typedef struct Purchase {
-    char itemName[MAX_NAME_LENGTH];
-    int quantity;
-    struct Purchase *next;
-} Purchase;
-
-typedef struct {
-    Purchase *head;
-    int count;
-} History;
-
-History *createHistory();
-void addPurchase(History *history, char *itemName, int quantity);
-void displayHistory(History *history, int n);
-void freeHistory(History *history);
 
 #endif

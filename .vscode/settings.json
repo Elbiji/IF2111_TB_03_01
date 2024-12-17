@@ -10,6 +10,7 @@
         "cart_add.h": "c",
         "map.h": "c",
         "arraydin.h": "c",
-        "cart_remove.h": "c"
+        "cart_remove.h": "c",
+        "history.h": "c"
     }
 }
