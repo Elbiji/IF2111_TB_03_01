@@ -31,7 +31,22 @@ void save(TabUser *Users, ArrayDinBarang *array) {
             } else {
                 fprintf(file, "%d %s %s\n", Users->TC[i].money, Users->TC[i].name, Users->TC[i].password);
             }
+            
+            int total_history = CountStack(Users->TC[i].riwayat_pembelian);
+            fprintf(file, "%d\n", total_history);
+            for (int j = 0; j < total_history; j++) {
+                fprintf(file, "%d %s\n", Users->TC[i].riwayat_pembelian.T[j].total_price, Users->TC[i].riwayat_pembelian.T[j].nama_barang);
+            }
+        
+            int total_wishlist = CountElmt(Users->TC[i].wishlist);
+            fprintf(file, "%d\n", total_wishlist);
+            addressDP wishlistNode = Users->TC[i].wishlist.First;
+            while (wishlistNode != NULL) {
+                fprintf(file, "%s\n", wishlistNode->info);
+                wishlistNode = wishlistNode->next;
+            }
         }
+
         fclose(file);
         printf("Save file berhasil disimpan\n");
         break;
