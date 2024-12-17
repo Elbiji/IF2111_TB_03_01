@@ -2,30 +2,29 @@
 
 int compareStrings(const char *str1, const char *str2) {
     // Bandingkan dua string secara manual
-    while (*str1 != '\0' && *str2 != '\0') {
-        if (*str1 > *str2) {
-            return 1; // str1 lebih besar
-        } else if (*str1 < *str2) {
-            return -1; // str2 lebih besar
+    int i = 0;
+    while (str1[i] != '\0' && str2[i] != '\0') {
+        if (str1[i] < str2[i]) {
+            return -1; // str1 lebih kecil
+        } else if (str1[i] > str2[i]) {
+            return 1; // str2 lebih kecil
         }
-        str1++;
-        str2++;
+        i++;
     }
 
     // Jika salah satu string lebih pendek tetapi sama sebelumnya, string yang lebih panjang lebih besar
-    if (*str1 == '\0' && *str2 != '\0') {
-        return -1; // str2 lebih besar
-    } else if (*str2 == '\0' && *str1 != '\0') {
-        return 1; // str1 lebih besar
+    if (str1[i] == '\0' && str2[i] != '\0') {
+        return -1; // str1 lebih kecil
+    } else if (str1[i] != '\0' && str2[i] == '\0') {
+        return 1; // str2 lebih kecil
     }
 
     return 0; // Kedua string sama
 }
 
 
-void CartPay(TabUser *T, IdxType userIdx, Map *cart, Stack *riwayat) {
+void cart_pay(TabUser *T, IdxType userIdx, Map *cart, Stack *riwayat, ArrayDinBarang informasi_barang) {
     // Jika keranjang kosong
-    history topHistory;
     if (IsEmptyMap(*cart)) {
         printf("Keranjang kamu kosong!\n");
         return;
@@ -38,13 +37,19 @@ void CartPay(TabUser *T, IdxType userIdx, Map *cart, Stack *riwayat) {
 
 
     int totalCost = 0;
-    char mostExpensiveName[50] = "";
+    char ASCII[50];
+    int j;
+    for (j = 0; cart->Elements[0].nama_barang_keranjang[j] != '\0'; j++){
+        ASCII[j] = cart->Elements[0].nama_barang_keranjang[j];
+    }
+    ASCII[j] = '\0';
     int mostExpensiveValue = 0;
 
     for (int i = 0; i < cart->Count; i++) {
         int quantity = cart->Elements[i].jumlah_barang;
         char *name = cart->Elements[i].nama_barang_keranjang;
-        int price = cart->Elements[i].jumlah_barang; // Harga barang dari keranjang
+        IdxType index_barang = IndexItemInShop(informasi_barang, name);
+        int price = informasi_barang.A[index_barang].price; // Harga barang dari keranjang
         int totalPrice = quantity * price;
 
         // Cetak baris dengan format yang rapi
@@ -53,20 +58,27 @@ void CartPay(TabUser *T, IdxType userIdx, Map *cart, Stack *riwayat) {
         totalCost += totalPrice;
 
         // Cari barang dengan total harga terbesar
-        if (totalPrice > mostExpensiveValue || (totalPrice == mostExpensiveValue && compareStrings(name, mostExpensiveName) > 0)) {
+        if (totalPrice > mostExpensiveValue) {
             mostExpensiveValue = totalPrice;
-            for (int j = 0; j < 50 - 1 && name[j] != '\0'; j++) {
-                mostExpensiveName[j] = name[j];
-                mostExpensiveName[j + 1] = '\0';
+        }
+
+        if (compareStrings(cart->Elements[i].nama_barang_keranjang, ASCII) == -1){
+            for (j = 0; cart->Elements[i].nama_barang_keranjang[j] != '\0'; j++){
+                ASCII[j] = cart->Elements[i].nama_barang_keranjang[j];
             }
+            ASCII[j] = '\0';
         }
     }
 
     printf("Total biaya yang harus dikeluarkan adalah %d, apakah jadi dibeli? (Ya/Tidak): ", totalCost);
     char response[10];
 
-    while (!readInput(response, 10)){
-        printf("Gagal membaca input.\n");
+    while (1){
+        if(!readInput(response, 10)){
+            printf("Masukkan perintah yang valid!(Ya/Purry)\n");
+            continue;
+        }
+        break;
     }
 
     // Cek respon pengguna
@@ -81,26 +93,23 @@ void CartPay(TabUser *T, IdxType userIdx, Map *cart, Stack *riwayat) {
             T->TC[userIdx].money -= totalCost;
 
             // Tambahkan riwayat pembelian ke stack history yang sudah ada
-            if (IsEmptyStack(*riwayat)) {
-                topHistory.total_price = 0;
-                topHistory.nama_barang[0] = '\0';
-            } else {
-                Pop(riwayat, &topHistory);
-            }
+            history topHistory;
+            topHistory.total_price = mostExpensiveValue;
 
-            topHistory.total_price += mostExpensiveValue;
-            for (int j = 0; j < 50 - 1 && mostExpensiveName[j] != '\0'; j++) {
-                topHistory.nama_barang[j] = mostExpensiveName[j];
-                topHistory.nama_barang[j + 1] = '\0';
+            for (int j = 0; j < 50 - 1 && ASCII[j] != '\0'; j++) {
+                topHistory.nama_barang[j] = ASCII[j];
             }
+            topHistory.nama_barang[j + 1] = '\0';
 
             Push(riwayat, topHistory);
 
             printf("Selamat kamu telah membeli barang-barang tersebut!\n");
+            CreateEmpty(cart);
+            return;
         } else {
             printf("Uang kamu hanya %d, tidak cukup untuk membeli keranjang!\n", userMoney);
         }
     } else {
-        printf("Pembelian dibatalkan.\n");
+        printf("Pembelian dibatalkan anda dikeluarkan dari CART PAY!\n");
     }
 }

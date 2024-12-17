@@ -210,11 +210,10 @@ void DelFirst (List *L, addressDP *P) {
         Last(*L) = Kosong;
     } else {
         First(*L) = Next(First(*L));
-        if (First(*L) != Kosong){
-            Prev(First(*L)) = Kosong;
-        }
+        Prev(First(*L)) = Kosong;
+        Next(*P) = Kosong;
+        Prev(*P) = Kosong;
     }
-    free(*P);
 }
 
 void DelLast (List *L, addressDP *P) {
@@ -232,7 +231,6 @@ void DelLast (List *L, addressDP *P) {
         Next(*P) = Kosong;
         Prev(*P) = Kosong;
     }
-    free(*P);
 }
 
 void DelP (List *L, info_barang X) {
@@ -346,10 +344,14 @@ void ResetDP(List *L){
 
 int CountElmt(List L){
     int ctr = 0;
-    addressDP currentNode = First(L); 
-    while (currentNode != Kosong){
-        currentNode = Next(currentNode);
-        ctr++;
+    if (First(L) == Kosong && Last(L) == Kosong){
+        return 0;
+    } else {
+        addressDP currentNode = First(L); 
+        while (currentNode != Kosong){
+            currentNode = Next(currentNode);
+            ctr++;
+        }
+        return ctr; 
     }
-    return ctr;
 }

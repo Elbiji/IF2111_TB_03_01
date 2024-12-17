@@ -35,22 +35,18 @@ boolean isInputWishlistRemove(char *input,int *posisi1){
 
 void wishlist_remove1(List *user_wishlist, int pos1, int tot_wishlist){
     if (tot_wishlist == 1 && pos1 == 1){
-        DelFirst(user_wishlist, &(user_wishlist->First));
+        DelP(user_wishlist, user_wishlist->First->info);
     } else if (tot_wishlist > 1){
         if (pos1 == 1){
-            DelFirst(user_wishlist,  &(user_wishlist->First)); 
+            DelP(user_wishlist, user_wishlist->First->info); 
         } else if (pos1 == tot_wishlist){
-            DelLast (user_wishlist,  &(user_wishlist->Last));
+            DelP(user_wishlist, user_wishlist->Last->info);
         } else {
-            addressDP P = user_wishlist->First;
-            addressDP Pdel;
-            int ctr = 1;
-            while (ctr != pos1-1){
+            addressDP P = First(*user_wishlist);
+            for (int i = 1; i < pos1;i++){
                 P = Next(P);
-                ctr++;
             }
-            Pdel = Next(P);
-            DelAfter(user_wishlist, &Pdel, P);
+            DelP(user_wishlist, P->info);
         }
     }
 }

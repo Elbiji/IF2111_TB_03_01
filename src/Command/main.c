@@ -189,7 +189,28 @@ int main() {
             if (isloggedin == false) {
                 printf("Perintah belum bisa dijalankan, karena anda belom LOGIN!\n");
             } else {
-                wishlist_remove2(&(user.TC[userid].wishlist));
+                if (IsEmptyLDP(user.TC[userid].wishlist)){
+                    printf("Wishlist anda kosong!\n");
+                } else {
+                    wishlist_remove2(&(user.TC[userid].wishlist));
+                }
+            }
+        }
+        else if (isStrEqual(perintah, "WISHLIST SHOW")){
+            if (isloggedin == false) {
+                printf("Perintah belum bisa dijalankan, karena anda belom LOGIN!\n");
+            } else {
+                printf(">> WISHLIST SHOW\n");
+                wishlist_show(&user, userid);
+            }
+        }
+        else if (isStrEqual(perintah, "WISHLIST CLEAR")){
+            if (isloggedin == false) {
+                printf("Perintah belum bisa dijalankan, karena anda belom LOGIN!\n");
+            } else {
+                printf(">> WISHLIST CLEAR\n");
+                wishlist_clear(&user.TC[userid].wishlist);
+                printf("Wishlist berhasil dikosongkan!\n");
             }
         }
         else if (isStrEqual(perintah, "CART SHOW")){
@@ -201,6 +222,18 @@ int main() {
                     printf("Perintah tidak dijalankan!\n");
                 } else {
                     cart_show(&(user.TC[userid].keranjang), &items);
+                }
+            }
+        }
+        else if (isStrEqual(perintah, "CART PAY")){
+            if (isloggedin == false) {
+                printf("Perintah belum bisa dijalankan, karena anda belom LOGIN!\n");
+            } else {
+                if (IsEmptyMap(user.TC[userid].keranjang)){
+                    printf("Keranjang anda kosong!\n");
+                    printf("Perintah tidak dijalankan!\n");
+                } else {
+                    cart_pay(&user,userid, &(user.TC[userid].keranjang), &(user.TC[userid].riwayat_pembelian), items);
                 }
             }
         }
@@ -270,6 +303,19 @@ int main() {
                     printf(">> CART REMOVE %s %d\n", nama_barang ,amount);
                     cart_remove(&(user.TC[userid].keranjang), nama_barang, amount);
                     printf("%s : %d\n", user.TC[userid].keranjang.Elements[0].nama_barang_keranjang, user.TC[userid].keranjang.Elements[0].jumlah_barang);
+                }
+            }
+        }
+        else if (isInputHistory(perintah, &amount)){
+            if (isloggedin == false) {
+                printf("Perintah belum bisa dijalankan, karena anda belom LOGIN!\n");
+            } else {
+                if(IsEmptyStack(user.TC[userid].riwayat_pembelian)){
+                    printf("Tidak ada riwayat pembelian!\n");
+                } else {
+                    printf(">> HISTORY %d\n", amount);
+                    displayHistory(&user.TC[userid].riwayat_pembelian, amount);
+                    printf("Penampilan riwayat selesai!\n");
                 }
             }
         }
