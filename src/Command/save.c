@@ -8,6 +8,7 @@
 // Fungsi untuk menyimpan data ke dalam file
 void save(TabUser *Users, ArrayDinBarang *array) {
     char filename[MAX_LEN];
+
     
     while (1){
         printf("Masukkan nama file untuk SAVE state program: \n");
@@ -26,16 +27,30 @@ void save(TabUser *Users, ArrayDinBarang *array) {
 
         fprintf(file,"%d\n", Users->Neff);
         for (int i = 0; i < Users->Neff; i++){
+            history temp;
+            Stack temp_stack;
+            CreateEmptyStack(&temp_stack);
+            int count = 0;
             if (i == Users->Neff-1){
-                fprintf(file, "%d %s %s", Users->TC[i].money, Users->TC[i].name, Users->TC[i].password);
+                fprintf(file, "%d %s %s\n", Users->TC[i].money, Users->TC[i].name, Users->TC[i].password);
             } else {
                 fprintf(file, "%d %s %s\n", Users->TC[i].money, Users->TC[i].name, Users->TC[i].password);
             }
             
-            int total_history = CountStack(Users->TC[i].riwayat_pembelian);
+            count = 0;
+            while (!IsEmptyStack(Users->TC[i].riwayat_pembelian)){
+                Pop(&(Users->TC[i].riwayat_pembelian),&temp);
+                Push(&temp_stack, temp);
+                count++;
+            } 
+
+            int total_history = count;
             fprintf(file, "%d\n", total_history);
             for (int j = 0; j < total_history; j++) {
-                fprintf(file, "%d %s\n", Users->TC[i].riwayat_pembelian.T[j].total_price, Users->TC[i].riwayat_pembelian.T[j].nama_barang);
+                Pop(&temp_stack, &temp);
+                printf("%d %s\n",  temp.total_price, temp.nama_barang);
+                fprintf(file, "%d %s\n", temp.total_price, temp.nama_barang);
+                Push(&(Users->TC[i].riwayat_pembelian), temp);
             }
         
             int total_wishlist = CountElmt(Users->TC[i].wishlist);
@@ -45,6 +60,10 @@ void save(TabUser *Users, ArrayDinBarang *array) {
                 fprintf(file, "%s\n", wishlistNode->info);
                 wishlistNode = wishlistNode->next;
             }
+
+
+                
+
         }
 
         fclose(file);

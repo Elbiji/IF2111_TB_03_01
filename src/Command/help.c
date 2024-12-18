@@ -24,14 +24,14 @@ void help(MenuState *current_menu) {
         printf("6. STORE SUPPLY -> Untuk menambahkan barang dari permintaan\n");
         printf("7. STORE REMOVE -> Untuk menghapus barang\n");
         printf("8. CART ADD -> Untuk menambah barang ke keranjang\n");
-        printf("9. CART REMOVE -> Untuk menghapus barang dari keranjang\n");
+        printf("9. CART REMOVE <nama> <i>-> Untuk menghapus barang dari keranjang\n");
         printf("10. CART SHOW -> Untuk melihat isi keranjang\n");
         printf("11. CART PAY -> Untuk melakukan pembayaran\n");
         printf("12. HISTORY -> Untuk melihat riwayat transaksi\n");
         printf("13. WISHLIST ADD -> Untuk menambah barang ke wishlist\n");
-        printf("14. WISHLIST SWAP -> Untuk menukar barang di wishlist\n");
-        printf("15. WISHLIST REMOVE -> Untuk menghapus barang dengan posisi ke-i dari wishlist\n");
-        printf("16. WISHLIST REMOVE <i> -> Untuk menghapus barang berdasarkan nama barang dari wishlist\n");
+        printf("14. WISHLIST SWAP <i> <j>-> Untuk menukar barang di wishlist\n");
+        printf("15. WISHLIST REMOVE <i> -> Untuk menghapus barang dengan posisi ke-i dari wishlist\n");
+        printf("16. WISHLIST REMOVE -> Untuk menghapus barang berdasarkan nama barang dari wishlist\n");
         printf("17. WISHLIST SHOW -> Untuk melihat wishlist\n");
         printf("18. WISHLIST CLEAR -> Untuk membersihkan wishlist\n");
         printf("19. LOGOUT -> Untuk keluar dari sesi\n");

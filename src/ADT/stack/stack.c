@@ -43,6 +43,7 @@ void Pop (Stack * S, history* X)
     *X = InfoTop(*S);
     Top(*S) -= 1;
 }
+
 /* ************ Menghitung elemen stack ************ */
 int CountStack(Stack S) 
 /* Menghitung elemen stack tanpa merusak stack asli */
