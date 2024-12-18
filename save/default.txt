@@ -1,5 +1,6 @@
-5
+6
 10 AK47
+10 M14
 20 Lalabu
 20 Ayam Goreng Crisbar
 500 Meong

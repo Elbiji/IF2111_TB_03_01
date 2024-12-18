@@ -60,13 +60,19 @@ void cart_pay(TabUser *T, IdxType userIdx, Map *cart, Stack *riwayat, ArrayDinBa
         // Cari barang dengan total harga terbesar
         if (totalPrice > mostExpensiveValue) {
             mostExpensiveValue = totalPrice;
-        }
-
-        if (compareStrings(cart->Elements[i].nama_barang_keranjang, ASCII) == -1){
             for (j = 0; cart->Elements[i].nama_barang_keranjang[j] != '\0'; j++){
                 ASCII[j] = cart->Elements[i].nama_barang_keranjang[j];
             }
             ASCII[j] = '\0';
+        }
+
+        if (totalPrice == mostExpensiveValue){
+            if (compareStrings(cart->Elements[i].nama_barang_keranjang, ASCII) == -1){
+                for (j = 0; cart->Elements[i].nama_barang_keranjang[j] != '\0'; j++){
+                    ASCII[j] = cart->Elements[i].nama_barang_keranjang[j];
+                }
+                ASCII[j] = '\0';
+            }
         }
     }
 
