@@ -8,7 +8,7 @@ void DisplayStore(ArrayDinBarang store) {
     } else {
         printf("List barang yang ada di toko:\n");
         for (int i = 0; i < Length(store); i++) {
-            printf("- %s\n", store.A[i].name);
+            printf("- %s - Harga - %d\n", store.A[i].name, store.A[i].price);
         }
     }
 }
