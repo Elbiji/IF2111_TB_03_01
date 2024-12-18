@@ -23,7 +23,7 @@ void help(MenuState *current_menu) {
         printf("5. STORE REQUEST -> Untuk meminta penambahan barang\n");
         printf("6. STORE SUPPLY -> Untuk menambahkan barang dari permintaan\n");
         printf("7. STORE REMOVE -> Untuk menghapus barang\n");
-        printf("8. CART ADD -> Untuk menambah barang ke keranjang\n");
+        printf("8. CART ADD <nama> <i>-> Untuk menambah barang ke keranjang\n");
         printf("9. CART REMOVE <nama> <i>-> Untuk menghapus barang dari keranjang\n");
         printf("10. CART SHOW -> Untuk melihat isi keranjang\n");
         printf("11. CART PAY -> Untuk melakukan pembayaran\n");
