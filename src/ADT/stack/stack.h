@@ -60,4 +60,9 @@ void Pop(Stack * S, history* X);
 /* I.S. S  tidak mungkin kosong */
 /* F.S. X adalah nilai elemen TOP yang lama, TOP berkurang 1 */
 
+int CountStack(Stack S);
+/* Menghitung elemen stack tanpa merusak stack asli */
+/* I.S. Stack S terdefinisi */
+/* F.S. Mengembalikan jumlah elemen stack */
+
 #endif

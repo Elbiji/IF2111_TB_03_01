@@ -16,15 +16,27 @@ void help(MenuState *current_menu) {
         printf("3. QUIT -> Untuk keluar dari program\n");
     } else if (*current_menu == main_menu) {
         printf("=====[ Menu Help PURRMART ]=====\n");
-        printf("1. WORK -> Untuk bekerja\n");
-        printf("2. WORK CHALLENGE -> Untuk mengerjakan challenge\n");
-        printf("3. STORE LIST -> Untuk melihat barang-barang di toko\n");
-        printf("4. STORE REQUEST -> Untuk meminta penambahan barang\n");
-        printf("5. STORE SUPPLY -> Untuk menambahkan barang dari permintaan\n");
-        printf("6. STORE REMOVE -> Untuk menghapus barang\n");
-        printf("7. LOGOUT -> Untuk keluar dari sesi\n");
-        printf("8. SAVE -> Untuk menyimpan state ke dalam file\n");
-        printf("9. QUIT -> Untuk keluar dari program\n");
+        printf("1. PROFILE -> Untuk melihat informasi akun\n");
+        printf("2. WORK -> Untuk bekerja\n");
+        printf("3. WORK CHALLENGE -> Untuk mengerjakan challenge\n");
+        printf("4. STORE LIST -> Untuk melihat barang-barang di toko\n");
+        printf("5. STORE REQUEST -> Untuk meminta penambahan barang\n");
+        printf("6. STORE SUPPLY -> Untuk menambahkan barang dari permintaan\n");
+        printf("7. STORE REMOVE -> Untuk menghapus barang\n");
+        printf("8. CART ADD -> Untuk menambah barang ke keranjang\n");
+        printf("9. CART REMOVE -> Untuk menghapus barang dari keranjang\n");
+        printf("10. CART SHOW -> Untuk melihat isi keranjang\n");
+        printf("11. CART PAY -> Untuk melakukan pembayaran\n");
+        printf("12. HISTORY -> Untuk melihat riwayat transaksi\n");
+        printf("13. WISHLIST ADD -> Untuk menambah barang ke wishlist\n");
+        printf("14. WISHLIST SWAP -> Untuk menukar barang di wishlist\n");
+        printf("15. WISHLIST REMOVE -> Untuk menghapus barang dengan posisi ke-i dari wishlist\n");
+        printf("16. WISHLIST REMOVE <i> -> Untuk menghapus barang berdasarkan nama barang dari wishlist\n");
+        printf("17. WISHLIST SHOW -> Untuk melihat wishlist\n");
+        printf("18. WISHLIST CLEAR -> Untuk membersihkan wishlist\n");
+        printf("19. LOGOUT -> Untuk keluar dari sesi\n");
+        printf("20. SAVE -> Untuk menyimpan state ke dalam file\n");
+        printf("21. QUIT -> Untuk keluar dari program\n");
     }
 }
 

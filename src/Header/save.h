@@ -8,6 +8,8 @@
 #include "../ADT/arraydin/arraydin.h"
 #include "../ADT/mesinkata/mesinkata.h"
 #include "../ADT/mesinkarakter/mesinkarakter.h"
+#include "../ADT/listlinier/dplinkedlist.h"
+#include "../ADT/stack/stack.h"
 
 // save file baru atau overwrite existing file
 void save(TabUser *Users, ArrayDinBarang *array);
