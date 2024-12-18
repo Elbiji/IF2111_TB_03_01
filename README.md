@@ -41,13 +41,37 @@ Karena Borma hanya beroperasi secara tatap muka, O.W.C.A mengembangkan sistem be
 ### - WORDL399
 > Modul wordl399 membantu pengguna mendapatkan O.W.C.A. Coin dengan memberikan 5 kesempatan untuk menebak kata yang benar
 ## STORE LIST
-> Modul store list digunakan agar pengguna dapat melihat barang - barang dalam toko
+> Modul store list digunakan agar pengguna dapat melihat barang - barang dan harga dalam toko
 ## STORE REQUEST
 > Modul store request digunakan agar pengguna dapat melakukan permintaan penambahan barang baru ke toko
 ## STORE SUPPLY
 > Modul store supply digunakan agar pengguna dapat menambahkan, menunda, menolak penambahan barang ke dalam toko 
 ## STORE REMOVE
 > Modul store remove digunakan agar pengguna dapat menghapus barang pada toko
+## CART ADD
+> Modul cart add digunakan agar pengguna dapat menambahkan barang dengan jumlah tertentu ke dalam keranjang belanja
+## CART REMOVE
+> Modul cart remove digunakan agar pengguna dapat mengurangi barang dengan jumlah tertentu dari keranjang belanja
+## CART SHOW
+> Modul cart show digunakan agar pengguna dapat menunjukkan barang yang sudah dimasukkan ke dalam keranjang
+## CART PAY
+> Modul cart pay digunakan agar pengguna dapat membeli barang yang sudah dimasukan ke dalam keranjang
+## HISTORY
+> Modul history digunakan agar pengguna dapat menunjukan riwayat pembelian pengguna
+## WISHLIST ADD
+> Modul wishlist add digunakan agar pengguna dapat menambahkan barang ke wishlist
+## WISHLIST SWAP
+> Modul wishlist swap digunakan agar pengguna dapat menukar barang posisi ke-i dengan barang posisi ke-j pada wishlist
+## WISHLIST REMOVE <i>
+> Modul wishlist remove digunakan agar pengguna dapat menghapus barang dengan posisi ke-i dari wishlist
+## WISHLIST REMOVE
+> Modul wishlist remove digunakan agar pengguna dapat menghapus barang berdasarkan nama barang dari wishlist
+## WISHLIST CLEAR
+> Modul wishlist clear digunakan agar pengguna dapat menghapus semua barang di dalam wishlist
+## WISHLIST SHOW
+> Modul wishlist show digunakan agar pengguna dapat menunjukkan barang yang sudah dimasukkan ke dalam wishlist
+## PROFILE
+> Modul profile digunakan agar pengguna dapat melihat data diri pengguna
 ## HELP
 > Modul help digunakan agar pengguna dapat menempuh perjalanannya dengan baik dan lancar
 ## SAVE
