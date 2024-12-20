@@ -48,7 +48,7 @@ void save(TabUser *Users, ArrayDinBarang *array) {
             fprintf(file, "%d\n", total_history);
             for (int j = 0; j < total_history; j++) {
                 Pop(&temp_stack, &temp);
-                printf("%d %s\n",  temp.total_price, temp.nama_barang);
+                // printf("%d %s\n",  temp.total_price, temp.nama_barang);
                 fprintf(file, "%d %s\n", temp.total_price, temp.nama_barang);
                 Push(&(Users->TC[i].riwayat_pembelian), temp);
             }
