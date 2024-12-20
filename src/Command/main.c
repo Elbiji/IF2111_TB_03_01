@@ -288,7 +288,7 @@ int main() {
                 } else {
                     printf(">> CART ADD %s %d\n", nama_barang ,amount);
                     cart_add(&(user.TC[userid].keranjang), items, nama_barang ,amount);
-                    printf("%s : %d\n", user.TC[userid].keranjang.Elements[0].nama_barang_keranjang, user.TC[userid].keranjang.Elements[0].jumlah_barang);
+                    // printf("%s : %d\n", user.TC[userid].keranjang.Elements[0].nama_barang_keranjang, user.TC[userid].keranjang.Elements[0].jumlah_barang);
                 }
             }
         }
@@ -302,7 +302,7 @@ int main() {
                 } else {
                     printf(">> CART REMOVE %s %d\n", nama_barang ,amount);
                     cart_remove(&(user.TC[userid].keranjang), nama_barang, amount);
-                    printf("%s : %d\n", user.TC[userid].keranjang.Elements[0].nama_barang_keranjang, user.TC[userid].keranjang.Elements[0].jumlah_barang);
+                    // printf("%s : %d\n", user.TC[userid].keranjang.Elements[0].nama_barang_keranjang, user.TC[userid].keranjang.Elements[0].jumlah_barang);
                 }
             }
         }

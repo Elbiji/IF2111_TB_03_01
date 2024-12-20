@@ -6,7 +6,7 @@ void testMap() {
     Map M;
     CreateEmpty(&M);
     int choice;
-    char key[50]; 
+    keytype key[50]; 
     valuetype value;
     char input[20];
 
