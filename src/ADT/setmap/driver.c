@@ -6,7 +6,7 @@ void testMap() {
     Map M;
     CreateEmpty(&M);
     int choice;
-    keytype key;
+    char key[50]; 
     valuetype value;
     char input[20];
 
@@ -27,66 +27,62 @@ void testMap() {
 
         switch (choice) {
             case 1:
-                if (IsFull(M)) {
+                if (IsFullMap(M)) {
                     printf("Map is full. Can't add more elements.\n");
                 } else {
                     printf("Enter key: ");
-                    readInput(input, 20);
-                    key = atoi(input);
+                    readInput(key, 50);
 
                     printf("Enter value: ");
                     readInput(input, 20);
                     value = atoi(input);
 
                     if (IsMember(M, key)) {
-                        printf("Key %d already exists in the Map. Insert operation skipped.\n", key);
+                        printf("Key '%s' already exists in the Map. Insert operation skipped.\n", key);
                     } else {
                         Insert(&M, key, value);
-                        printf("Key-Value pair (%d, %d) inserted into the Map.\n", key, value);
+                        printf("Key-Value pair ('%s', %d) inserted into the Map.\n", key, value);
                     }
                 }
                 break;
 
             case 2:
                 printf("Enter key to delete: ");
-                readInput(input, 20);
-                key = atoi(input);
+                readInput(key, 50);
 
                 if (IsMember(M, key)) {
                     Delete(&M, key);
-                    printf("Key %d deleted from the Map.\n", key);
+                    printf("Key '%s' deleted from the Map.\n", key);
                 } else {
-                    printf("Key %d is not found in the Map.\n", key);
+                    printf("Key '%s' is not found in the Map.\n", key);
                 }
                 break;
 
             case 3:
                 printf("Enter key to check membership: ");
-                readInput(input, 20);
-                key = atoi(input);
+                readInput(key, 50);
 
                 if (IsMember(M, key)) {
-                    printf("Key %d is a member of the Map.\n", key);
+                    printf("Key '%s' is a member of the Map.\n", key);
                 } else {
-                    printf("Key %d is not a member of the Map.\n", key);
+                    printf("Key '%s' is not a member of the Map.\n", key);
                 }
                 break;
 
             case 4:
                 printf("Enter key to get value: ");
-                readInput(input, 20);
-                key = atoi(input);
+                readInput(key, 50);
 
                 value = Value(M, key);
                 if (value != Undefined) {
-                    printf("Value for key %d is %d.\n", key, value);
+                    printf("Value for key '%s' is %d.\n", key, value);
                 } else {
-                    printf("Key %d is not found in the Map.\n", key);
+                    printf("Key '%s' is not found in the Map.\n", key);
                 }
                 break;
 
             case 5:
-                if (IsEmpty(M)) {
+                if (IsEmptyMap(M)) {
                     printf("Map is empty.\n");
                 } else {
                     printf("Map is not empty.\n");
@@ -94,7 +90,7 @@ void testMap() {
                 break;
 
             case 6:
-                if (IsFull(M)) {
+                if (IsFullMap(M)) {
                     printf("Map is full.\n");
                 } else {
                     printf("Map is not full.\n");
@@ -102,12 +98,12 @@ void testMap() {
                 break;
 
             case 7:
-                if (IsEmpty(M)) {
+                if (IsEmptyMap(M)) {
                     printf("Map is empty.\n");
                 } else {
                     printf("Current elements in the Map:\n");
                     for (int i = 0; i < M.Count; i++) {
-                        printf("- Key: %d, Value: %d\n", M.Elements[i].Key, M.Elements[i].Value);
+                        printf("- Key: '%s', Value: %d\n", M.Elements[i].nama_barang_keranjang, M.Elements[i].jumlah_barang);
                     }
                 }
                 break;
@@ -117,7 +113,7 @@ void testMap() {
                 break;
 
             default:
-                printf("Invalid choice. Please enter number between 1 and 8.\n");
+                printf("Invalid choice. Please enter a number between 1 and 8.\n");
         }
     } while (choice != 8);
 }

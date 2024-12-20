@@ -68,11 +68,23 @@ void Delete(Map *M, keytype *k);
 
 boolean IsMember(Map M, keytype *k);
 /* Mengembalikan true jika k adalah member dari M */
+/* I.S. M terdefinisi */
+/* F.S. Mengembalikan true jika k adalah member dari M */
 
 boolean isStrEqualMap(char *str1, char *str2);
+/* Mengembalikan true jika str1 sama dengan str2 */
+/* Menggunakan perbandingan karakter satu per satu. */
+/* I.S. str1 dan str2 terdefinisi */
+/* F.S. Mengembalikan true jika str1 sama dengan str2*/
 
 int strLengthMap(char *str);
+/* Mengembalikan panjang string str */
+/* I.S. str terdefinisi */
+/* F.S. Mengembalikan panjang string str*/
 
 void SubtractAmount(Map *M, keytype *k, valuetype val);
+/* Mengurangi jumlah barang dengan val pada Map M. */
+/* I.S. M terdefinisi */
+/* F.S. Mengurangi jumlah barang dengan val pada Map M. */
 
 #endif

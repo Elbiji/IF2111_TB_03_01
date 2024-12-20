@@ -2,75 +2,56 @@
 #include "stack.h"
 #include "../../misc.h"
 
-void testStack() {
-    Stack S;
-    infotype X;
-    CreateEmpty(&S);
-    int choice;
-    char input[20];
 
-    printf("\n--- Testing Stack ---\n");
-    do {
-        printf("\nMenu:\n");
-        printf("1. Push Element\n");
-        printf("2. Pop Element\n");
-        printf("3. Check if Stack is Empty\n");
-        printf("4. Check if Stack is Full\n");
-        printf("5. Display Top Element\n");
-        printf("6. Exit\n");
-        printf("Enter your choice: ");
-        readInput(input, 20);
-        choice = atoi(input);
-
-        switch (choice) {
-            case 1:
-                if (IsFull(S)) {
-                    printf("Stack is full. Cannot push more elements.\n");
-                } else {
-                    printf("Enter an integer to push: ");
-                    readInput(input, 20);
-                    X = atoi(input);
-                    Push(&S, X);
-                    printf("Element %d pushed onto the stack.\n", X);
-                }
-                break;
-
-            case 2:
-                if (IsEmpty(S)) {
-                    printf("Stack is empty. Cannot pop elements.\n");
-                } else {
-                    Pop(&S, &X);
-                    printf("Element %d popped from the stack.\n", X);
-                }
-                break;
-
-            case 3:
-                printf(IsEmpty(S) ? "Stack is empty.\n" : "Stack is not empty.\n");
-                break;
-
-            case 4:
-                printf(IsFull(S) ? "Stack is full.\n" : "Stack is not full.\n");
-                break;
-
-            case 5:
-                if (IsEmpty(S)) {
-                    printf("Stack is empty. No top element to display.\n");
-                } else {
-                    printf("Top element of the stack is: %d\n", InfoTop(S));
-                }
-                break;
-
-            case 6:
-                printf("Exiting...\n");
-                break;
-
-            default:
-                printf("Invalid choice. Please enter a number between 1 and 6.\n");
-        }
-    } while (choice != 6);
+void printHistory(history h) {
+    printf("Nama Barang: %s\n", h.nama_barang);
+    printf("Total Price: %d\n", h.total_price);
 }
 
 int main() {
-    testStack();
+    Stack S;
+    history h1, h2, h3;
+
+    CreateEmptyStack(&S);
+    printf("Stack created. Is the stack empty? %s\n", IsEmptyStack(S) ? "Yes" : "No");
+
+    printf("\nPushing first item to the stack...\n");
+    h1.total_price = 100;
+    printf("Enter name for first item: ");
+    readInput(h1.nama_barang, sizeof(h1.nama_barang));  
+    Push(&S, h1);
+
+    printf("\nPushing second item to the stack...\n");
+    h2.total_price = 200;
+    printf("Enter name for second item: ");
+    readInput(h2.nama_barang, sizeof(h2.nama_barang));  
+
+    Push(&S, h2);
+
+    printf("\nPushing third item to the stack...\n");
+    h3.total_price = 300;
+    printf("Enter name for third item: ");
+    readInput(h3.nama_barang, sizeof(h3.nama_barang)); 
+
+    Push(&S, h3);
+
+    printf("\nIs the stack full? %s\n", IsFullStack(S) ? "Yes" : "No");
+    printf("Current number of elements in stack: %d\n", CountStack(S));
+
+    printf("\nTop item in the stack:\n");
+    printHistory(InfoTop(S));
+
+    printf("\nPopping an item from the stack...\n");
+    history poppedHistory;
+    Pop(&S, &poppedHistory);
+    printf("Popped item:\n");
+    printHistory(poppedHistory);
+
+    printf("\nAfter popping, is the stack empty? %s\n", IsEmptyStack(S) ? "Yes" : "No");
+    printf("Current number of elements in stack: %d\n", CountStack(S));
+
+    printf("\nNew top item in the stack:\n");
+    printHistory(InfoTop(S));
+
     return 0;
 }
