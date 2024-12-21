@@ -259,6 +259,60 @@ boolean readCommand(char *buffer, int maxLen){
     return false;
 }
 
+// periksa tebakan
+void check_guess(const char *guess, const char *target, char *feedback) {
+    int used[WORD_LENGTH] = {0}; 
+    int correct[WORD_LENGTH] = {0};
+
+    for (int i = 0; i < WORD_LENGTH; i++) {
+        feedback[i] = '%'; // tandain huruf tidak ada
+    }
+
+    // tandain huruf yang benar di posisi yang benar
+    for (int i = 0; i < WORD_LENGTH; i++) {
+        if (guess[i] == target[i]) {
+            feedback[i] = guess[i]; 
+            correct[i] = 1;
+            used[i] = 1;
+        }
+    }
+
+    // tandain huruf yang benar tapi di posisi salah
+    for (int i = 0; i < WORD_LENGTH; i++) {
+        if (feedback[i] == '%') {
+            for (int j = 0; j < WORD_LENGTH; j++) {
+                if (!correct[j] && !used[j] && guess[i] == target[j]) {
+                    feedback[i] = '*'; 
+                    used[j] = 1; 
+                    break;
+                }
+            }
+        }
+    }
+}
+
+// cetak hasil
+void print_feedback(const char *guess, const char *feedback) {
+    for (int i = 0; i < WORD_LENGTH; i++) {
+        if (feedback[i] == '%') {
+            printf("%c%%", guess[i]); 
+        } else if (feedback[i] == '*') {
+            printf("%c*", guess[i]); 
+        } else {
+            printf("%c", feedback[i]); 
+        }
+    }
+    printf("\n");
+}
+
+// memecah input yang berisi beberapa kata menjadi satu kata
+void substring(const char *src, int start, int end, char *dest) {
+    int j = 0;
+    for (int i = start; i <= end && src[i] != '\0'; i++) {
+        dest[j++] = src[i];
+    }
+    dest[j] = '\0'; 
+}
 
 void visual(char *path) {
     char dest[MAX_LEN] = "Visual/";

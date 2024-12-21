@@ -1,6 +1,10 @@
 #ifndef __MISC_H_
 #define __MISC_H_
 
+#define MAX_CHANCES 5
+#define WORD_LENGTH 5
+#define MAX_LEN 50
+
 #include <stdlib.h>
 #include "src/Header/load.h"
 // #include "../ADT/array/array.h"
@@ -75,6 +79,15 @@ boolean containsSpace(const char *str);
 
 // Menerima input untuk dirubah ke integer
 int strToInteger ();
+
+// Periksa tebakan
+void check_guess(const char *guess, const char *target, char *feedback);
+
+// Cetak hasil
+void print_feedback(const char *guess, const char *feedback);
+
+// memecah input yang berisi beberapa kata menjadi satu kata
+void substring(const char *src, int start, int end, char *dest);
 
 // visual
 void visual(char* path);
