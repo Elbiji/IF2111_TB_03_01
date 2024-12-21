@@ -177,6 +177,15 @@ int main() {
                 DoWork(&user, userid);
             }
         }
+        else if (isStrEqual(perintah, "QUANTUM WORDL3")){
+            if (isloggedin == false){
+                printf("Perintah belum bisa dijalankan, karena anda belom LOGIN!\n");
+            } else {
+                printf("\n");
+                printf(">>QUANTUM WORDL3\n");
+                play_quantum_wordl3(&user, userid);
+            }
+        }
         else if (isStrEqual(perintah, "WISHLIST ADD")){
             if (isloggedin == false) {
                 printf("Perintah belum bisa dijalankan, karena anda belom LOGIN!\n");
