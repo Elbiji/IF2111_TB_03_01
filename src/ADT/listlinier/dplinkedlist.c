@@ -45,7 +45,7 @@ addressDP Alokasi (info_barang X) {
         Next(P) = Kosong;
         Prev(P) = Kosong;
     }
-    printf("debug alokasi %s\n", Info(P));
+    // printf("debug alokasi %s\n", Info(P));
     return P;
 }
 

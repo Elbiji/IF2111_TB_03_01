@@ -61,7 +61,6 @@ void start(TabUser *Users, ArrayDinBarang *array){
         ADVWORD();
 
         CurrentWord.TabWord[CurrentWord.Length] = '\0';
-        printf("Parsing money for user %d: %s\n", ctr + 1, CurrentWord.TabWord);
         Users->TC[ctr].money = atoi(CurrentWord.TabWord);
         
         ADVWORD();
@@ -126,7 +125,7 @@ void start(TabUser *Users, ArrayDinBarang *array){
                 }
             }
             barang_wishlist[nameindex] = '\0';
-            printf("Debug %s\n", barang_wishlist);
+            // printf("Debug %s\n", barang_wishlist);
             InsVLast(&(Users->TC[ctr].wishlist), barang_wishlist);
         }
         PrintForward(Users->TC[ctr].wishlist);
