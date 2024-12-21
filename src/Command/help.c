@@ -37,7 +37,6 @@ void help(MenuState *current_menu) {
         printf("19. LOGOUT -> Untuk keluar dari sesi\n");
         printf("20. SAVE -> Untuk menyimpan state ke dalam file\n");
         printf("21. QUIT -> Untuk keluar dari program\n");
-        printf("22. QUANTUM WORDL3 -> main game dulu bozz\n");
     }
 }
 

@@ -54,7 +54,6 @@ SRCS = $(ROOT_SRCS) \
        $(CMD_DIR)/wordl399.c \
        $(CMD_DIR)/main.c \
        $(CMD_DIR)/quit.c \
-       $(CMD_DIR)/quantum_wordl399.c \
        $(SETMAP_DIR)/map.c \
        $(STACK_DIR)/stack.c \
        $(LINKEDLIST_DIR)/dplinkedlist.c \
