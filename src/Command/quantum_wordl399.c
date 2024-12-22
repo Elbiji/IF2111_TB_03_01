@@ -59,13 +59,25 @@ void play_quantum_wordl(TabUser *users, IdxType userIdx) {
         int start = 0, end = 0, guess_index = 0;
         while (input[end] != '\0' && guess_index < QUANTUM_WORD_COUNT) {
             if (input[end] == ' ' || input[end + 1] == '\0') {
-                int length = (input[end + 1] == '\0') ? (end - start + 1) : (end - start);
+
+                // kalo kata terakhir buat penyesuaian di ekstrak bagian substring
+                if (input[end + 1] == '\0') {
+                    end++; 
+                }       
+
+                int length = end-start;
                 if (length != WORD_LENGTH) {
                     valid = 0;
                     break;
                 }
-                substring(input, start, end, guesses[guess_index]);
-                start = end + 1;
+                substring(input, start, end-1, guesses[guess_index]);
+                // printf("Extracted word %d: '%s'\n", guess_index + 1, guesses[guess_index]); // Debug
+
+                if (input[end] == ' ') {
+                    end++;
+                }
+
+                start = end;
                 guess_index++;
             }
             end++;
@@ -86,6 +98,7 @@ void play_quantum_wordl(TabUser *users, IdxType userIdx) {
         // periksa menang
         success = 1;
         for (int i = 0; i < QUANTUM_WORD_COUNT; i++) {
+            // printf("guess : %s target: %s\n",guesses[i], target_words[i]);
             if (!isStrEqual(guesses[i], target_words[i])) {
                 success = 0;
                 break;
