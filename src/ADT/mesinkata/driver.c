@@ -76,7 +76,7 @@ void testMesinKata() {
     }
 }
 
-int main() {
-    testMesinKata();
-    return 0;
-}
+// int main() {
+//     testMesinKata();
+//     return 0;
+// }

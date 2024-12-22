@@ -61,7 +61,7 @@ void testLinkedList() {
     printf("List count after reset: %d\n", CountElmt(L));
 }
 
-int main() {
-    testLinkedList();
-    return 0;
-}
+// int main() {
+//     testLinkedList();
+//     return 0;
+// }

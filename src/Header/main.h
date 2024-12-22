@@ -31,5 +31,6 @@
 #include "wishlist_clear.h"
 #include "wishlist_show.h"
 #include "history.h"
+#include "quantum_wordl3.h"
 
 #endif

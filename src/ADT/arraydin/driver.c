@@ -95,7 +95,7 @@ void testArrayDinBarang(){
     DeallocateArrayDinBarang(&array);
 }
 
-int main() {
-    testArrayDinBarang();
-    return 0;
-}
+// int main() {
+//     testArrayDinBarang();
+//     return 0;
+// }

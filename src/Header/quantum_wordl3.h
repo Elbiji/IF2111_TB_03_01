@@ -1,5 +1,5 @@
-#ifndef __WORDL399_H_
-#define __WORDL399_H_
+#ifndef _QUANTUM_WORDL3_H_
+#define _QUANTUM_WORDL3_H_
 
 #define MAX_CHANCES 5
 #define WORD_LENGTH 5
@@ -10,12 +10,13 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <time.h>
-#include "../../misc.h"
 #include "../ADT/boolean/boolean.h"
 #include "../ADT/array/array.h"
+#include "../../misc.h"
 
+//test
 void play_quantum_wordl(TabUser *users, IdxType userIdx);
-extern const char *valid_words[];
-extern const int word_count;
+extern const char *quantum_valid_words[];
+extern const int quantum_word_count;
 
 #endif

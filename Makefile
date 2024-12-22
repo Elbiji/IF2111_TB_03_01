@@ -59,6 +59,7 @@ SRCS = $(ROOT_SRCS) \
        $(LINKEDLIST_DIR)/dplinkedlist.c \
        $(MESINKATA_DIR)/mesinkata.c \
        $(MESINKAR_DIR)/mesinkarakter.c \
+       $(CMD_DIR)/quantum_wordl399.c\
        $(CMD_DIR)/profile.c \
 
 

@@ -118,7 +118,7 @@ void testMap() {
     } while (choice != 8);
 }
 
-int main() {
-    testMap();
-    return 0;
-}
+// int main() {
+//     testMap();
+//     return 0;
+// }

@@ -188,7 +188,7 @@ void testArray() {
     } while (choice != 14);
 }
 
-int main() {
-    testArray();
-    return 0;
-}
+// int main() {
+//     testArray();
+//     return 0;
+// }

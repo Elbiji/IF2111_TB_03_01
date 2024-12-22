@@ -78,7 +78,7 @@ void testMesinKarakter() {
     }
 }
 
-int main() {
-    testMesinKarakter();
-    return 0;
-}
+// int main() {
+//     testMesinKarakter();
+//     return 0;
+// }

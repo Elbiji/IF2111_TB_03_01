@@ -1,13 +1,13 @@
 #include "../Header/quantum_wordl3.h"
 
-const char *valid_words[] = {"maria", "katak", "demon", "dokja", "tapir", "ivana", "bagas", "kocak", "aziza", "aulia"};
-const int word_count = sizeof(valid_words) / sizeof(valid_words[0]);
+const char *quantum_valid_words[] = {"maria", "katak", "demon", "dokja", "tapir", "ivana", "bagas", "kocak", "aziza", "aulia"};
+const int quantum_word_count = sizeof(quantum_valid_words) / sizeof(quantum_valid_words[0]);
 
 void pick_random_words(char words[QUANTUM_WORD_COUNT][WORD_LENGTH + 1]) {
     srand(time(NULL));
     for (int i = 0; i < QUANTUM_WORD_COUNT; i++) {
-        int random_index = rand() % word_count;
-        copystrng(words[i], valid_words[random_index]);
+        int random_index = rand() % quantum_word_count;
+        copystrng(words[i], quantum_valid_words[random_index]);
 
         // pastiin katanya berbeda
         for (int j = 0; j < i; j++) {
