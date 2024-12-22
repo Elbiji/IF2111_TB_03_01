@@ -169,14 +169,6 @@ int main() {
                 work_challenge(&user, userid);
             }
         }
-        else if (isStrEqual(perintah, "QUANTUM WORDL3")){
-            if (isloggedin == false) {
-                printf("Perintah belum bisa dijalankan, karena anda belom LOGIN!\n");
-            } else {
-                printf(">> QUANTUM WORDL399\n");
-                play_quantum_wordl(&user, userid);
-            }
-        }
         else if (isStrEqual(perintah, "WORK")){
             if (isloggedin == false) {
                 printf("Perintah belum bisa dijalankan, karena anda belom LOGIN!\n");

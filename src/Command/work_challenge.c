@@ -10,7 +10,8 @@ void work_challenge(TabUser *users, IdxType userIdx) {
         printf("\nDaftar challenge yang tersedia:\n");
         printf("1. Tebak Angka (biaya main=200)\n");
         printf("2. W0RDL3 (biaya main=500)\n");
-        printf("\nMasukan challenge yang hendak dimainkan (1/2): ");
+        printf("3. Quntum WORDL3 (biaya main=10)\n");
+        printf("\nMasukan challenge yang hendak dimainkan (1/2/3): ");
         
         if (!readInput(perintah, MAX_LEN)) {
             printf("Input tidak valid!\n");
@@ -21,8 +22,8 @@ void work_challenge(TabUser *users, IdxType userIdx) {
             break;
         }
 
-        // periksa apakah input valid (1 / 2)
-        if (strLength(perintah) == 1 && perintah[0] >= '1' && perintah[0] <= '2') {
+        // periksa apakah input valid (1 / 2 / 3)
+        if (strLength(perintah) == 1 && perintah[0] >= '1' && perintah[0] <= '3') {
             int choice = perintah[0] - '0';  // konversi karakter '1' / '2' menjadi integer
 
             if (choice == 2) {
@@ -39,7 +40,14 @@ void work_challenge(TabUser *users, IdxType userIdx) {
                 }
                 users->TC[userIdx].money -= 200;
                 tebakAngka(userIdx, users);
+            } else if (choice == 3) {
+                if (users->TC[userIdx].money < 10) {
+                    printf("Saldo tidak mencukupi untuk memainkan challenge ini.\n");
+                    continue;
+                }
             }
+                users->TC[userIdx].money -= 10;
+                play_quantum_wordl(users, userIdx);
         } else {
             printf("Input tidak valid! Pilihan harus berupa angka 1 atau 2.\n");
             continue;
