@@ -38,8 +38,8 @@ void testLinkedList() {
     printf("\n=== TESTING SEARCH ===\n");
     P = Search(L, "Volkswagen Beetle");
     printf("Search for 'Volkswagen Beetle': %s\n", P != Kosong ? "Found" : "Not Found");
-    P = Search(L, "ItemZ");
-    printf("Search for 'ItemZ': %s\n", P != Kosong ? "Found" : "Not Found");
+    P = Search(L, "Ferrari 488");
+    printf("Search for 'Ferrari 488': %s\n", P != Kosong ? "Found" : "Not Found");
 
     printf("\n=== TESTING PRINT FUNCTIONS ===\n");
     printf("List in forward order:\n");
