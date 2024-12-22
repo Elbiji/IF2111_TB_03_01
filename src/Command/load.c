@@ -176,7 +176,7 @@ void load(TabUser *Users, ArrayDinBarang *array_load) {
                     }
                 }
                 barang_wishlist_load[nameindex] = '\0';
-                printf("Debug %s\n", barang_wishlist_load);
+                // printf("Debug %s\n", barang_wishlist_load);
                 InsVLast(&(Users->TC[ctr].wishlist), barang_wishlist_load);
             }
             PrintForward(Users->TC[ctr].wishlist);

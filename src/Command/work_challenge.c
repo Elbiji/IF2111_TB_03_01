@@ -10,7 +10,7 @@ void work_challenge(TabUser *users, IdxType userIdx) {
         printf("\nDaftar challenge yang tersedia:\n");
         printf("1. Tebak Angka (biaya main=200)\n");
         printf("2. W0RDL3 (biaya main=500)\n");
-        printf("3. Quntum WORDL3 (biaya main=10)\n");
+        printf("3. Qauntum WORDL3 (biaya main=10)\n");
         printf("\nMasukan challenge yang hendak dimainkan (1/2/3): ");
         
         if (!readInput(perintah, MAX_LEN)) {
